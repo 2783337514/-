@@ -3,7 +3,7 @@
 Shell 是操作系统“外壳”程序，它向用户提供一个命令行类型的使用界面，也可称作命令解析器，系统开发人员可使用此接口来操作计算机。HYSylixOS 的Shell 程序为tShell。
 tShell 程序是系统开发人员操作HYSylixOS 操作系统最为简单与便捷的接口，ttinyShell 运行在内核空间，内部内建了HYSylixOS 内核里的常用命令，tShell 程序运行界面，如图1.1 所示。
 
-@import "./image/ttinyShell运行界面.png"
+@import "./image/image001.png"
 
 <center>图1.1 ttinyShell运行界面</center>
 

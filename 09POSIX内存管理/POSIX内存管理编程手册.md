@@ -174,6 +174,7 @@ int heap_mem_init
 ### 样例：
   
 ```c  
+无
 ```  
   
 ## mpart_module_init ：设置内存管理模块允许的最大的分区数
@@ -206,6 +207,7 @@ int mpart_module_init
 ### 样例：
   
 ```c  
+无
 ```  
   
 ## mpart_create ：创建可变长内存分区
@@ -802,6 +804,7 @@ int mlock
 ### 样例：  
   
 ```c  
+无
 ```  
   
 ## munlock ：解锁指定内存地址空间
@@ -836,6 +839,7 @@ int munlock
 ### 样例：  
   
 ```c  
+无
 ```  
   
 ## mlockall ：锁定进程空间
@@ -873,6 +877,7 @@ iFlag ：锁定选项。取值有：
 ### 样例：  
   
 ```c  
+无
 ```  
   
 ## munlockall ：解锁进程空间
@@ -905,6 +910,7 @@ int munlockall
 ### 样例：  
   
 ```c  
+无
 ```  
   
 ## mmap ：内存文件映射
@@ -1444,5 +1450,6 @@ int posix_madvise
 ### 样例：  
   
 ```c  
+无
 ```  
   

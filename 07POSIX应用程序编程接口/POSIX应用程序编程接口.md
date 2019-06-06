@@ -1,14 +1,14 @@
 # 概述
   
-POSIX是Portable Operating System Interface（可移植操作系统接口）的缩写。  
-从1970第一款现代操作系统——UNIX诞生至今，出现了多款现代操作系统，例如：Windows、Linux、BSD、Solaris等，为了方便应用程序以及中间件的移植，大多数操作系统都采用与UNIX兼容的API（Windows除外）。为了保证操作系统API的相互兼容性制定了POSIX标准。  
-POSIX是IEEE（Institue of Electrical and Electronics Engineers，电气和电子工程师学会）为了规范各种UNIX操作系统提供的API接口而定义的一系列互相关联的标准的总称，其正式称呼为IEEE 1003，国际标准名称为ISO/IEC  
-9945。此标准源于一个大约开始于1985年的项目。其中POSIX标准对实时操作系统定义了一个称作1003.1b的子协议，该协议定义了标准实时操作系统的基本行为，HYSylixOS符合此协议的要求。  
+POSIX是Portable Operating System Interface（可移植操作系统接口）的缩写。
+
+从1970第一款现代操作系统——UNIX诞生至今，出现了多款现代操作系统，例如：Windows、Linux、BSD、Solaris等，为了方便应用程序以及中间件的移植，大多数操作系统都采用与UNIX兼容的API（Windows除外）。为了保证操作系统API的相互兼容性制定了POSIX标准。
+
+POSIX是IEEE（Institue of Electrical and Electronics Engineers，电气和电子工程师学会）为了规范各种UNIX操作系统提供的API接口而定义的一系列互相关联的标准的总称，其正式称呼为IEEE 1003，国际标准名称为ISO/IEC 9945。此标准源于一个大约开始于1985年的项目。其中POSIX标准对实时操作系统定义了一个称作1003.1b的子协议，该协议定义了标准实时操作系统的基本行为，HYSylixOS符合此协议的要求。
+
 当前的POSIX主要分为四个部分：Base Definitions（基本功能定义）、System Interfaces（系统接口）、Shell and Utilities（shell与相关工具）和Rationale（基本原理）。HYSylixOS兼容这四部分的大多数规范。由于HYSylixOS对POSIX的支持，其他兼容POSIX系统上的应用程序可以非常方便的移植到HYSylixOS操作系统之上。  
   
-表1-1中列出了HYSylixOS支持的POSIX标准头文件。  
-  
-表1-1 POSIX标准头文件  
+下表中列出了HYSylixOS支持的POSIX标准头文件。 
   
 |头文件名|说明|头文件名|说明|  
 |---|---|---|---|  
@@ -30,7 +30,7 @@ POSIX是IEEE（Institue of Electrical and Electronics Engineers，电气和电�
 |<sys/socket.h>|套接字接口|<sys/ipc.h>|IPC机制|  
 |<sys/stat.h>|文件状态|<sys/msg.h>|消息队列|  
 |<sys/times.h>|进程时间|<sys/resource.h>|资源操作|  
-|<sys/ types.h>|基本系统数据类型|<sys/sem.h>|信号量|  
+|<sys/types.h>|基本系统数据类型|<sys/sem.h>|信号量|  
 |<sys/un.h>|UNIX域套接字定义|<sys/shm.h>|共享内存|  
 |<sys/utsname.h>|系统名|<sys/statvfs.h>|文件系统信息|  
 |<sys/wait.h>|进程控制|<sys/time.h>|时间类型|  
@@ -56,7 +56,7 @@ int pthread_attr_init
 )  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口使用默认值初始化任务属性对象pattr，初始化默认值时由系统确定的，pthread_create()接口使用该接口初始化的属性对象来定义被创建任务的属性，可以在多个同时调用的pthread_create()中使用同一个任务属性对象。对应应根据任务进行分别设置的属性，如任务堆栈地址，系统会自动进行分配，保证不会发生重叠。调用设置属性值的接口可以修改已初始化的属性对象。任务属性对象用于指定任务创建时的属性信息，其初始化默认为：  
   
@@ -71,7 +71,7 @@ int pthread_attr_init
 |option|LW_OPTION_THREAD_STK_CHK|允许对任务堆栈检查|  
 |schedparam|PX_PRIORITY_CONVERT(LW_PRIO_NORMAL)|调度参数优先级为55|  
   
-### 参 数：
+### 参数：
   
 - pattr ：需要初始化的线程属性块指针。  
   
@@ -81,13 +81,13 @@ int pthread_attr_init
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -124,11 +124,11 @@ int  pthread_attr_destroy
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来删除线程属性对象，将pattr引用的对象设定为无效值。删除后attr属性对象可以使用pthread_attr_init()重新初始化。删除后不能对其引用。  
   
-### 参 数：
+### 参数：
   
 - pattr ：需要销毁的线程属性快指针。  
   
@@ -138,13 +138,13 @@ int  pthread_attr_destroy
   
 ### 错误码：
   
-EINVAL ：参数pattr指定的对象不是一个已初始化的任务属性对象。  
+- EINVAL ：参数pattr指定的对象不是一个已初始化的任务属性对象。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -182,11 +182,11 @@ int   pthread_attr_getstackaddr
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该函数用来获取指定任务属性块的stackaddr属性,并存放在参数ppvStackAddr指定的地址中。任务的stackaddr属性指定了任务栈的存储位置，存储区域的大小最小为PTHREAD_STATCK_MIN。  
   
-### 参 数：
+### 参数：
   
 - pattr ：需要获取的任务属性块指针。  
 - ppvStackAddr ：保存堆栈地址的指针。  
@@ -197,13 +197,13 @@ int   pthread_attr_getstackaddr
   
 ### 错误码：
   
-EINVAL ： 参数无效。  
+- EINVAL ： 参数无效。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -243,11 +243,11 @@ int  pthread_attr_setstackaddr
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来设置任务属性对象attr中的stackaddr属性。Stackaddr属性指定了任务栈的存储位置。在设置好地址时必须设置好堆栈的大小。一个堆栈地址对应一个线程。  
   
-### 参 数：
+### 参数：
   
 - pattr ：需要设置的任务属性块指针。  
 - pvStackAddr ：堆栈地址。  
@@ -258,13 +258,13 @@ int  pthread_attr_setstackaddr
   
 ### 错误码：
   
-EINVAL ： 参数无效。  
+- EINVAL ： 参数无效。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -301,11 +301,11 @@ int  pthread_attr_getstacksize
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该函数用来获取指定任务属性块的stacksize属性。stacksize属性指定了任务栈的堆栈大小。  
   
-### 参 数：
+### 参数：
   
 - pattr ：需要获取的任务属性块指针。  
 - pstSize ：任务栈的堆栈大小。  
@@ -320,13 +320,13 @@ int  pthread_attr_getstacksize
   
 ### 错误码：
   
-EINVAL ： 参数无效。  
+- EINVAL ： 参数无效。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 int main (int argc, char **argv)  
@@ -362,11 +362,11 @@ int  pthread_attr_setstacksize
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来设置指定任务属性块的stacksize属性。stacksize属性指定了任务栈的堆栈大小。  
   
-### 参 数：
+### 参数：
   
 - pattr ：需要设置的任务属性块指针。  
 - stSize ：堆栈大小。  
@@ -381,13 +381,13 @@ int  pthread_attr_setstacksize
   
 ### 错误码：
   
-EINVAL ： 参数无效。  
+- EINVAL ： 参数无效。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -423,11 +423,11 @@ int  pthread_attr_getstackfilled
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来获取指定任务属性块的stackfilled属性。stackfilled属性指定了任务栈的填充属性。  
   
-### 参 数：
+### 参数：
   
 - pattr ：指向任务属性块的指针。  
 - stackfilled ：堆栈填充设置。  
@@ -443,13 +443,13 @@ int  pthread_attr_getstackfilled
   
 ### 错误码：
   
-EINVAL ： 参数无效。  
+- EINVAL ： 参数无效。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -492,11 +492,11 @@ int  pthread_attr_setstackfilled
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用来设置指定任务属性块的stackfilled属性。stackfilled属性指定了任务栈的填充属性。  
   
-### 参 数：
+### 参数：
   
 - pattr ：指向任务属性块的指针。  
 - stackfilled ：任务栈填充设置。  
@@ -512,9 +512,9 @@ int  pthread_attr_setstackfilled
   
 ### 错误码：
   
-EINVAL ： 参数无效。  
+- EINVAL ： 参数无效。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -556,11 +556,11 @@ int  pthread_attr_getname
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用于获取任务属性对象pattr中的name属性。name属性指定了创建任务的名字。默认创建名为”pthread”。  
   
-### 参 数：
+### 参数：
   
 - pattr ：指向任务属性块的指针。  
 - ppcName ：存放名字属性的指针  
@@ -571,13 +571,13 @@ int  pthread_attr_getname
   
 ### 错误码：
   
-EINVAL ： 参数无效。  
+- EINVAL ： 参数无效。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -624,11 +624,11 @@ int  pthread_attr_setname
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来设置任务属性对象pattr中的name属性。name属性指定了创建任务的名字。默认创建名为pthread。  
   
-### 参 数：
+### 参数：
   
 - pattr ：指向任务属性块的指针。  
 - pcName ：需要设置的任务名称。  
@@ -639,13 +639,13 @@ int  pthread_attr_setname
   
 ### 错误码：
   
-EINVAL ： 参数无效。  
+- EINVAL ： 参数无效。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -689,11 +689,11 @@ int  pthread_attr_getbreakallowed
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用于获取任务属性块对象breakallowed属性。breakallowed属性指定了任务是否忽略断点状态。  
   
-### 参 数：
+### 参数：
   
 - pattr ：指向属性块的指针。  
 - breakallowed ：存放是否忽略断点的指针。  
@@ -711,13 +711,13 @@ int  pthread_attr_getbreakallowed
   
 ### 错误码：
   
-EINVAL ： 参数无效。  
+- EINVAL ： 参数无效。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -761,11 +761,11 @@ int  pthread_attr_setbreakallowed
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于设置任务属性块对象breakallowed属性。breakallowed属性指定了任务是否忽略断点状态。  
   
-### 参 数：
+### 参数：
   
 - pattr ：指向属性块的指针。  
 - breakallowed ：设置是否忽略断点的值。  
@@ -783,13 +783,13 @@ int  pthread_attr_setbreakallowed
   
 ### 错误码：
   
-EINVAL ： 参数无效。  
+- EINVAL ： 参数无效。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -830,11 +830,11 @@ int  pthread_attr_getfpallowed
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用于获取任务属性块对象的pallowed属性。pallowed属性指定了是否允许浮点。  
   
-### 参 数：
+### 参数：
   
 - pattr ：指向线程属性的指针。  
 - fpallowed ：存放是否允许浮点的值。  
@@ -850,13 +850,13 @@ int  pthread_attr_getfpallowed
   
 ### 错误码：
   
-EINVAL ： 参数无效。  
+- EINVAL ： 参数无效。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -900,11 +900,11 @@ int  pthread_attr_setfpallowed
 );	  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用于设置任务属性块对象的pallowed属性。pallowed属性指定了是否允许浮点。  
   
-### 参 数：
+### 参数：
   
 - pattr ：指向任务属性块对象的指针。  
 - fpallowed ：设置是否允许浮点的值。  
@@ -920,13 +920,13 @@ int  pthread_attr_setfpallowed
   
 ### 错误码：
   
-EINVAL ： 参数无效。  
+- EINVAL ： 参数无效。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -967,11 +967,11 @@ int  pthread_attr_getinheritsched
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用于获取任务属性块的inheritsched属性。inheritsched属性指定了继承调度策略的方式。调度策略默认值为PTHREAD_EXPLICIT_SCHED（1）。PTHREAD_INHERIT_SCHED表示新任务的调度属性继承父任务的调度属性，而attr中的调度属性被忽略；PTHREAD_EXPLICIT_SCHED表示新任务的调度属性应设置成任务属性对象中对应的属性值。  
   
-### 参 数：
+### 参数：
   
 - pattr ：指向任务属性块的指针。  
 - piInherit ：获取创建线程的继承属性。  
@@ -987,13 +987,13 @@ int  pthread_attr_getinheritsched
   
 ### 错误码：
   
-EINVAL ： 参数无效。  
+- EINVAL ： 参数无效。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -1037,11 +1037,11 @@ int  pthread_attr_setinheritsched
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用于设置任务属性块的inheritsched属性。inheritsched属性指定了继承调度策略的方式。  
   
-### 参 数：
+### 参数：
   
 - pattr ：指向任务属性块的指针。  
 - iInherit ：设置创建线程的继承属性。  
@@ -1057,15 +1057,15 @@ int  pthread_attr_setinheritsched
   
 ### 错误码：
   
-EINVAL ： 参数无效。  
-ENOTSUP ：系统不支持的操作。  
+- EINVAL ： 参数无效。  
+- ENOTSUP ：系统不支持的操作。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码返回只有：  
-EINVAL ： 参数无效。  
+- EINVAL ： 参数无效。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -1109,11 +1109,11 @@ int  pthread_attr_getschedpolicy
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来获取任务属性块的schedpolicy属性。schedpolicy属性指定了任务的调度策略。  
   
-### 参 数：
+### 参数：
   
 - pattr ：指向任务属性块的指针。  
 - piPolicy ：存放调度策略的指针。  
@@ -1129,9 +1129,9 @@ int  pthread_attr_getschedpolicy
   
 ### 错误码：
   
-EINVAL ： 参数无效。  
+- EINVAL ： 参数无效。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -1175,11 +1175,11 @@ int  pthread_attr_setschedpolicy
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来设置任务属性块的schedpolicy属性。schedpolicy属性指定了任务的调度策略。  
   
-### 参 数：
+### 参数：
   
 - pattr ：指向任务属性块的指针。  
 - iPolicy ：设置的调度策略。  
@@ -1197,10 +1197,10 @@ int  pthread_attr_setschedpolicy
   
 ### 错误码：
   
-EINVAL ： 参数无效。  
-ENOTSUP ：系统不支持的操作。  
+- EINVAL ： 参数无效。  
+- ENOTSUP ：系统不支持的操作。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -1244,11 +1244,11 @@ int  pthread_attr_getdetachstate
 	int  *piDetachState  
 );   
 ```  
-### 描 述：
+### 描述：
   
 该接口用于获取任务属性对象pattr的detachstate属性。detachstate属性指定了任务的分离联合状态。处于分离状态的任务，调用pthread_detach接口和pthread_join接口会失败。初始化默认为PTHREAD_CREATE_JOINABLE（1）联合状态。  
   
-### 参 数：
+### 参数：
   
 - pattr ：需要获取的任务属性块指针。  
 - piDetachState ：存放任务分离状态属性的指针。  
@@ -1264,9 +1264,9 @@ int  pthread_attr_getdetachstate
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -1312,11 +1312,11 @@ int  pthread_attr_setdetachstate
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用于设置任务属性对象pattr的detachstate属性。detachstate属性指定了任务的分离联合状态。处于分离状态的任务，调用pthread_detach接口和pthread_join接口会失败。  
   
-### 参 数： 
+### 参数： 
   
 - pattr ：指向任务属性对象的指针。  
 - iDetachState ：需要设置的任务分离状态属性。  
@@ -1332,9 +1332,9 @@ int  pthread_attr_setdetachstate
   
 ### 错误码：
   
-EINVAL ： 参数无效。  
+- EINVAL ： 参数无效。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -1379,11 +1379,11 @@ int  pthread_create
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口使用指定的属性pattr创建一个新的任务，如果pattr为NULL，则使用默认的任务属性。任务创建成功，pthread_create()接口通过参数thread返回创建任务的ID。被创建的任务使用参数arg作为start_routine执行的唯一参数。Star_routine返回效果相当于使用start_routine的返回值作为退出状态调用pthread_exit().  
   
-### 参 数：
+### 参数：
   
 - pthread ：存放任务id的指针  
 - pattr ：指向任务属性对象的指针  
@@ -1396,17 +1396,17 @@ int  pthread_create
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-EAGAIN ：系统资源不足。  
-ENOMEM ：内存不足。  
+- EINVAL ：参数无效。  
+- EAGAIN ：系统资源不足。  
+- ENOMEM ：内存不足。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码返回只有：  
-EINVAL ：参数无效。  
-EAGAIN ：系统资源不足。  
+- EINVAL ：参数无效。  
+- EAGAIN ：系统资源不足。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -1417,7 +1417,7 @@ int main (int argc, char **argv)
 {  
     int  ret;  
      
-……  
+// ……  
   
     ret = pthread_create(&tid1, &attr, Thread1, NULL);  
     if(ret != 0)  
@@ -1425,7 +1425,7 @@ int main (int argc, char **argv)
         perror("func pthread_create error");  
         return -1;  
 	}  
-……  
+// ……  
   return 0;  
 }  
 ```  
@@ -1443,11 +1443,11 @@ int  pthread_cancel
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口请求取消thread指定的任务。任务的取消状态和类型决定了何时执行取消操作。如果任务的取消操作被触发，任务的取消处理函数就会被调用。  
   
-### 参 数：
+### 参数：
   
 - thread ：需要取消的任务的ID。  
   
@@ -1457,11 +1457,11 @@ int  pthread_cancel
   
 ### 错误码：
   
-ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
-ERROR_THREAD_NULL ：线程句柄无效。  
-ERROR_THREAD_DISCANCEL ：线程设置了 DISCANCEL 标志。  
+- ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
+- ERROR_THREAD_NULL ：线程句柄无效。  
+- ERROR_THREAD_DISCANCEL ：线程设置了 DISCANCEL 标志。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -1471,7 +1471,7 @@ static void * Thread1(void *arg)
 {  
 	int ret = 0;  
   
-	……  
+	// ……  
 	ret = pthread_cancel(tid2);  
 	if(ret != 0)  
 	{  
@@ -1496,11 +1496,11 @@ void pthread_exit
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口终止当前任务，同时是status的值对于任意等待该任务终止的其他任务可用。任务终止过程中，那些已经压栈但还没出栈的取消处理函数都会以入栈相反的顺序出栈并执行。如果任务有私有数据，那么在所有的取消处理函数被执行后，任务会调用这些私有数据的析构函数。任务终止会释放一些系统资源，如互斥信号量和文件描述符等。任务终止后，访问任务的本地变量的结果时不确定的。因此，任务的本地变量不能用作接口pthread_exit()的参数value_ptr的值。  
   
-### 参 数：
+### 参数：
   
 - status ：任务返回值。  
   
@@ -1510,17 +1510,17 @@ void pthread_exit
   
 ### 错误码：
   
-ERROR_KERNEL_IN_ISR ：系统处于中断中。  
-ERROR_KERNEL_NOT_RUNNING ：系统没有运行。  
-ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
-ERROR_THREAD_NULL ：线程句柄无效。  
-ERROR_THREAD_OTHER_DELETE ：已经有其他线程在等待删除。  
+- ERROR_KERNEL_IN_ISR ：系统处于中断中。  
+- ERROR_KERNEL_NOT_RUNNING ：系统没有运行。  
+- ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
+- ERROR_THREAD_NULL ：线程句柄无效。  
+- ERROR_THREAD_OTHER_DELETE ：已经有其他线程在等待删除。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -1528,7 +1528,7 @@ GJB 7714-2012错误码为无。
 #include <unistd.h>  
 static void * Thread1(void *arg)  
 {  
-	……  
+	// ……  
   
  	pthread_exit (NULL);  
 	return NULL;  
@@ -1548,11 +1548,11 @@ int  pthread_getid
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用于获取与指定的任务名相匹配的任务ID。  
   
-### 参 数：
+### 参数：
   
 - name ：任务名  
 - pthread ：存放任务ID的指针  
@@ -1563,17 +1563,17 @@ int  pthread_getid
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ESRCH ：线程不存在。  
+- EINVAL ：参数无效。  
+- ESRCH ：线程不存在。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-ESRCH ：线程不存在。  
-EINVAL ：参数无效。  
-RTYPENOTMATCH ：任务类型不匹配。  
+- ESRCH ：线程不存在。  
+- EINVAL ：参数无效。  
+- RTYPENOTMATCH ：任务类型不匹配。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -1584,7 +1584,7 @@ static void * Thread1(void *arg)
 	pthread_t tid;  
 	int ret;  
   
-	……  
+	// ……  
   
 	ret = pthread_getid("pthread", &tid);  
 	if(ret != 0)  
@@ -1593,7 +1593,7 @@ static void * Thread1(void *arg)
 		return (PVOID)-1;  
 	}  
 	printf("name is t_tshell pthread id:%d\n", tid);  
-	……  
+	// ……  
 	return NULL;  
 }  
 ```  
@@ -1611,11 +1611,11 @@ int  pthread_getname
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于获取指定ID任务的线程名。  
   
-### 参 数：
+### 参数：
   
 - thread ：指定线程ID指针。  
 - name ：用户获取线程的名字。  
@@ -1626,10 +1626,10 @@ int  pthread_getname
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ESRCH ：线程不存在  
+- EINVAL ：参数无效。  
+- ESRCH ：线程不存在  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -1639,7 +1639,7 @@ static void * Thread1(void *arg)
 {  
 	int ret = 0;  
  	char name[32];  
-	……  
+	// ……  
 	ret = pthread_getname(tid1, name);                                       
 	if(ret != 0)  
    {  
@@ -1647,7 +1647,7 @@ static void * Thread1(void *arg)
         return (PVOID)-1;  
    }  
 	printf("name is %s \n",name);	  
-……  
+// ……  
 	return NULL;  
 }  
 ```  
@@ -1664,11 +1664,11 @@ pthread_t  pthread_self
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来获取调用任务的ID。  
   
-### 参 数：
+### 参数：
   
 无。  
   
@@ -1678,13 +1678,13 @@ pthread_t  pthread_self
   
 ### 错误码：
   
-ERROR_KERNEL_IN_ISR ：系统处于中断中。  
+- ERROR_KERNEL_IN_ISR ：系统处于中断中。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -1694,7 +1694,7 @@ static void * Thread2(void *arg)
 {  
 	pthread_t tid;  
   
-	……  
+	// ……  
     tid = pthread_self();  
     if(tid == 0)  
     {  
@@ -1702,7 +1702,7 @@ static void * Thread2(void *arg)
         return (PVOID)-1;  
     }  
     printf("pthread_self is %d \n",(int)tid);  
-	……  
+	// ……  
   
 	return NULL;  
 }  
@@ -1721,11 +1721,11 @@ int  pthread_suspend
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来挂起一个指定的任务，如果thread取值为零，则调用任务自身被挂起。任务的挂起状态是附加的，即任务可以是睡眠状态和挂起状态共存，或阻塞状态和挂起状态并存。  
   
-### 参 数：
+### 参数：
   
 - thread ：要挂起线程的ID。  
   
@@ -1735,18 +1735,18 @@ int  pthread_suspend
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
-ERROR_THREAD_NULL ：线程句柄无效。  
-ERROR_KERNEL_IN_ISR ：系统处于中断中。  
+- EINVAL ：参数无效。  
+- ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
+- ERROR_THREAD_NULL ：线程句柄无效。  
+- ERROR_KERNEL_IN_ISR ：系统处于中断中。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-ESRCH ：线程不存在。  
-EINVAL ：参数无效。  
+- ESRCH ：线程不存在。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -1756,14 +1756,14 @@ static void * Thread1(void *arg)
 {  
 	int ret = 0;  
   
-	……  
+	// ……  
 	ret = pthread_suspend(pthread_self());  
 	if(ret != 0)  
 	{  
 		printf("func pthread_suspend error\n");  
 		return (PVOID)-1;  
 	}  
-	……  
+	// ……  
   
 	return NULL;  
 }  
@@ -1780,11 +1780,11 @@ int  pthread_resume
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口恢复指定的任务。挂起状态解除，任务恢复到被挂起前的状态。  
   
-### 参 数：
+### 参数：
   
 - thread ：要唤醒任务的ID。  
   
@@ -1794,18 +1794,18 @@ int  pthread_resume
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
-ERROR_THREAD_NULL ：线程句柄无效。  
-ERROR_KERNEL_IN_ISR ：系统处于中断中。  
+- EINVAL ：参数无效。  
+- ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
+- ERROR_THREAD_NULL ：线程句柄无效。  
+- ERROR_KERNEL_IN_ISR ：系统处于中断中。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-ESRCH ：线程不存在。  
-EINVAL ：参数无效。  
+- ESRCH ：线程不存在。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -1815,14 +1815,14 @@ static void * Thread2(void *arg)
 {  
 	int ret = 0;  
   
-	……  
+	// ……  
 	ret = pthread_resume(tid1);  
 	if(ret != 0)  
 	{  
 		printf("func pthread_resume error\n");  
 		return (PVOID)-1;  
 	}  
-	……  
+	// ……  
   
 	return NULL;  
 }  
@@ -1841,11 +1841,11 @@ int  pthread_delay
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口是调用任务在指定时间（以tick为单位）内放弃CPU。  
   
-### 参 数：
+### 参数：
   
 - ticks ：任务延迟的tick数。值应为正值或零，为0时任务主动将CPU让给同等优先级的任务运行，负值不延时。  
   
@@ -1855,17 +1855,17 @@ int  pthread_delay
   
 ### 错误码：
   
-ENOTSUP ：系统不支持的操作。  
-ERROR_KERNEL_IN_ISR ：系统处于中断中。  
-EINTR ：线程收到一个非阻塞或忽略的信号。  
+- ENOTSUP ：系统不支持的操作。  
+- ERROR_KERNEL_IN_ISR ：系统处于中断中。  
+- EINTR ：线程收到一个非阻塞或忽略的信号。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-ENOTSUP ：系统不支持设置。  
-EINTR ：线程收到一个非阻塞或忽略的信号。  
+- ENOTSUP ：系统不支持设置。  
+- EINTR ：线程收到一个非阻塞或忽略的信号。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -1875,14 +1875,14 @@ static void * Thread2(void *arg)
 {  
 	int ret = 0;  
   
-	……  
+	// ……  
 	ret = pthread_delay(100);  
 	if(ret != 0)  
 {  
 		printf("func pthread_delay error\n");  
 		return (PVOID)-1;  
 	}  
-	……  
+	// ……  
   
 	return NULL;  
 }  
@@ -1899,11 +1899,11 @@ int  pthread_lock
 )  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用于禁止上下文切换。调用该接口的任务不允许被抢占，除非调用任务使自己不处于就绪状态而主动放弃CPU。  
   
-### 参 数：
+### 参数：
   
 无。  
   
@@ -1913,9 +1913,9 @@ int  pthread_lock
   
 ### 错误码：
   
-ECALLEDINISR ：系统处于中断中。  
+- ECALLEDINISR ：系统处于中断中。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -1925,21 +1925,21 @@ static void * Thread2(void *arg)
 {  
 	int ret = 0;  
   
-	……  
+	// ……  
   
 	ret = pthread_lock();  
 	if(ret != 0){  
 		printf("func pthread_lock error\n");  
 		return (PVOID)-1;  
 	}  
-	……  
+	// ……  
 	ret = pthread_unlock();  
 	if(ret != 0)  
 	{  
 		printf("func pthread_unlock error\n");  
 		return (PVOID)-1;  
 	}  
-	……  
+	// ……  
   
 	return NULL;  
 }  
@@ -1957,11 +1957,11 @@ int  pthread_unlock
 ```  
   
   
-### 描 述：
+### 描述：
   
 解锁任务调度，允许任务调度进程或线程，减少任务锁定的次数。该接口必须与pthread_lock接口配对使用。  
   
-### 参 数：
+### 参数：
   
 无。  
   
@@ -1971,13 +1971,13 @@ int  pthread_unlock
   
 ### 错误码：
   
-ECALLEDINISR ：系统处于中断中。  
+- ECALLEDINISR ：系统处于中断中。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -1987,21 +1987,21 @@ static void * Thread2(void *arg)
 {  
 	int ret = 0;  
   
-	……  
+	// ……  
 	ret = pthread_lock();  
 	if(ret != 0)  
 	{  
 		printf("func pthread_lock error\n");  
 		return (PVOID)-1;  
 	}  
-	……  
+	// ……  
 	ret = pthread_unlock();  
 	if(ret != 0)  
 	{  
 		printf("func pthread_unlock error\n");  
 		return (PVOID)-1;  
 	}  
-	……  
+	// ……  
   
 	return NULL;  
 }  
@@ -2019,11 +2019,11 @@ boolean  pthread_is_ready
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于判断一个任务的状态是否为就绪状态。  
   
-### 参 数：
+### 参数：
   
 - thread ：任务ID。  
   
@@ -2033,17 +2033,17 @@ boolean  pthread_is_ready
   
 ### 错误码：
   
-ESRCH ：线程不存在。  
-ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
-ERROR_THREAD_NULL ：线程句柄无效。  
-ERROR_KERNEL_IN_ISR ：系统处于中断中。  
+- ESRCH ：线程不存在。  
+- ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
+- ERROR_THREAD_NULL ：线程句柄无效。  
+- ERROR_KERNEL_IN_ISR ：系统处于中断中。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-ESRCH ：线程不存在。  
+- ESRCH ：线程不存在。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -2053,13 +2053,13 @@ static void * Thread1(void *arg)
 {  
 	int ret = 0;  
   
-	……  
+	// ……  
 	ret = pthread_is_ready(tid2);  
 	if(ret == 1)  
 	{  
 		......  
 	}  
-	……  
+	// ……  
 	return NULL;  
 }  
 ```  
@@ -2076,11 +2076,11 @@ boolean  pthread_is_suspend
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于判断一个任务的状态是否为挂起状态。  
   
-### 参 数：
+### 参数：
   
 - thread ：任务ID。  
   
@@ -2088,31 +2088,31 @@ boolean  pthread_is_suspend
   
 挂起返回1， 没挂起返回0；失败返回-1，并置错误码。  
   
-### 备 注：
+### 备注：
   
 无。  
   
 ### 错误码：
   
-ESRCH ：线程不存在。  
-ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
-ERROR_THREAD_NULL ：线程句柄无效。  
-ERROR_KERNEL_IN_ISR ：系统处于中断中。  
+- ESRCH ：线程不存在。  
+- ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
+- ERROR_THREAD_NULL ：线程句柄无效。  
+- ERROR_KERNEL_IN_ISR ：系统处于中断中。  
   
-### 样 例：
+### 样例：
   
 ```c  
 static void * Thread1(void *arg)  
 {  
 	int ret = 0;  
   
-	……  
+	// ……  
 	ret = pthread_is_suspend(tid2);  
 	if(ret == 1)  
 	{  
 		......  
 	}  
-	……  
+	// ……  
 	return NULL;  
 }  
 ```  
@@ -2129,11 +2129,11 @@ void  pthread_ testcancel
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口在调用任务中创建一个取消点。如果任务不允许被取消，则该接口对任务无影响。  
   
-### 参 数：
+### 参数：
   
 无。  
   
@@ -2143,17 +2143,17 @@ void  pthread_ testcancel
   
 ### 错误码：
   
-ERROR_KERNEL_IN_ISR ：系统处于中断中。  
-ERROR_KERNEL_NOT_RUNNING ：系统没有运行。  
-ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
-ERROR_THREAD_NULL ：线程句柄无效。  
-ERROR_THREAD_OTHER_DELETE ：已经有其他线程在等待删除。  
+- ERROR_KERNEL_IN_ISR ：系统处于中断中。  
+- ERROR_KERNEL_NOT_RUNNING ：系统没有运行。  
+- ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
+- ERROR_THREAD_NULL ：线程句柄无效。  
+- ERROR_THREAD_OTHER_DELETE ：已经有其他线程在等待删除。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -2161,9 +2161,9 @@ ERROR_THREAD_OTHER_DELETE ：已经有其他线程在等待删除。
 #include <unistd.h>  
 static void * Thread1(void *arg)  
 {  
-	……  
+	// ……  
  	pthread_ testcancel ();  
-……  
+// ……  
 	return NULL;  
 }  
 ```  
@@ -2180,11 +2180,11 @@ int  pthread_setcancelstate
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用于设定调用任务的取消状态为指定的newstate,并将旧状态通过poldstate返回。  
   
-### 参 数：
+### 参数：
   
 - newstate ：新的任务取消状态值  
 - poldstate ：存放旧的任务取消状态的值  
@@ -2200,13 +2200,13 @@ int  pthread_setcancelstate
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -2216,14 +2216,14 @@ static void * Thread1(void *arg)
 {  
 	int ret = 0;  
   
-	……  
+	// ……  
 	ret = pthread_setcancelstate(LW_THREAD_CANCEL_ENABLE, LW_NULL);  
 	if(ret != 0)  
 	{  
 		perror("func pthread_setcancelstate error");  
 		return (PVOID)-1;  
 	}  
-	……  
+	// ……  
 	return NULL;  
 }  
 ```  
@@ -2240,11 +2240,11 @@ int  pthread_setcanceltype
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用于设定调用任务的取消类型为指定的newstate,并将旧状态通过poldstate返回。newstate的合法取值为  
   
-### 参 数：
+### 参数：
   
 - newstate ：新的任务取消类型值  
   
@@ -2261,13 +2261,13 @@ int  pthread_setcanceltype
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -2277,14 +2277,14 @@ static void * Thread1(void *arg)
 {  
 	int ret = 0;  
   
-	……  
+	// ……  
 	ret = pthread_setcanceltype(LW_THREAD_CANCEL_DEFERRED, LW_NULL);  
 	if(ret != 0)  
 	{  
 		perror("func pthread_setcanceltype error");  
 		return (PVOID)-1;  
 	}  
-	……  
+	// ……  
   
 	return NULL;  
 }  
@@ -2303,14 +2303,14 @@ void  pthread_cleanup_push
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口把指定的取消处理函数以堆栈的方式（FILO）存入任务控制块中，在以下时刻用arg作为参数，调用最近存放的函数。压入到任务的取消处理栈中，并会在：  
 任务退出（即调用pthread_exit()）；  
 任务触发了一个取消请求；  
 任务用一个非零的execute参数调用pthread_cleanup_pop()；  
   
-### 参 数：
+### 参数：
   
 - pfunc ：需要处理的函数指针。  
 - arg ：取消处理函数的参数。  
@@ -2321,14 +2321,14 @@ void  pthread_cleanup_push
   
 ### 错误码：
   
-ERROR_KERNEL_HOOK_NULL ：内核钩子出错。  
-ERROR_KERNEL_LOW_MEMORY ：缺少内存。  
+- ERROR_KERNEL_HOOK_NULL ：内核钩子出错。  
+- ERROR_KERNEL_LOW_MEMORY ：缺少内存。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -2364,11 +2364,11 @@ void  pthread_cleanup_pop
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口以堆栈的移除方式取出保存的处理函数，并根据参数iNeedRun决定调用/忽略它。  
   
-### 参 数：
+### 参数：
   
 - iNeedRun ：标示是否执行取消处理函数。  
   
@@ -2380,11 +2380,11 @@ void  pthread_cleanup_pop
   
 无。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -2421,11 +2421,11 @@ int  pthread_getschedprio
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于获取thread指定任务的调度优先级。并保存在参数prio中。pthread_create()创建任务时默认线程的调度优先级为55。  
   
-### 参 数：
+### 参数：
   
 - thread ：指定任务ID。  
 - prio ：用于存放任务调度优先级的指针。  
@@ -2436,19 +2436,19 @@ int  pthread_getschedprio
   
 ### 错误码： 
   
-ESRCH ：线程不存在。  
-ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
-ERROR_THREAD_NULL ：线程句柄无效。  
+- ESRCH ：线程不存在。  
+- ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
+- ERROR_THREAD_NULL ：线程句柄无效。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-ESRCH ：线程不存在。  
-EINVAL ：参数无效。  
-ENOTSUP ：系统不支持设置。  
-RTYPENOTMATCH ：任务类型不匹配。  
+- ESRCH ：线程不存在。  
+- EINVAL ：参数无效。  
+- ENOTSUP ：系统不支持设置。  
+- RTYPENOTMATCH ：任务类型不匹配。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -2459,14 +2459,14 @@ static void * Thread1(void *arg)
 	int ret = 0;  
 	int prio = 0;  
   
-	……  
+	// ……  
 	ret = pthread_getschedprio(tid2, &prio);  
 	if(ret != 0)  
 	{  
 		perror("func pthread_getschedprio error");  
 		return (PVOID)-1;  
 	}  
-	……  
+	// ……  
   
 	return NULL;  
 }  
@@ -2485,11 +2485,11 @@ int  pthread_setschedprio
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用于设置thread指定任务的调度优先级。如果pthread_setschedprio接口失败，目标线程的调度优先级不会改变。优先级从0至255，依次增大。  
   
-### 参 数：
+### 参数：
   
 - thread ：指定任务ID。  
 - prio ：任务优先级。  
@@ -2500,18 +2500,18 @@ int  pthread_setschedprio
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ESRCH ：线程不存在。  
-ERROR_KERNEL_IN_ISR ：系统处于中断中。  
-ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
-ERROR_THREAD_PRIORITY_WRONG ：优先级错误。  
-ERROR_THREAD_NULL ：线程句柄无效。  
+- EINVAL ：参数无效。  
+- ESRCH ：线程不存在。  
+- ERROR_KERNEL_IN_ISR ：系统处于中断中。  
+- ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
+- ERROR_THREAD_PRIORITY_WRONG ：优先级错误。  
+- ERROR_THREAD_NULL ：线程句柄无效。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -2520,14 +2520,14 @@ ERROR_THREAD_NULL ：线程句柄无效。
 static void * Thread1(void *arg)  
 {  
 	int ret = 0;  
- 	……  
+ 	// ……  
 	ret = pthread_setschedprio(tid2, 60);  
 	if(ret != 0)  
 	{  
 		perror("func pthread_setschedprio error");  
 		return (PVOID)-1;  
 	}  
-	……  
+	// ……  
 	return NULL;  
 }  
 ```  
@@ -2545,11 +2545,11 @@ int  pthread_equal
 ```  
   
   
-### 描 述：
+### 描述：
   
 用来比较两个任务ID，相等返回非0，不等返回0。  
   
-### 参 数：
+### 参数：
   
 - thread1 ：任务1的ID。  
 - thread2 ：任务2的ID。  
@@ -2562,13 +2562,13 @@ int  pthread_equal
   
 无。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012返回值为：  
   
-不等返回0，相等返回且是合法的任务ID返回1，不是合法任务ID返回-1。  
+- 不等返回0，相等返回且是合法的任务ID返回1，不是合法任务ID返回-1。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -2578,7 +2578,7 @@ static void * Thread1(void *arg)
 {  
 	int ret = 0;  
   
-	……  
+	// ……  
 	ret = pthread_equal(pthread_self(), tid1);  
 	if(ret == 1)  
 	{  
@@ -2588,7 +2588,7 @@ static void * Thread1(void *arg)
 	{  
 		printf("Current pthread is not tid1\n");  
 	}  
-	……  
+	// ……  
   
 	return NULL;  
 }  
@@ -2606,11 +2606,11 @@ int  pthread_yield
 )；  
 ```  
   
-### 描 述：
+### 描述：
   
 将当前任务插入到同优先级调度器链表的最后，主动让出一次CPU调度，直到该任务再次被调度。注意，必须同优先级。  
   
-### 参 数：
+### 参数：
   
 无。  
   
@@ -2620,16 +2620,16 @@ int  pthread_yield
   
 ### 错误码：
   
-ERROR_KERNEL_IN_ISR ：系统处于中断中。  
-ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
-ERROR_THREAD_NULL ：线程句柄无效。  
-ERROR_THREAD_NOT_READY ：线程没有就绪。  
+- ERROR_KERNEL_IN_ISR ：系统处于中断中。  
+- ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
+- ERROR_THREAD_NULL ：线程句柄无效。  
+- ERROR_THREAD_NOT_READY ：线程没有就绪。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012返回值为：成功返回1，失败返回-1。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -2639,14 +2639,14 @@ void * Thread2(void *arg)
 {  
 	pthread_t tid;  
   
-	……  
+	// ……  
 	ret = pthread_yield();                                                  
     if(ret != 0)  
     {  
           perror("pthread_yield is error\n");  
           pthread_exit(NULL);  
     }  
-	……  
+	// ……  
   
 	return NULL;  
 }  
@@ -2664,11 +2664,11 @@ int  sched_get_priority_max
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于获取调度策略iPolicy对应的调度优先级的最大值。  
   
-### 参 数：
+### 参数：
   
 - iPolicy ：调度策略。  
   
@@ -2678,9 +2678,9 @@ int  sched_get_priority_max
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -2697,7 +2697,7 @@ static void * Thread1(void *arg)
 		return (PVOID) -1;  
 	}  
     printf("maxprio is %d\n",maxprio);  
-	……  
+	// ……  
 	return NULL;  
 }  
 ```  
@@ -2714,11 +2714,11 @@ int  sched_get_priority_min
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用于获取调度策略iPolicy对应的调度优先级的最小值。  
   
-### 参 数：
+### 参数：
   
 - iPolicy ：调度策略。  
   
@@ -2728,9 +2728,9 @@ int  sched_get_priority_min
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -2746,7 +2746,7 @@ static void * Thread1(void *arg)
         return (PVOID) -1;  
 	}  
 	printf("minprio is %d\n",minprio);  
-	……  
+	// ……  
   
 	return NULL;  
 }  
@@ -2764,11 +2764,11 @@ int  pthread_verifyid
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 检测指定的任务是否存在。  
   
-### 参 数：
+### 参数：
   
 - thread ：任务ID。  
   
@@ -2780,7 +2780,7 @@ int  pthread_verifyid
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -2790,17 +2790,17 @@ static void * Thread1(void *arg)
 {  
 	int ret = 0;  
   
-	……  
+	// ……  
 	ret = pthread_verifyid(tid2);                                         
 	if(ret == 0)   
 	{           
-		……      
+		// ……      
 	}  
 	else  
 	{  
-        ……  
+        // ……  
 	}  
-	……  
+	// ……  
 	return NULL;  
 }  
   
@@ -2818,11 +2818,11 @@ int  pthread_cancelforce
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口将强制取消指定的任务，忽略任务的取消状态和类型的设置。  
   
-### 参 数：
+### 参数：
   
 - thread ：任务ID。  
   
@@ -2832,32 +2832,32 @@ int  pthread_cancelforce
   
 ### 错误码：
   
-ESRCH ：线程不存在。  
-ERROR_KERNEL_IN_ISR ：系统处于中断中。  
-ERROR_KERNEL_NOT_RUNNING ：系统没有运行。  
-ERROR_KERNEL_HANDLE_NULL ：句柄无效。  
-ERROR_THREAD_NULL ：线程句柄无效。  
+- ESRCH ：线程不存在。  
+- ERROR_KERNEL_IN_ISR ：系统处于中断中。  
+- ERROR_KERNEL_NOT_RUNNING ：系统没有运行。  
+- ERROR_KERNEL_HANDLE_NULL ：句柄无效。  
+- ERROR_THREAD_NULL ：线程句柄无效。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-ESRCH ：线程不存在。  
-RTYPENOTMATCH ：任务类型不匹配。  
+- ESRCH ：线程不存在。  
+- RTYPENOTMATCH ：任务类型不匹配。  
   
-### 样 例：
+### 样例：
   
 ```c  
 static void * Thread1(void *arg)  
 {  
 	int ret = 0;  
-	……  
+	// ……  
 	ret = pthread_cancelforce(tid2);  
 	if(ret != 0)  
 	{  
 		perror("func pthread_cancelforce error\n");  
 		return (PVOID)-1;  
 	}  
-	……  
+	// ……  
   
 }  
 ```  
@@ -2877,11 +2877,11 @@ int  pthread_join
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口将挂起调用任务，直到参数thread指定的任务终止。(当创建多个任务并且进行多个任务的回收时，只有第一个回收任务可以正常回收，其余的会出现“No such prograss”的错误)。  
   
-### 参 数：
+### 参数：
   
 - thread ：需要等待的任务ID。  
 - ppstatus ：存放指定任务结束时返回值的指针。  
@@ -2892,22 +2892,22 @@ int  pthread_join
   
 ### 错误码：
   
-ESRCH ：线程不存在。  
-EDEADLK ：检测到死锁。  
-ERROR_KERNEL_IN_ISR ：系统处于中断中。  
-ERROR_KERNEL_HANDLE_NULL：句柄无效。  
-ERROR_THREAD_NULL ：线程句柄无效。  
-ERROR_THREAD_JOIN_SELF ：线程合并自己。  
-ERROR_THREAD_DETACHED ：线程已经设定为不可合并。  
+- ESRCH ：线程不存在。  
+- EDEADLK ：检测到死锁。  
+- ERROR_KERNEL_IN_ISR ：系统处于中断中。  
+- ERROR_KERNEL_HANDLE_NULL：句柄无效。  
+- ERROR_THREAD_NULL ：线程句柄无效。  
+- ERROR_THREAD_JOIN_SELF ：线程合并自己。  
+- ERROR_THREAD_DETACHED ：线程已经设定为不可合并。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-ESRCH ：线程不存在。  
-EINVAL ：参数无效。  
-EDEADLK ：检测到死锁。  
+- ESRCH ：线程不存在。  
+- EINVAL ：参数无效。  
+- EDEADLK ：检测到死锁。  
   
-### 样 例：
+### 样例：
   
 ```c  
 static pthread_t tid1, tid2;  
@@ -2971,11 +2971,11 @@ int  pthread_detach
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口将任务设置为detached状态，处于该状态的任务在终止的时候资源会直接回收。  
   
-### 参 数：
+### 参数：
   
 - thread ：需要设置的任务ID。  
   
@@ -2985,19 +2985,19 @@ int  pthread_detach
   
 ### 错误码：
   
-ESRCH ：线程不存在。  
-EDEADLK ：检测到死锁。  
-ERROR_KERNEL_HANDLE_NULL ：句柄无效。  
-ERROR_THREAD_NULL ：线程句柄无效。  
-ERROR_THREAD_DETACHED ：线程已经设定为不可合并。  
+- ESRCH ：线程不存在。  
+- EDEADLK ：检测到死锁。  
+- ERROR_KERNEL_HANDLE_NULL ：句柄无效。  
+- ERROR_THREAD_NULL ：线程句柄无效。  
+- ERROR_THREAD_DETACHED ：线程已经设定为不可合并。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-ESRCH ：线程不存在。  
-EINVAL ：参数无效。  
+- ESRCH ：线程不存在。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -3046,11 +3046,11 @@ int  pthread_getinfo
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于获取指定任务的信息。  
   
-### 参 数：
+### 参数：
   
 - thread ：任务ID。  
 - info ：存放任务信息的指针。  
@@ -3061,19 +3061,19 @@ int  pthread_getinfo
   
 ### 错误码：
   
-ESRCH ：线程不存在。  
-EINVAL ：参数无效。  
-ERROR_KERNEL_HANDLE_NULL：句柄无效。  
-ERROR_THREAD_NULL ：线程句柄无效。  
+- ESRCH ：线程不存在。  
+- EINVAL ：参数无效。  
+- ERROR_KERNEL_HANDLE_NULL：句柄无效。  
+- ERROR_THREAD_NULL ：线程句柄无效。  
   
-### 样 例：
+### 样例：
   
 ```c  
 static void * Thread1(void *arg)  
 {  
 	int ret = 0;   
 	pthread_info_t info;  
-	……  
+	// ……  
 	ret = pthread_getinfo(tid1, &info);  
 	if(ret != 0)  
 	{  
@@ -3085,7 +3085,7 @@ static void * Thread1(void *arg)
 	printf("name			:%s\n", info.TCBD_cThreadName);  
 	printf("****************************************************\n");  
   
-    ……  
+    // ……  
   
 	return NULL;  
 }  
@@ -3105,11 +3105,11 @@ int  pthread_getregs
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于获取任务的上下文信息，并将这些信息存放在pregs中。对于出于非运行的稳定任务，该接口可以很好的运行。不能对任务自身调用。  
   
-### 参 数：
+### 参数：
   
 - thread ：指定任务的ID。  
 - pregs ：存放任务上下文的信息的指针。  
@@ -3120,12 +3120,12 @@ int  pthread_getregs
   
 ### 错误码：
   
-ESRCH ：线程不存在。  
-EINVAL ：参数无效。  
-ENOTSUP ：系统不支持的操作。  
-ERROR_KERNEL_IN_ISR ：线程处于中断中。  
+- ESRCH ：线程不存在。  
+- EINVAL ：参数无效。  
+- ENOTSUP ：系统不支持的操作。  
+- ERROR_KERNEL_IN_ISR ：线程处于中断中。  
   
-### 样 例：
+### 样例：
   
 ```c  
 static pthread_t tid1, tid2;  
@@ -3134,7 +3134,7 @@ static void * Thread1(void *arg)
 	int       ret = 0;  
  	REG_SET  regs;  
   
-……  
+// ……  
   
     ret = pthread_getregs(tid2, &regs);          
 if(ret != 0)   
@@ -3154,7 +3154,7 @@ if(ret != 0)
     printf("REG_uiLr           :%d\n", regs.REG_uiLr);  
     printf("REG_uiPc           :%d\n", regs.REG_uiPc);  
     printf("****************************************************\n");  
-    ……  
+    // ……  
   
 	return NULL;  
 }	  
@@ -3175,11 +3175,11 @@ int   pthread_show
 ```  
   
   
-### 描 述：
+### 描述：
   
 显示所有的线程的信息。  
   
-### 参 数：
+### 参数：
   
 - thread ：需要显示的任务的ID（该参数无用）。  
   
@@ -3191,17 +3191,17 @@ int   pthread_show
   
 ### 错误码：
   
-ERROR_KERNEL_IN_ISR ：系统处于中断中。  
+- ERROR_KERNEL_IN_ISR ：系统处于中断中。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-ESRCH ：线程不存在。  
-EINVAL ：参数无效。  
+- ESRCH ：线程不存在。  
+- EINVAL ：参数无效。  
   
-返回值为成功返回0，失败返回相应的错误码。  
+- 返回值为成功返回0，失败返回相应的错误码。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -3209,9 +3209,9 @@ EINVAL ：参数无效。
 #include <unistd.h>  
 static void * Thread1(void *arg)  
 {  
-……  
+// ……  
 	pthread_show(pthread_self(), 1);  
-    ……  
+    // ……  
 	return NULL;  
 }  
 ```  
@@ -3228,11 +3228,11 @@ int  pthread_showstack
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 显示CPU使用率。  
   
-### 参 数：
+### 参数：
   
 - thread ：需要显示的任务的ID(该参数未使用)。  
   
@@ -3242,16 +3242,16 @@ int  pthread_showstack
   
 ### 错误码：
   
-ERROR_KERNEL_IN_ISR ：系统处于中断中。  
+- ERROR_KERNEL_IN_ISR ：系统处于中断中。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-ESRCH ：线程不存在。  
+- ESRCH ：线程不存在。  
   
-返回值为无。  
+- 返回值为无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -3259,9 +3259,9 @@ ESRCH ：线程不存在。
 #include <unistd.h>  
 static void * Thread1(void *arg)  
 {  
-	……  
+	// ……  
 	pthread_showstack(pthread_self());  
-	……  
+	// ……  
   
 	return NULL;  
 }  
@@ -3281,11 +3281,11 @@ int  pthread_showstackframe
 ```  
   
   
-### 描 述：
+### 描述：
   
 用于显示任务的栈回溯信息，只能用于显示调用任务自身的栈回溯信息。  
   
-### 参 数：
+### 参数：
   
 - thread ：任务ID。  
   
@@ -3295,16 +3295,16 @@ int  pthread_showstackframe
   
 ### 错误码：
   
-ENOTSUP ：系统不支持的操作。  
+- ENOTSUP ：系统不支持的操作。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-ESRCH ：线程不存在。  
+- ESRCH ：线程不存在。  
   
-返回值为无。  
+- 返回值为无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -3313,9 +3313,9 @@ ESRCH ：线程不存在。
 static pthread_t tid1, tid2;  
 static void * Thread1(void *arg)  
 {  
-……  
+// ……  
 	pthread_showstackframe(tid2);  
-    ……  
+    // ……  
 	return NULL;  
 }  
 ```  
@@ -3335,11 +3335,11 @@ int  sched_rr_get_interval
 ```  
   
   
-### 描 述：
+### 描述：
   
 给接口用于获取时间片轮转调度的调度周期，并存放在interval中。如果pid取值为0，该接口将返回调用任务的时间轮转时间。  
   
-### 参 数：
+### 参数：
   
 - pid ：需要获取的任务的ID；  
   
@@ -3351,15 +3351,15 @@ int  sched_rr_get_interval
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-ESRCH ：任务不存在。  
+- EINVAL ：参数无效。  
+- ESRCH ：任务不存在。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-ESRCH ：线程不存在。  
+- ESRCH ：线程不存在。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <SylixOS.h>  
@@ -3371,7 +3371,7 @@ static void * Thread2(void *arg)
 	int ret;   
 	struct timespec interval;  
   
-	……  
+	// ……  
   
 	ret = sched_rr_get_interval(getpid() , &interval);  
 	if(ret != 0)  
@@ -3380,7 +3380,7 @@ static void * Thread2(void *arg)
 		return (PVOID)-1;  
 	}  
   
-	……  
+	// ……  
   
 	return NULL;  
 }  
@@ -3399,11 +3399,11 @@ int  sched_settimeslice
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于设置系统中时间片轮状调度策略的调度周期，设置的时间单位是tick数。如果参数ticks取值为0，将禁止时间片轮转调度。  
   
-### 参 数：
+### 参数：
   
 - ticks ：时间片轮转周期tick数。  
   
@@ -3413,14 +3413,14 @@ int  sched_settimeslice
   
 ### 错误码： 
   
-EACCES ：权限不足。  
-ERANGE ：超出返回。  
+- EACCES ：权限不足。  
+- ERANGE ：超出返回。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -3429,14 +3429,14 @@ GJB 7714-2012错误码为：无。
 static void * Thread1(void *arg)  
 {  
 	int ret = 0;  
-	……  
+	// ……  
 	ret = sched_settimeslice(50);  
 	if(ret != 0)  
 	{  
 		perror("func sched_settimeslice error\n");  
 		return (PVOID) -1;  
 	}  
-	……  
+	// ……  
   
 	return NULL;  
 }  
@@ -3455,11 +3455,11 @@ unsigned int  sched_gettimeslice
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于获取系统中时间片轮状调度策略的调度周期，时间单位是tick数。  
   
-### 参 数：
+### 参数：
   
 无。  
   
@@ -3471,7 +3471,7 @@ unsigned int  sched_gettimeslice
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <SylixOS.h>  
@@ -3481,9 +3481,9 @@ unsigned int  sched_gettimeslice
 static void * Thread1(void *arg)  
 {  
 	int tick;  
-	……  
+	// ……  
 	tick = sched_gettimeslice();  
-	……  
+	// ……  
   
 	return NULL;  
 }  
@@ -3502,11 +3502,11 @@ int   pthread_create_hook_add
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于添加任务创建的钩子函数，指定的函数在任务创建时被调用。需要申明宏#define__SYLIXOS_KERNEL才可以调用。  
   
-### 参 数：
+### 参数：
   
 - create_hook ：任务创建的钩子函数。  
   
@@ -3516,17 +3516,17 @@ int   pthread_create_hook_add
   
 ### 错误码：
   
-EACCES ：没有权限。  
-EINVAL ：参数无效。  
-EAGAIN ：系统资源不足。  
+- EACCES ：没有权限。  
+- EINVAL ：参数无效。  
+- EAGAIN ：系统资源不足。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
-EAGAIN ：系统资源不足。  
+- EINVAL ：参数无效。  
+- EAGAIN ：系统资源不足。  
   
-### 样 例：
+### 样例：
   
 创建一个kernel Module工程，并完成调用函数。  
   
@@ -3537,7 +3537,7 @@ EAGAIN ：系统资源不足。
 #include <stdio.h>  
 OS_STATUS create_hook(pthread_t tid)  
 {  
-	……  
+	// ……  
 	return 0;  
 }  
   
@@ -3551,7 +3551,7 @@ int module_init (void)
 		return -1;  
 	}  
   
-	……  
+	// ……  
     return 0;  
 }  
 ```  
@@ -3569,11 +3569,11 @@ int  pthread_create_hook_delete
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用于从任务创建的钩子函数列表删除指定的钩子函数。  
   
-### 参 数：
+### 参数：
   
 - create_hook ：要删除的任务创建钩子函数。  
   
@@ -3583,15 +3583,15 @@ int  pthread_create_hook_delete
   
 ### 错误码：
   
-EACCES ：没有权限。  
-EINVAL ：参数无效。  
+- EACCES ：没有权限。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <SylixOS.h>  
@@ -3600,7 +3600,7 @@ EINVAL ：参数无效。
 #include <stdio.h>  
 OS_STATUS create_hook(pthread_t tid)  
 {  
-	……  
+	// ……  
 	return 0;  
 }  
   
@@ -3612,7 +3612,7 @@ void module_exit (void)
     {  
     	printk("func pthread_create_hook_add error\n");  
 }  
-	……  
+	// ……  
   
 }  
 ```  
@@ -3630,11 +3630,11 @@ int  pthread_switch_hook_add
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于添加一个指定的钩子函数至任务切换的钩子函数列表。  
   
-### 参 数：
+### 参数：
   
 - switch_hook ：任务切换的钩子函数。  
   
@@ -3644,17 +3644,17 @@ int  pthread_switch_hook_add
   
 ### 错误码：
   
-EACCES ：没有权限。  
-EINVAL ：参数无效。  
-EAGAIN ：系统资源不足。  
+- EACCES ：没有权限。  
+- EINVAL ：参数无效。  
+- EAGAIN ：系统资源不足。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
-EAGAIN ：系统资源不足。  
+- EINVAL ：参数无效。  
+- EAGAIN ：系统资源不足。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <SylixOS.h>  
@@ -3663,7 +3663,7 @@ EAGAIN ：系统资源不足。
 #include <stdio.h>  
 OS_STATUS switch_hook(pthread_t tid1, pthread_t tid2)  
 {  
-	……  
+	// ……  
 	return 0;  
 }  
   
@@ -3677,7 +3677,7 @@ int module_init (void)
 		return -1;  
 	}  
   
-	……  
+	// ……  
   
     return 0;  
 }  
@@ -3696,11 +3696,11 @@ int  pthread_switch_hook_delete
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用于从任务切换数列表删除指定的钩子函数。  
   
-### 参 数：
+### 参数：
   
 - switch_hook ：要删除的任务切换钩子函数。  
   
@@ -3710,15 +3710,15 @@ int  pthread_switch_hook_delete
   
 ### 错误码：
   
-EACCES ：没有权限。  
-EINVAL ：参数无效。  
+- EACCES ：没有权限。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <SylixOS.h>  
@@ -3740,7 +3740,7 @@ void module_exit (void)
 		printk("func pthread_switch_hook_delete error\n");  
 	}  
   
-	……  
+	// ……  
   
 }  
 ```  
@@ -3756,11 +3756,11 @@ int  pthread_close_hook_add
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用于添加一个指定的钩子函数至任务删除的钩子函数列表。  
   
-### 参 数：
+### 参数：
   
 - close_hook ：任务删除的钩子函数。  
   
@@ -3770,17 +3770,17 @@ int  pthread_close_hook_add
   
 ### 错误码：
   
-EACCES ：没有权限。  
-EINVAL ：参数无效。  
-EAGAIN ：系统资源不足。  
+- EACCES ：没有权限。  
+- EINVAL ：参数无效。  
+- EAGAIN ：系统资源不足。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
-EAGAIN ：系统资源不足。  
+- EINVAL ：参数无效。  
+- EAGAIN ：系统资源不足。  
   
-### 样 例：
+### 样例：
   
 创建一个kernel Module工程。并完成调用函数。  
   
@@ -3805,7 +3805,7 @@ int module_init (void)
 		printk("func pthread_close_hook_add error\n");  
 		return -1;  
 	}  
-	……  
+	// ……  
     return 0;  
 }  
 ```  
@@ -3823,11 +3823,11 @@ int  pthread_close_hook_delete
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于从任务删除的钩子函数列表删除指定的钩子函数。  
   
-### 参 数：
+### 参数：
   
 - close_hook ：要删除的任务删除钩子函数。  
   
@@ -3837,15 +3837,15 @@ int  pthread_close_hook_delete
   
 ### 错误码：
   
-EACCES ：没有权限。  
-EINVAL ：参数无效。  
+- EACCES ：没有权限。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <SylixOS.h>  
@@ -3855,7 +3855,7 @@ EINVAL ：参数无效。
 #define  __SYLIXOS_KERNEL  
 OS_STATUS close_hook(pthread_t tid)  
 {  
-	……  
+	// ……  
 	return 0;  
 }  
   
@@ -3867,7 +3867,7 @@ void module_exit (void)
     {  
     	printk("func pthread_close_hook_delete error\n");  
 	}  
-	……  
+	// ……  
   
 }  
 ```  
@@ -3886,11 +3886,11 @@ int  pthread_key_create
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口创建所有任务可见的任务私有数据的键。接口调用成功后，任务私有数据的键ID存放在参数pkey中，该关键字用来标识任务私有数据。  
   
-### 参 数：
+### 参数：
   
 - pkey ：任务私有数据对应的键值。  
   
@@ -3902,21 +3902,21 @@ int  pthread_key_create
   
 ### 错误码：
   
-EAGAIN ：系统资源不足。  
-ENOMEM ：内存不足。  
-EINVAL ：参数无效。  
-ERROR_KERNEL_IN_ISR ：线程处于中段中。  
-ERROR_THREAD_PRIORITY_WRONG ：优先级错误。  
-ERROR_KERNEL_PNAME_TOO_LONG ：名字太长。  
-ERROR_EVENT_FULL ：事件控制块已用完。  
+- EAGAIN ：系统资源不足。  
+- ENOMEM ：内存不足。  
+- EINVAL ：参数无效。  
+- ERROR_KERNEL_IN_ISR ：线程处于中段中。  
+- ERROR_THREAD_PRIORITY_WRONG ：优先级错误。  
+- ERROR_KERNEL_PNAME_TOO_LONG ：名字太长。  
+- ERROR_EVENT_FULL ：事件控制块已用完。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-EAGAIN ：系统资源不足。  
-ENOMEM ：内存不足。  
+- EAGAIN ：系统资源不足。  
+- ENOMEM ：内存不足。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -3926,13 +3926,13 @@ static pthread_t tid1, tid2;
 static pthread_key_t key;  
 static void *Thread1(void *arg)  
 {  
-	……  
+	// ……  
   
 	return NULL;  
 }  
 static void *Thread2(void *arg)  
 {  
-	……  
+	// ……  
   
 	return NULL;  
 }  
@@ -3959,7 +3959,7 @@ int main (int argc, char **argv)
 		perror("func pthread_key_create error\n");  
 		return -1;  
 	}  
-	……  
+	// ……  
 	return 0;  
 }  
 ```  
@@ -3977,12 +3977,12 @@ int  pthread_key_delete
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于删除先前有pthread_key_create()创建的任务私有数据关键字。在pthread_key_delete()被调用时，和key相关的任务私有数据的值可以不是NULL。  
 调用该接口时，任务私有数据的析构函数不会被调用，由应用负责释放与key相关的内存或执行相关的清理函数。  
   
-### 参 数：
+### 参数：
   
 - key ：任务私有数据的对应的键值。  
   
@@ -3992,13 +3992,13 @@ int  pthread_key_delete
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -4016,7 +4016,7 @@ int main (int argc, char **argv)
 		perror("func pthread_key_create error\n");  
 		return -1;  
 	}  
-	……  
+	// ……  
 	ret = pthread_key_delete(key);  
 	if(ret != 0)  
 	{  
@@ -4042,11 +4042,11 @@ int  pthread_setspecific
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于把任务私有数据的值与先前调用pthread_key_create()得到的key关联起来。不同的任务可以给相同的关键字绑定不同类型的值。  
   
-### 参 数：
+### 参数：
   
 - key ：任务私有数据的键值。  
   
@@ -4058,15 +4058,15 @@ int  pthread_setspecific
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ENOMEM ：内存不足。  
+- EINVAL ：参数无效。  
+- ENOMEM ：内存不足。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -4083,7 +4083,7 @@ static void *Thread1(void *arg)
 		return (PVOID)-1;  
 	}  
   
-	……  
+	// ……  
   
 	return NULL;  
 }  
@@ -4102,11 +4102,11 @@ void *pthread_getspecific
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于获取调用任务中与key绑定的私有数据。  
   
-### 参 数：
+### 参数：
   
 - key ：任务私有数据对应的键值。  
   
@@ -4116,13 +4116,13 @@ void *pthread_getspecific
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -4139,7 +4139,7 @@ static void *Thread1(void *arg)
 		return (PVOID)-1;  
 	}  
   
-	……  
+	// ……  
   
 	char *p = (char *) pthread_getspecific(key);  
 	if(p != NULL)  
@@ -4147,7 +4147,7 @@ static void *Thread1(void *arg)
 		printf("pthread1 :%s\n", p);  
 	}  
   
-	……  
+	// ……  
   
 	return NULL;  
 }  
@@ -4165,11 +4165,11 @@ int  pthread_addvar
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用于向任务上下文添加一个指定的变量pvar。调用该接口后，变量将为任务锁私有。该接口只能在单处理器上使用,启用需要将base中mp_cfg.h中的LW_CFG_SMP_EN 设置为0.  
   
-### 参 数：
+### 参数：
   
 - thread ：任务ID。  
   
@@ -4181,17 +4181,17 @@ int  pthread_addvar
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ENOTSUP ：系统不支持的操作。  
-ESRCH ：线程不存在。  
+- EINVAL ：参数无效。  
+- ENOTSUP ：系统不支持的操作。  
+- ESRCH ：线程不存在。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
-ESRCH ：线程不存在。  
+- EINVAL ：参数无效。  
+- ESRCH ：线程不存在。  
   
-### 样 例：
+### 样例：
   
 ```c  
 static pthread_t tid1, tid2;  
@@ -4210,7 +4210,7 @@ static void *Thread1(void *arg)
 		perror("func pthread_addvar error\n");  
 	}  
   
-	……  
+	// ……  
   
 	return NULL;  
 }  
@@ -4229,11 +4229,11 @@ int  pthread_delvar
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来从指定的任务上下文中删除指定的任务变量pvar，被删除变量的私有值将丢失。该接口只能在单处理器上使用。  
   
-### 参 数：
+### 参数：
   
 - thread ：任务ID  
   
@@ -4245,17 +4245,17 @@ int  pthread_delvar
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ESRCH ：线程不存在。  
+- EINVAL ：参数无效。  
+- ESRCH ：线程不存在。  
   
-### 样 例：
+### 样例：
   
 ```c  
 static void *Thread2(void *arg)  
 {  
 	int ret ;  
   
-	……  
+	// ……  
   
 	ret = pthread_delvar(tid1, &var);  
 	if(ret != 0)  
@@ -4286,11 +4286,11 @@ int  pthread_setvar
 )  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口设置指定任务的数据变量私有值。指定任务通常不是调用任务，因为调用任务可以通过直接修改变量来设置私有值。该接口只能在单处理器上使用。  
   
-### 参 数：
+### 参数：
   
 - thread ：任务ID  
   
@@ -4304,14 +4304,14 @@ int  pthread_setvar
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ESRCH ：线程不存在。  
+- EINVAL ：参数无效。  
+- ESRCH ：线程不存在。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -4321,7 +4321,7 @@ static void *Thread2(void *arg)
 {  
 	int ret ;  
   
-	……  
+	// ……  
 	ret = pthread_setvar(tid1, &var, 1);  
 	if(ret != 0)  
 	{  
@@ -4332,7 +4332,7 @@ static void *Thread2(void *arg)
 	{  
 		perror("func pthread_setvar error\n");  
 	}  
-	……  
+	// ……  
   
 	return NULL;  
 }  
@@ -4354,11 +4354,11 @@ int  pthread_getvar
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口返回指定任务的任务变量私有值。指定任务通常不是调用任务，因为调用任务可以通过直接得到变量来设置私有值。该接口只能在单处理器上使用。  
   
-### 参 数：
+### 参数：
   
 - thread ：需要获取的任务的ID。  
   
@@ -4372,14 +4372,14 @@ int  pthread_getvar
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ESRCH ：线程不存在。  
+- EINVAL ：参数无效。  
+- ESRCH ：线程不存在。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 static pthread_t tid1, tid2;  
@@ -4389,7 +4389,7 @@ static void *Thread1(void *arg)
 	int ret =0;   
 	int value;  
   
-……  
+// ……  
 	ret = pthread_getvar(tid1, &var, &value);  
 	if(ret == 0)  
 	{  
@@ -4420,11 +4420,11 @@ int  pthread_attr_get_np
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口返回获取线程属性控制块 (FreeBSD 扩展接口)。其中返回的name为空。  
   
-### 参 数：
+### 参数：
   
 - thread ：需要获取的任务的ID。  
   
@@ -4436,16 +4436,16 @@ int  pthread_attr_get_np
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ESRCH ：线程不存在。  
-ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
-ERROR_THREAD_NULL ：线程句柄无效。  
+- EINVAL ：参数无效。  
+- ESRCH ：线程不存在。  
+- ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
+- ERROR_THREAD_NULL ：线程句柄无效。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012不存在。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -4458,7 +4458,7 @@ pthread_attr_t  attr;
   
     while(1)  
     {  
-        ……  
+        // ……  
         ret = pthread_attr_get_np(tid1,&attr);  
 		if(ret != 0)  
         {  
@@ -4466,7 +4466,7 @@ pthread_attr_t  attr;
             pthread_exit(NULL);  
         }  
         printf("pthread_attr_t schedpolicy is %d \n",attr.schedpolicy);  
-        ……  
+        // ……  
     }  
   
     return NULL;  
@@ -4487,11 +4487,11 @@ int  pthread_getattr_np
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口返回获取线程属性控制块 (FreeBSD扩展接口)。其中返回的name为空。其与pthread_attr_get_np ()相同。  
   
-### 参 数：
+### 参数：
   
 - thread ：需要获取的任务的ID。  
   
@@ -4503,16 +4503,16 @@ int  pthread_getattr_np
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ESRCH ：线程不存在。  
-ERROR_KERNEL_HANDLE_NULL：句柄出错。  
-ERROR_THREAD_NULL ：线程句柄无效。  
+- EINVAL ：参数无效。  
+- ESRCH ：线程不存在。  
+- ERROR_KERNEL_HANDLE_NULL：句柄出错。  
+- ERROR_THREAD_NULL ：线程句柄无效。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012不存在。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -4524,7 +4524,7 @@ static void * Thread1(void *arg)
     pthread_attr_t  attr;  
     while(1)  
     {  
-        ……  
+        // ……  
         ret = pthread_getattr_np (tid1,&attr);  
 		if(ret != 0)  
         {  
@@ -4532,7 +4532,7 @@ static void * Thread1(void *arg)
             pthread_exit(NULL);  
         }  
         printf("pthread_attr_t schedpolicy is %d \n",attr.schedpolicy);  
-        ……  
+        // ……  
     }  
   
     return NULL;  
@@ -4553,11 +4553,11 @@ void  pthread_safe_np
 ```  
   
   
-### 描 述：
+### 描述：
   
 线程进入安全模式, 任何对本线程的删除操作都会推迟到线程退出安全模式时进行。  
   
-### 参 数：
+### 参数：
   
 无。  
   
@@ -4567,13 +4567,13 @@ void  pthread_safe_np
   
 ### 错误码：
   
-ERROR_KERNEL_IN_ISR：线程处于中断中  
+- ERROR_KERNEL_IN_ISR：线程处于中断中  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012不存在。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -4583,15 +4583,15 @@ static void * Thread2(void *arg)
 {  
     while(1)  
 {  
-    ……  
+    // ……  
   
         pthread_safe_np();                                                
   
-……  
+// ……  
   
         pthread_unsafe_np();   
                                              
-        ……  
+        // ……  
     }  
     return NULL;  
 }  
@@ -4610,11 +4610,11 @@ void  pthread_unsafe_np
 )  
 ```  
   
-### 描 述：
+### 描述：
   
 线程退出安全模式。  
   
-### 参 数：
+### 参数：
   
 无。  
   
@@ -4624,13 +4624,13 @@ void  pthread_unsafe_np
   
 ### 错误码：
   
-ERROR_KERNEL_IN_ISR：线程处于中断中。  
+- ERROR_KERNEL_IN_ISR：线程处于中断中。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012不存在。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -4640,15 +4640,15 @@ static void * Thread2(void *arg)
 {  
     while(1)  
 {  
-    ……  
+    // ……  
   
         pthread_safe_np();   
   
-	……  
+	// ……  
   
         pthread_unsafe_np();   
   
-        ……  
+        // ……  
     }  
     return NULL;  
 }  
@@ -4668,11 +4668,11 @@ int  pthread_setconcurrency
 ```  
   
   
-### 描 述：
+### 描述：
   
 设置任务新的并行级别。该函数未实现。  
   
-### 参 数：
+### 参数：
   
 Newlevel ：新的并行级别。  
   
@@ -4684,7 +4684,7 @@ Newlevel ：新的并行级别。
   
 无。  
   
-### 备 注：
+### 备注：
   
 该函数未实现。  
   
@@ -4700,11 +4700,11 @@ int  pthread_getconcurrency
 ```  
   
   
-### 描 述：
+### 描述：
   
 获取线程新的并行级别，实际上该接口返回管理线程的最大数量（65535）。  
   
-### 参 数：
+### 参数：
   
 无  
   
@@ -4716,11 +4716,11 @@ LW_CFG_MAX_THREADS ：系统管理的最大线程数量（65535）。
   
 无  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012不存在。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -4732,12 +4732,12 @@ static void * Thread2(void *arg)
   
     while(1)  
     {  
-        ……  
+        // ……  
   
         ret = pthread_getconcurrency();                
         printf("pthread_getconcurrency is %d",ret);  
   
-        ……;  
+        // ……;  
   
     }  
     return NULL;  
@@ -4758,11 +4758,11 @@ int  pthread_getcpuclockid
 ```  
   
   
-### 描 述：
+### 描述：
   
 获得线程 CPU 时间 clock id。  
   
-### 参 数：
+### 参数：
   
 - Thread ：需要获取的线程的句柄。  
   
@@ -4774,14 +4774,14 @@ int  pthread_getcpuclockid
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ESRCH ：线程不存在。  
+- EINVAL ：参数无效。  
+- ESRCH ：线程不存在。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012不存在。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -4794,7 +4794,7 @@ static void * Thread1(void *arg)
   
     while(1)  
     {  
-        ……  
+        // ……  
   
         ret=pthread_getcpuclockid(tid1,&clockid);                                        
         if(ret != 0)  
@@ -4803,7 +4803,7 @@ static void * Thread1(void *arg)
             return(PVOID) -1;  
         }  
         printf("pthread_getcpuclockid is %d\n",clockid);  
-        ……  
+        // ……  
     }  
     return NULL;  
 }  
@@ -4824,11 +4824,11 @@ int  pthread_setname_np
 ```  
   
   
-### 描 述：
+### 描述：
   
 设置指定线程名字  
   
-### 参 数：
+### 参数：
   
 - thread ：线程句柄。  
   
@@ -4840,13 +4840,13 @@ int  pthread_setname_np
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012不存在。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -4883,11 +4883,11 @@ int  pthread_getname_np
 )  
 ```  
   
-### 描 述：
+### 描述：
   
 获得线程名字。  
   
-### 参 数：
+### 参数：
   
 - thread ：线程句柄。  
   
@@ -4899,14 +4899,14 @@ int  pthread_getname_np
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ERANGE ：返回值过长。  
+- EINVAL ：参数无效。  
+- ERANGE ：返回值过长。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012不存在。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -4953,12 +4953,12 @@ int execl
 );  
 ```  
   
-### 描 述：
+### 描述：
   
-用来执行参数path字符串所代表的文件路径，接下来的参数代表执行该文件时传递过去的argv[0]……，最后一个参数必须用空指针NULL作结束。  
+用来执行参数path字符串所代表的文件路径，接下来的参数代表执行该文件时传递过去的argv[0]// ……，最后一个参数必须用空指针NULL作结束。  
 本函数只能由当前进程主线程调用，否则会返回失败。其具体实现是由spawnv()函数完成。  
   
-### 参 数：
+### 参数：
   
 - path ：可执行文件的路径。  
   
@@ -4970,10 +4970,10 @@ int execl
   
 ### 错误码： 
   
-ENOMEM ：内存不足。  
-EINVAL ：参数无效。  
+- ENOMEM ：内存不足。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -4985,7 +4985,7 @@ EINVAL ：参数无效。
 int main (int argc, char *argv[])  
 {  
     char *env_parent = (char*)0;  
-    ……  
+    // ……  
     while(1)  
     {  
         printf("this is %s function test\n",argv[1]);  
@@ -4994,7 +4994,7 @@ int main (int argc, char *argv[])
 		{  
             printf("environment variable: PARENT = %s\n", env_parent);  
         }  
-        ……  
+        // ……  
 	}  
 	      
 	return  (0);  
@@ -5014,7 +5014,7 @@ int main (int argc, char *argv[])
 {  
     int ret = 0;  
   
-    ……  
+    // ……  
   
     ret = execl(CHILD_PATH,CHILD_PATH,"execl",NULL);  
     if(ret != 0)  
@@ -5023,7 +5023,7 @@ int main (int argc, char *argv[])
         return -1;  
     }  
   
-	……  
+	// ……  
   
     return 0;  
 }  
@@ -5045,11 +5045,11 @@ int execle
 ```  
   
   
-### 描 述：
+### 描述：
   
-用来执行参数path字符串所代表的文件路径，接下来的参数代表执行该文件时传递过去的argv[0]……，最后一个参数必须用空指针NULL作结束。本函数只能由当前进程主线程调用，否则会返回失败。其具体操作是由spawnve完成。  
+用来执行参数path字符串所代表的文件路径，接下来的参数代表执行该文件时传递过去的argv[0]// ……，最后一个参数必须用空指针NULL作结束。本函数只能由当前进程主线程调用，否则会返回失败。其具体操作是由spawnve完成。  
   
-### 参 数：
+### 参数：
   
 - path ：可执行文件的路径。  
   
@@ -5061,10 +5061,10 @@ int execle
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-ENOMEM ：内存不足。  
+- EINVAL ：参数无效。  
+- ENOMEM ：内存不足。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -5145,12 +5145,12 @@ int execlp
 ```  
   
   
-### 描 述：
+### 描述：
   
-用来执行参数path字符串所代表的文件路径，接下来的参数代表执行该文件时传递过去的argv[0]……，最后一个参数必须用空指针NULL作结束。  
+用来执行参数path字符串所代表的文件路径，接下来的参数代表执行该文件时传递过去的argv[0]// ……，最后一个参数必须用空指针NULL作结束。  
 本函数只能由当前进程主线程调用，否则会返回失败。  
   
-### 参 数：
+### 参数：
   
 - file ：可执行文件。  
   
@@ -5162,10 +5162,10 @@ int execlp
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-ENOMEM ：内存不足。  
+- EINVAL ：参数无效。  
+- ENOMEM ：内存不足。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -5212,7 +5212,7 @@ int main (int argc, char *argv[])
 {  
     int ret = 0;  
       
-    ……  
+    // ……  
       
     ret = execlp(CHILD_PATH, CHILD_PATH,"execlp demo",NULL);  
     if(ret != 0)  
@@ -5221,7 +5221,7 @@ int main (int argc, char *argv[])
         return -1;  
     }   
       
-    ……  
+    // ……  
   
     return 0;  
 }  
@@ -5241,11 +5241,11 @@ int execv
 ```  
   
   
-### 描 述：
+### 描述：
   
 用来执行参数path字符串所代表的文件路径，execv函数会覆盖本进程环境。  
   
-### 参 数：
+### 参数：
   
 - path ：可执行文件的路径。  
   
@@ -5257,10 +5257,10 @@ int execv
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-ENOMEM ：内存不足。  
+- EINVAL ：参数无效。  
+- ENOMEM ：内存不足。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -5308,7 +5308,7 @@ int main (int argc, char *argv[])
     int ret = 0;  
     char *arg[3] = {CHILD_PATH,"execv",NULL};  
   
-……  
+// ……  
   
     ret = execv(CHILD_PATH,arg);  
     if(ret != 0)  
@@ -5316,7 +5316,7 @@ int main (int argc, char *argv[])
         perror("execl");  
         return -1;  
 	}  
-	……  
+	// ……  
     return 0;  
 }  
   
@@ -5338,11 +5338,11 @@ int execve
 ```  
   
   
-### 描 述：
+### 描述：
   
 用来执行参数path字符串所代表的文件路径。  
   
-### 参 数：
+### 参数：
   
 - Path ：可执行文件的路径。  
   
@@ -5356,10 +5356,10 @@ int execve
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-ENOMEM ：内存不足。  
+- EINVAL ：参数无效。  
+- ENOMEM ：内存不足。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -5444,11 +5444,11 @@ int execvp
 ```  
   
   
-### 描 述：
+### 描述：
   
-用来执行参数path字符串所代表的文件路径，接下来的参数代表执行该文件时传递过去的argv[0]、argv[1]……，最后一个参数必须用空指针NULL作结束。本函数只能由当前进程主线程调用，否则会返回失败。  
+用来执行参数path字符串所代表的文件路径，接下来的参数代表执行该文件时传递过去的argv[0]、argv[1]// ……，最后一个参数必须用空指针NULL作结束。本函数只能由当前进程主线程调用，否则会返回失败。  
   
-### 参 数：
+### 参数：
   
 file ：可执行文件。  
 argv ：传递给可执行文件的参数。  
@@ -5459,11 +5459,11 @@ argv ：传递给可执行文件的参数。
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ENOMEM ：内存不足。  
-ENOENT ：找不到该命令。  
+- EINVAL ：参数无效。  
+- ENOMEM ：内存不足。  
+- ENOENT ：找不到该命令。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -5548,11 +5548,11 @@ int execvpe
 ```  
   
   
-### 描 述：
+### 描述：
   
-用来执行参数path字符串所代表的文件路径，接下来的参数代表执行该文件时传递过去的argv[0]、argv[1]……  
+用来执行参数path字符串所代表的文件路径，接下来的参数代表执行该文件时传递过去的argv[0]、argv[1]// ……  
   
-### 参 数：
+### 参数：
   
 - file ：可执行文件。  
   
@@ -5566,10 +5566,10 @@ int execvpe
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-ENOMEM ：内存不足。  
+- EINVAL ：参数无效。  
+- ENOMEM ：内存不足。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -5657,11 +5657,11 @@ int posix_spawn
 ```  
   
   
-### 描 述：
+### 描述：
   
 创建一个进程（子进程）。  
   
-### 参 数：
+### 参数：
   
 - pid ：保存新进程id。  
   
@@ -5681,11 +5681,11 @@ int posix_spawn
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-ENOENT ：找不到该路径。  
-ENOMEM ：内存不足。  
+- EINVAL ：参数无效。  
+- ENOENT ：找不到该路径。  
+- ENOMEM ：内存不足。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -5698,7 +5698,7 @@ int main (int argc, char *argv[])
 {  
     char *env_parent = (char*)0;  
   
-    ……  
+    // ……  
     while(1)  
     {  
         printf("this is %s function test\n",argv[1]);  
@@ -5708,7 +5708,7 @@ int main (int argc, char *argv[])
             printf("environment variable: PARENT = %s\n", env_parent);  
         }  
 	}  
-	……  
+	// ……  
 	return  (0);  
 }  
 ```  
@@ -5730,14 +5730,14 @@ int main (int argc, char *argv[])
     pid_t                           pid;  
     char     *cmd[]         = { CHILD_PATH, "execve test", (char *)0 };  
     char     *env[]         = { PARENT, (char *)0 };  
-	……  
+	// ……  
     if (posix_spawn(&pid,CHILD_PATH,&file_actions,&spawnattr, cmd, env) != 0)  
     {  
         posix_spawnattr_destroy(&spawnattr);  
         posix_spawn_file_actions_destroy(&file_actions);  
         return  (-6);  
     }  
-	……  
+	// ……  
     return  (0);  
 }  
   
@@ -5762,11 +5762,11 @@ int posix_spawnp
 ```  
   
   
-### 描 述：
+### 描述：
   
 创建一个进程（子进程）。  
   
-### 参 数：
+### 参数：
   
 - pid ：保存新进程id。  
   
@@ -5786,11 +5786,11 @@ int posix_spawnp
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ENOENT ：找不到该路径。  
-ENOMEM ：内存不足。  
+- EINVAL ：参数无效。  
+- ENOENT ：找不到该路径。  
+- ENOMEM ：内存不足。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -5836,14 +5836,14 @@ int main (int argc, char *argv[])
     pid_t                           pid;  
     char     *cmd[]         = { CHILD_PATH, "execve test", (char *)0 };  
     char     *env[]         = { PARENT, (char *)0 };  
-	……  
+	// ……  
     if (posix_spawnp(&pid,CHILD_PATH,&file_actions,&spawnattr, cmd, env) != 0)  
     {  
         posix_spawnattr_destroy(&spawnattr);  
         posix_spawn_file_actions_destroy(&file_actions);  
         return  (-6);  
     }  
-	……  
+	// ……  
     return  (0);  
 }  
   
@@ -5862,11 +5862,11 @@ int posix_spawnattr_init
 ```  
   
   
-### 描 述：
+### 描述：
   
 初始化文件属性中的数据结构体。  
   
-### 参 数：
+### 参数：
   
 - attrp ：需要初始化的进程属性对象。  
   
@@ -5876,10 +5876,10 @@ int posix_spawnattr_init
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-ENOMEM ：系统内存不足。  
+- EINVAL ：参数无效。  
+- ENOMEM ：系统内存不足。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -5923,17 +5923,17 @@ int main (int argc, char *argv[])
 #define PARENT     "PARENT=/apps/HYSylixos_posix_spawn_demo/HYSylixos_posix_spawn_demo"  
 int main (int argc, char *argv[])  
 {  
-	……  
+	// ……  
     posix_spawnattr_t               spawnattr;  
-	……  
+	// ……  
     if (posix_spawnattr_init(&spawnattr) != 0)  
     {  
             fprintf(stderr, "init posix_spawnattr_t failed\n");  
             return  (-1);  
 	}  
-	……  
+	// ……  
 	posix_spawnattr_destroy(&spawnattr);  
-	……  
+	// ……  
     return  (0);  
 }  
 ```  
@@ -5952,11 +5952,11 @@ int posix_spawnattr_destroy
 ```  
   
   
-### 描 述：
+### 描述：
   
 销毁文件属性中的数据结构体。  
   
-### 参 数：
+### 参数：
   
 - attrp ：需要销毁的进程属性对象。  
   
@@ -5966,9 +5966,9 @@ int posix_spawnattr_destroy
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -6016,17 +6016,17 @@ int main (int argc, char *argv[])
 #define PARENT     "PARENT=/apps/HYSylixos_posix_spawn_demo/HYSylixos_posix_spawn_demo"  
 int main (int argc, char *argv[])  
 {  
-	……  
+	// ……  
     posix_spawnattr_t               spawnattr;  
-	……  
+	// ……  
     if (posix_spawnattr_init(&spawnattr) != 0)  
     {  
             fprintf(stderr, "init posix_spawnattr_t failed\n");  
             return  (-1);  
 	}  
-	……  
+	// ……  
 	posix_spawnattr_destroy(&spawnattr);  
-	……  
+	// ……  
     return  (0);  
 }  
 ```  
@@ -6046,11 +6046,11 @@ int posix_spawnattr_setwd
 ```  
   
   
-### 描 述：
+### 描述：
   
 设置进程属性对象中的工作目录。  
   
-### 参 数：
+### 参数：
   
 - attrp ：进程属性对象；  
   
@@ -6062,10 +6062,10 @@ int posix_spawnattr_setwd
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ENAMETOOLONG ：文件名过长。  
+- EINVAL ：参数无效。  
+- ENAMETOOLONG ：文件名过长。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -6122,7 +6122,7 @@ int main (int argc, char *argv[])
         return  (-2);  
     }  
   
-    ……  
+    // ……  
 	ret  = posix_spawnattr_setwd(&spawnattr,  
 		 "/apps/HYSylixos_posix_spawn_demo/HYSylixos_posix_spawn_demo");  
     if(ret != 0)  
@@ -6138,7 +6138,7 @@ int main (int argc, char *argv[])
         return  (-1);  
     }  
     printf("path is %s \n",path);  
-    ……  
+    // ……  
     if (posix_spawnp(&pid,CHILD_PATH,&file_actions,&spawnattr, cmd, env) != 0)  
 	{  
 		posix_spawnattr_destroy(&spawnattr);  
@@ -6146,7 +6146,7 @@ int main (int argc, char *argv[])
         return  (-6);  
     }  
   
-    ……  
+    // ……  
     return  (0);  
 }  
 ```  
@@ -6167,11 +6167,11 @@ int posix_spawnattr_getwd
 ```  
   
   
-### 描 述：
+### 描述：
   
 获取进程属性对象中的工作目录。  
   
-### 参 数：
+### 参数：
   
 - attrp ：进程属性对象。  
   
@@ -6185,9 +6185,9 @@ int posix_spawnattr_getwd
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -6244,7 +6244,7 @@ int main (int argc, char *argv[])
         return  (-2);  
     }  
   
-    ……  
+    // ……  
 	ret  = posix_spawnattr_setwd(&spawnattr,  
 		 "/apps/HYSylixos_posix_spawn_demo/HYSylixos_posix_spawn_demo");  
     if(ret != 0)  
@@ -6260,7 +6260,7 @@ int main (int argc, char *argv[])
         return  (-1);  
     }  
     printf("path is %s \n",path);  
-    ……  
+    // ……  
     if (posix_spawnp(&pid,CHILD_PATH,&file_actions,&spawnattr, cmd, env) != 0)  
 	{  
 		posix_spawnattr_destroy(&spawnattr);  
@@ -6268,7 +6268,7 @@ int main (int argc, char *argv[])
         return  (-6);  
     }  
   
-    ……  
+    // ……  
     return  (0);  
 }  
   
@@ -6288,11 +6288,11 @@ int posix_spawnattr_setsigmask
 ```  
   
   
-### 描 述：
+### 描述：
   
 设置进程属性对象中的信号掩码。  
   
-### 参 数：
+### 参数：
   
 - attrp ：进程属性对象；  
   
@@ -6304,9 +6304,9 @@ int posix_spawnattr_setsigmask
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -6356,7 +6356,7 @@ int main (int argc, char *argv[])
     sigset_t                        set_mask = 1;  
     sigset_t                        mask;  
   
-    ……  
+    // ……  
 	ret = posix_spawnattr_setsigmask(&spawnattr,&set_mask);  
     if(ret != 0)  
     {  
@@ -6368,7 +6368,7 @@ int main (int argc, char *argv[])
         perror("posix_spawnattr_getsigmask");  
     }  
     printf("mask is %lld\n",mask);  
-    ……  
+    // ……  
     return  (0);  
 }  
 ```  
@@ -6388,11 +6388,11 @@ int posix_spawnattr_getsigmask
 ```  
   
   
-### 描 述：
+### 描述：
   
 获取进程属性对象中的信号掩码。  
   
-### 参 数：
+### 参数：
   
 - attrp ：进程的属性结构体。  
   
@@ -6404,9 +6404,9 @@ int posix_spawnattr_getsigmask
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -6457,7 +6457,7 @@ int main (int argc, char *argv[])
     sigset_t                        mask;  
   
    
-    ……  
+    // ……  
 	ret = posix_spawnattr_setsigmask(&spawnattr,&set_mask);  
     if(ret != 0)  
     {  
@@ -6469,7 +6469,7 @@ int main (int argc, char *argv[])
         perror("posix_spawnattr_getsigmask");  
     }  
     printf("mask is %lld\n",mask);  
-    ……  
+    // ……  
     return  (0);  
 }  
 ```  
@@ -6489,11 +6489,11 @@ int posix_spawnattr_setflags
 ```  
   
   
-### 描 述：
+### 描述：
   
 获取属性结构体中的标志位。  
   
-### 参 数：
+### 参数：
   
 - attrp ：进程属性结构体。  
   
@@ -6514,9 +6514,9 @@ int posix_spawnattr_setflags
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -6563,7 +6563,7 @@ int main (int argc, char *argv[])
     posix_spawnattr_t               spawnattr;  
     int                             ret;  
     short                           flag;  
-    ……  
+    // ……  
     ret = posix_spawnattr_setflags(&spawnattr, POSIX_SPAWN_SETSCHEDPARAM);  
     if(ret != 0)  
     {  
@@ -6577,7 +6577,7 @@ int main (int argc, char *argv[])
     }  
   
     printf("flag is %d\n",flag);  
-    ……  
+    // ……  
     return  (0);  
 }  
   
@@ -6598,11 +6598,11 @@ int posix_spawnattr_getflags
 ```  
   
   
-### 描 述：
+### 描述：
   
 设置属性结构体中的标志位。  
   
-### 参 数：
+### 参数：
   
 - attrp ：进程属性结构体。  
   
@@ -6614,9 +6614,9 @@ int posix_spawnattr_getflags
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -6665,7 +6665,7 @@ int main (int argc, char *argv[])
     posix_spawnattr_t               spawnattr;  
     int                             ret;  
     short                           flag;  
-    ……  
+    // ……  
     ret = posix_spawnattr_setflags(&spawnattr, POSIX_SPAWN_SETSCHEDPARAM);  
     if(ret != 0)  
     {  
@@ -6678,7 +6678,7 @@ int main (int argc, char *argv[])
     }  
   
     printf("flag is %d\n",flag);  
-    ……  
+    // ……  
     return  (0);  
 }  
 ```  
@@ -6697,11 +6697,11 @@ int posix_spawnattr_setpgroup
 ```  
   
   
-### 描 述：
+### 描述：
   
 设置属性结构体中的进程组ID。  
   
-### 参 数：
+### 参数：
   
 - attrp ：进程的属性结构体。  
   
@@ -6713,9 +6713,9 @@ int posix_spawnattr_setpgroup
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -6764,7 +6764,7 @@ int main (int argc, char *argv[])
     pid_t                           pid;  
     int                             ret;  
   
-    ……  
+    // ……  
     ret = posix_spawnattr_setpgroup(&spawnattr,(pid_t)222);  
     if(ret != 0)  
     {  
@@ -6777,7 +6777,7 @@ int main (int argc, char *argv[])
         perror("posix_spawnattr_getpgroup");  
     }  
     printf("group pid is %d\n",pid);  
-    ……  
+    // ……  
     return  (0);  
 }  
   
@@ -6797,11 +6797,11 @@ int posix_spawnattr_getpgroup
 ```  
   
   
-### 描 述：
+### 描述：
   
 从属性结构体中获取进程组ID  
   
-### 参 数：
+### 参数：
   
 - attrp ：进程的属性结构体。  
   
@@ -6813,9 +6813,9 @@ int posix_spawnattr_getpgroup
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -6864,7 +6864,7 @@ int main (int argc, char *argv[])
     pid_t                           pid;  
     int                             ret;  
   
-    ……  
+    // ……  
     ret = posix_spawnattr_setpgroup(&spawnattr,(pid_t)222);  
     if(ret != 0)  
     {  
@@ -6877,7 +6877,7 @@ int main (int argc, char *argv[])
         perror("posix_spawnattr_getpgroup");  
     }  
     printf("group pid is %d\n",pid);  
-    ……  
+    // ……  
     return  (0);  
 }  
 ```  
@@ -6897,11 +6897,11 @@ int posix_spawnattr_getschedpolicy
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来获取进程属性块创建进程的调度策略。  
   
-### 参 数：
+### 参数：
   
 - attrp ：指向进程属性块的指针。  
   
@@ -6913,9 +6913,9 @@ int posix_spawnattr_getschedpolicy
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -6924,9 +6924,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-    ……  
+    // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -6950,7 +6950,7 @@ int main (int argc, char *argv[])
     pid_t                           pid;  
     int                             ret;  
     int                             polic;  
-    ……  
+    // ……  
 	ret = posix_spawnattr_setschedpolicy(&spawnattr,50);  
     if(ret != 0)  
     {  
@@ -6981,7 +6981,7 @@ int main (int argc, char *argv[])
     }  
   
     printf("schedpolicy is %d \n",polic);  
-    ……  
+    // ……  
     return  (0);  
 }  
 ```  
@@ -7000,11 +7000,11 @@ int   posix_spawnattr_setschedpolicy
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来设置进程属性块创建进程的调度策略。  
   
-### 参 数：
+### 参数：
   
 - attrp ：进程属性。  
   
@@ -7023,9 +7023,9 @@ int   posix_spawnattr_setschedpolicy
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -7034,9 +7034,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-        ……  
+        // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -7060,7 +7060,7 @@ int main (int argc, char *argv[])
     pid_t                           pid;  
     int                             ret;  
     int                             polic;  
-    ……  
+    // ……  
 	ret = posix_spawnattr_setschedpolicy(&spawnattr,50);  
     if(ret != 0)  
     {  
@@ -7091,7 +7091,7 @@ int main (int argc, char *argv[])
     }  
   
     printf("schedpolicy is %d \n",polic);  
-    ……  
+    // ……  
     return  (0);  
 }  
   
@@ -7111,11 +7111,11 @@ int posix_spawnattr_setschedparam
 ```  
   
   
-### 描 述：
+### 描述：
   
 设置进程属性对象中的调度参数。  
   
-### 参 数：
+### 参数：
   
 - attrp ：进程属性。  
   
@@ -7127,9 +7127,9 @@ int posix_spawnattr_setschedparam
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -7138,9 +7138,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-        ……  
+        // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -7189,11 +7189,11 @@ int posix_spawnattr_getschedparam
 ```  
   
   
-### 描 述：
+### 描述：
   
 获取进程属性对象中的调度参数。  
   
-### 参 数：
+### 参数：
   
 - attrp ：进程属性。  
   
@@ -7205,9 +7205,9 @@ int posix_spawnattr_getschedparam
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -7220,9 +7220,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-        ……  
+        // ……  
         printf("this is %s function test\n",argv[1]);  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -7245,7 +7245,7 @@ int main (int argc, char *argv[])
     struct sched_param              schedparam;  
     struct sched_param              schedparam1;  
     int                             ret;  
-	……  
+	// ……  
     schedparam.sched_priority = PX_PRIORITY_CONVERT(LW_PRIO_NORMAL);  
     ret = posix_spawnattr_setschedparam(&spawnattr, &schedparam);   
     if(ret != 0)  
@@ -7261,7 +7261,7 @@ int main (int argc, char *argv[])
         return -1;  
     }  
     printf("schedpolicy is %d \n",polic);  
-    ……  
+    // ……  
     return  (0);  
 }  
 ```  
@@ -7280,11 +7280,11 @@ int posix_spawn_file_actions_init
 ```  
   
   
-### 描 述：
+### 描述：
   
 初始化文件操作集对象。  
   
-### 参 数：
+### 参数：
   
 - file_actions ：文件属性。  
   
@@ -7294,10 +7294,10 @@ int posix_spawn_file_actions_init
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-ENOMEM ：内存不足。  
+- EINVAL ：参数无效。  
+- ENOMEM ：内存不足。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -7318,14 +7318,14 @@ int main (int argc, char *argv[])
   
     while(1)  
 	{  
-    ……  
+    // ……  
         printf("this is %s function test\n",argv[1]);  
         env_parent = getenv("PARENT");  
         if (env_parent)  
         {  
             printf("environment variable: PARENT = %s\n", env_parent);  
         }  
-        ……  
+        // ……  
     }  
     return  (0);  
 }  
@@ -7343,13 +7343,13 @@ int main (int argc, char *argv[])
 {  
 	int                          ret;  
 	posix_spawn_file_actions_t      file_actions;  
-	……  
+	// ……  
     if (posix_spawn_file_actions_init(&file_actions) != 0)  
     {  
         fprintf(stderr, "init posix_spawn_file_actions_t failed\n");  
         return  (-2);  
 	}  
-	……  
+	// ……  
     return 0;  
 }  
 ```  
@@ -7367,11 +7367,11 @@ int posix_spawn_file_actions_destroy
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 销毁文件操作集对象。  
   
-### 参 数：
+### 参数：
   
 - file_actions ：文件属性。  
   
@@ -7381,9 +7381,9 @@ int posix_spawn_file_actions_destroy
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -7404,14 +7404,14 @@ int main (int argc, char *argv[])
   
     while(1)  
 	{  
-        ……  
+        // ……  
         printf("this is %s function test\n",argv[1]);  
         env_parent = getenv("PARENT");  
         if (env_parent)  
         {  
             printf("environment variable: PARENT = %s\n", env_parent);  
         }  
-        ……  
+        // ……  
     }  
     return  (0);  
 }  
@@ -7436,7 +7436,7 @@ int main (int argc, char *argv[])
         perror("posix_spawnattr_destroy");  
         return -1;  
 	}  
-	……  
+	// ……  
     return 0;  
 }  
   
@@ -7459,11 +7459,11 @@ int posix_spawn_file_actions_addopen
 ```  
   
   
-### 描 述：
+### 描述：
   
 添加文件关闭操作到文件操作集对象。  
   
-### 参 数：
+### 参数：
   
 - file_actions ：文件属性。  
   
@@ -7481,12 +7481,12 @@ int posix_spawn_file_actions_addopen
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-EBADF ：错误的文件号。  
-ENOMEM ：系统内存资源不足。  
-ENAMETOOLONG ：路径名太长。  
+- EINVAL ：参数无效。  
+- EBADF ：错误的文件号。  
+- ENOMEM ：系统内存资源不足。  
+- ENAMETOOLONG ：路径名太长。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -7507,14 +7507,14 @@ int main (int argc, char *argv[])
   
     while(1)  
 	{  
-    	……  
+    	// ……  
         printf("this is %s function test\n",argv[1]);  
         env_parent = getenv("PARENT");  
         if (env_parent)  
         {  
             printf("environment variable: PARENT = %s\n", env_parent);  
         }  
-        ……  
+        // ……  
     }  
     return  (0);  
 }  
@@ -7539,7 +7539,7 @@ int main (int argc, char *argv[])
         fprintf (stderr, "redirection std output failed\n");  
         return  (-4);  
 	}  
-	……  
+	// ……  
     return 0;  
 }  
   
@@ -7559,11 +7559,11 @@ int posix_spawn_file_actions_addclose
 ```  
   
   
-### 描 述：
+### 描述：
   
 添加文件关闭操作到文件操作集对象。  
   
-### 参 数：
+### 参数：
   
 - file_actions ：文件操作集对象。  
   
@@ -7575,11 +7575,11 @@ int posix_spawn_file_actions_addclose
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-EBADF ：错误的文件号。  
-ENOMEM ：系统内存资源不足。  
+- EINVAL ：参数无效。  
+- EBADF ：错误的文件号。  
+- ENOMEM ：系统内存资源不足。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -7600,14 +7600,14 @@ int main (int argc, char *argv[])
   
     while(1)  
 	{  
-    ……  
+    // ……  
         printf("this is %s function test\n",argv[1]);  
         env_parent = getenv("PARENT");  
         if (env_parent)  
         {  
             printf("environment variable: PARENT = %s\n", env_parent);  
         }  
-        ……  
+        // ……  
     }  
     return  (0);  
 }  
@@ -7633,7 +7633,7 @@ int main (int argc, char *argv[])
     {  
         return  (-3);  
 	}  
-	……  
+	// ……  
     return 0;  
 }  
   
@@ -7654,11 +7654,11 @@ int  posix_spawn_file_actions_adddup2
 ```  
   
   
-### 描 述：
+### 描述：
   
 设置新的文件描述符到文件操作集对象。  
   
-### 参 数：
+### 参数：
   
 - file_actions ：文件操作集对象。  
   
@@ -7672,11 +7672,11 @@ int  posix_spawn_file_actions_adddup2
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-EBADF ：错误的文件号。  
-ENOMEM ：系统内存资源不足。  
+- EINVAL ：参数无效。  
+- EBADF ：错误的文件号。  
+- ENOMEM ：系统内存资源不足。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -7687,7 +7687,7 @@ ENOMEM ：系统内存资源不足。
 #include <unistd.h>  
 int main (int argc, char *argv[])  
 {  
-	……  
+	// ……  
   
     while(1)  
     {  
@@ -7697,7 +7697,7 @@ int main (int argc, char *argv[])
         {  
             printf("environment variable: PARENT = %s\n", env_parent);  
         }  
-    ……  
+    // ……  
     }  
   
     return  (0);  
@@ -7716,14 +7716,14 @@ int main (int argc, char *argv[])
 {  
     int ret = 0;  
 	posix_spawn_file_actions_t      file_actions;  
-	……  
+	// ……  
     ret = posix_spawn_file_actions_adddup2(&file_actions,STDOUT_FILENO,200);  
     if(ret != 0)  
     {  
         perror("posix_spawn_file_actions_adddup2");  
         return -1;  
     }  
-	……  
+	// ……  
   
     return 0;  
 }  
@@ -7744,11 +7744,11 @@ int   posix_spawnattr_getsigdefault
 ```  
   
   
-### 描 述：
+### 描述：
   
 获取信号集默认的信号掩码。  
   
-### 参 数：
+### 参数：
   
 - attrp ：属性指针。  
   
@@ -7760,9 +7760,9 @@ int   posix_spawnattr_getsigdefault
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -7775,9 +7775,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-        ……  
+        // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -7796,14 +7796,14 @@ int main (int argc, char *argv[])
 {  
     int               ret = 0;  
 	posix_spawnattr_t  spawnattr;  
-	……  
+	// ……  
     ret = posix_spawnattr_getsigdefault(&spawnattr,&get_sigdefault);  
     if(ret != 0)  
     {  
         perror("posix_spawnattr_getsigdefault");  
         return -1;  
 	}   
-	……  
+	// ……  
 }  
 ```  
   
@@ -7822,11 +7822,11 @@ int   posix_spawnattr_setsigdefault
 ```  
   
   
-### 描 述：
+### 描述：
   
 设置默认的信号集的信号掩码。  
   
-### 参 数：
+### 参数：
   
 - attrp ：属性指针。  
   
@@ -7838,9 +7838,9 @@ int   posix_spawnattr_setsigdefault
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -7853,9 +7853,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-        ……  
+        // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
 	      
 	return  (0);  
@@ -7878,14 +7878,14 @@ int main (int argc, char *argv[])
 {  
     int                  ret = 0;  
 	posix_spawnattr_t     spawnattr;  
-    ……  
+    // ……  
     ret = posix_spawnattr_setsigdefault(&spawnattr,&set_sigdefault);  
     if(ret != 0)  
     {  
         perror("posix_spawnattr_getsigdefault");  
         return -1;  
 	}  
-	……  
+	// ……  
 	return 0;  
 }  
   
@@ -7906,11 +7906,11 @@ int setpriority
 ```  
   
   
-### 描 述：
+### 描述：
   
 设置满足条件的所有线程的SylixOS调度优先级。  
   
-### 参 数：
+### 参数：
   
 - Which ：指定参数who的意义；  
   
@@ -7932,10 +7932,10 @@ int setpriority
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ESRCH ：找不到该进程。  
+- EINVAL ：参数无效。  
+- ESRCH ：找不到该进程。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -7945,9 +7945,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-    	……  
+    	// ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
           
 	return  (0);  
@@ -7967,7 +7967,7 @@ int main (int argc, char *argv[])
 int main (int argc, char *argv[])  
 {  
     int                       ret;  
-    ……  
+    // ……  
     ret= setpriority(PRIO_PROCESS,getpid(),10);   
     if(ret < 0 )  
     {  
@@ -7981,7 +7981,7 @@ int main (int argc, char *argv[])
         return -1;  
     }  
     printf("father priority is %d,",ret);  
-    ……  
+    // ……  
     return  (0);  
 }  
 ```  
@@ -8000,11 +8000,11 @@ int getpriority
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 获取系统调度优先级。  
   
-### 参 数：
+### 参数：
   
 - Which ：指定参数who的意义。具体参考getpriority函数；  
   
@@ -8016,10 +8016,10 @@ int getpriority
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ESRCH ：找不到该进程。  
+- EINVAL ：参数无效。  
+- ESRCH ：找不到该进程。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -8029,9 +8029,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-    	……  
+    	// ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
           
 	return  (0);  
@@ -8052,7 +8052,7 @@ int main (int argc, char *argv[])
 int main (int argc, char *argv[])  
 {  
     int    ret;  
-    ……  
+    // ……  
     ret= setpriority(PRIO_PROCESS,getpid(),10);   
     if(ret < 0 )  
     {  
@@ -8066,7 +8066,7 @@ int main (int argc, char *argv[])
         return -1;  
     }  
     printf("father priority is %d,",ret);  
-    ……  
+    // ……  
     return  (0);  
 }  
   
@@ -8084,11 +8084,11 @@ int nice
 ```  
   
   
-### 描 述：
+### 描述：
   
 调整当前进程优先级。  
   
-### 参 数：
+### 参数：
   
 - incr ：要调整的数值。  
   
@@ -8098,9 +8098,9 @@ int nice
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -8110,14 +8110,14 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-    	……  
+    	// ……  
         ret = nice(1);                                                                  
         if(ret < 0)  
         {  
             perror("nice");  
             return -1;  
         }  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -8137,7 +8137,7 @@ int main (int argc, char *argv[])
 int main (int argc, char *argv[])  
 {  
     int                       ret;  
-    ……  
+    // ……  
     ret= setpriority(PRIO_PROCESS,getpid(),10);   
     if(ret < 0 )  
     {  
@@ -8151,7 +8151,7 @@ int main (int argc, char *argv[])
         return -1;  
     }  
     printf("father priority is %d,",ret);  
-    ……  
+    // ……  
     return  (0);  
 }  
   
@@ -8170,11 +8170,11 @@ int sched_setaffinity
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 函数锁定进程所有线程在指定cpu集上运行，只用于多核情况。  
   
-### 参 数：
+### 参数：
   
 - Pid ：指定进程ID。  
   
@@ -8186,10 +8186,10 @@ int sched_setaffinity
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ESRCH ：该进程不存在。  
+- EINVAL ：参数无效。  
+- ESRCH ：该进程不存在。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -8199,9 +8199,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-        ……  
+        // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
           
 	return  (0);  
@@ -8223,7 +8223,7 @@ int main (int argc, char *argv[])
 {  
     int                       ret;  
     cpu_set_t                 set;  
-	……  
+	// ……  
     set.cpus_bits[0] = 1;  
     ret = sched_setaffinity(pid,sizeof(cpu_set_t),&set);  
     if(ret != 0)  
@@ -8238,7 +8238,7 @@ int main (int argc, char *argv[])
         return -1;  
     }  
 	printf("affinity is %d\n",(int)set.cpus_bits[0]);  
-	……  
+	// ……  
     return  (0);  
 }  
 ```  
@@ -8258,11 +8258,11 @@ int sched_getaffinity
 ```  
   
   
-### 描 述：
+### 描述：
   
 函数获取进程主线程处理器亲和度设置。  
   
-### 参 数：
+### 参数：
   
 - pid ：指定进程ID；  
   
@@ -8274,10 +8274,10 @@ int sched_getaffinity
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ESRCH ：该进程不存在。  
+- EINVAL ：参数无效。  
+- ESRCH ：该进程不存在。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -8287,9 +8287,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-    	……  
+    	// ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
 	      
 	return  (0);  
@@ -8312,7 +8312,7 @@ int main (int argc, char *argv[])
     int                       ret;  
     cpu_set_t                 set;  
   
-	……  
+	// ……  
   
     set.cpus_bits[0] = 1;  
     ret = sched_setaffinity(pid,sizeof(cpu_set_t),&set);  
@@ -8329,7 +8329,7 @@ int main (int argc, char *argv[])
         return -1;  
     }  
 	printf("affinity is %d\n",(int)set.cpus_bits[0]);  
-	……  
+	// ……  
     return  (0);  
 }  
   
@@ -8348,11 +8348,11 @@ pid_t getpid
 ```  
   
   
-### 描 述：
+### 描述：
   
 获取进程ID。  
   
-### 参 数：
+### 参数：
   
 无。  
   
@@ -8364,7 +8364,7 @@ pid_t getpid
   
 无。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -8374,9 +8374,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-        ……  
+        // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -8398,7 +8398,7 @@ int main (int argc, char *argv[])
 {  
     int                       ret;  
     cpu_set_t                 set;  
-	……  
+	// ……  
     ret = getpriority(PRIO_PROCESS,getpid());   
     if(ret < 0 )  
     {  
@@ -8406,7 +8406,7 @@ int main (int argc, char *argv[])
         return -1;  
     }  
 	printf("father priority is %d,",ret);  
-	…….  
+	// …….  
     return  (0);  
 }  
 ```  
@@ -8426,11 +8426,11 @@ int setpgid
 ```  
   
   
-### 描 述：
+### 描述：
   
 设置进程组ID。  
   
-### 参 数： 
+### 参数： 
   
 - pid ：目标进程ID；  
   
@@ -8442,20 +8442,20 @@ int setpgid
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ERROR_KERNEL_IN_ISR ：系统处于中断中。  
-ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
-ERROR_EVENT_TYPE ：事件类型出错。  
-EDEADLK ：死锁。  
-EINTR ：中断回调。  
-ERROR_THREAD_WAIT_TIMEOUT ：等待超时。  
-ERROR_EVENT_WAS_DELETED ：事件已经被删除。  
+- EINVAL ：参数无效。  
+- ERROR_KERNEL_IN_ISR ：系统处于中断中。  
+- ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
+- ERROR_EVENT_TYPE ：事件类型出错。  
+- EDEADLK ：死锁。  
+- EINTR ：中断回调。  
+- ERROR_THREAD_WAIT_TIMEOUT ：等待超时。  
+- ERROR_EVENT_WAS_DELETED ：事件已经被删除。  
   
 ### 备注：  
   
 功能实现，但函数报错。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -8465,9 +8465,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-        ……  
+        // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
 	          
 	return  (0);  
@@ -8487,17 +8487,17 @@ int main (int argc, char *argv[])
 int main (int argc, char *argv[])  
 {  
     int                       ret;  
-    ……  
+    // ……  
     fprintf(stdout, "pgid: %d,pgrp: %d,uid: %d, gid:%d, euid:%d, egid:%d\n",  
             getpgid(0),getpgrp(),getuid(), getgid(), geteuid(), getegid());   
     if(setpgid(0, 1) < 0);  
     {  
         perror("setpgid failed\n");  
     }  
-    ……  
+    // ……  
     fprintf(stdout, "pgid: %d,pgrp: %d,uid: %d, gid:%d, euid:%d, egid:%d\n",  
             getpgid(0),getpgrp(),getuid(), getgid(), geteuid(), getegid());  
-    ……  
+    // ……  
 }  
 ```  
   
@@ -8515,11 +8515,11 @@ pid_t getpgid
 ```  
   
   
-### 描 述：
+### 描述：
   
 获取进程组ID。  
   
-### 参 数：
+### 参数：
   
 - pid ：进程ID。  
   
@@ -8529,16 +8529,16 @@ pid_t getpgid
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ERROR_KERNEL_IN_ISR ：系统处于中断中。  
-ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
-ERROR_EVENT_TYPE ：事件类型出错。  
-EDEADLK ：死锁。  
-EINTR ：中断回调。  
-ERROR_THREAD_WAIT_TIMEOUT ：等待超时。  
-ERROR_EVENT_WAS_DELETED ：事件已经被删除。  
+- EINVAL ：参数无效。  
+- ERROR_KERNEL_IN_ISR ：系统处于中断中。  
+- ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
+- ERROR_EVENT_TYPE ：事件类型出错。  
+- EDEADLK ：死锁。  
+- EINTR ：中断回调。  
+- ERROR_THREAD_WAIT_TIMEOUT ：等待超时。  
+- ERROR_EVENT_WAS_DELETED ：事件已经被删除。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -8548,9 +8548,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-        ……  
+        // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -8571,17 +8571,17 @@ int main (int argc, char *argv[])
 int main (int argc, char *argv[])  
 {  
     int                       ret;  
-    ……  
+    // ……  
     fprintf(stdout, "pgid: %d,pgrp: %d,uid: %d, gid:%d, euid:%d, egid:%d\n",  
             getpgid(0),getpgrp(),getuid(), getgid(), geteuid(), getegid());   
     if(setpgid(0, 1) != 0);  
     {  
         perror("setpgid failed\n");  
     }  
-    ……  
+    // ……  
     fprintf(stdout, "pgid: %d,pgrp: %d,uid: %d, gid:%d, euid:%d, egid:%d\n",  
             getpgid(0),getpgrp(),getuid(), getgid(), geteuid(), getegid());  
-    ……  
+    // ……  
 }  
   
   
@@ -8600,11 +8600,11 @@ pid_t setpgrp
 ```  
   
   
-### 描 述：
+### 描述：
   
 设置进程为会话头。  
   
-### 参 数：
+### 参数：
   
 无。  
   
@@ -8614,20 +8614,20 @@ pid_t setpgrp
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ERROR_KERNEL_IN_ISR ：系统处于中断中。  
-ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
-ERROR_EVENT_TYPE ：事件类型出错。  
-EDEADLK ：死锁。  
-EINTR ：中断回调。  
-ERROR_THREAD_WAIT_TIMEOUT ：等待超时。  
-ERROR_EVENT_WAS_DELETED ：事件已经被删除。  
+- EINVAL ：参数无效。  
+- ERROR_KERNEL_IN_ISR ：系统处于中断中。  
+- ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
+- ERROR_EVENT_TYPE ：事件类型出错。  
+- EDEADLK ：死锁。  
+- EINTR ：中断回调。  
+- ERROR_THREAD_WAIT_TIMEOUT ：等待超时。  
+- ERROR_EVENT_WAS_DELETED ：事件已经被删除。  
   
 ### 备注：  
   
 功能实现，但函数报错。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -8635,12 +8635,12 @@ ERROR_EVENT_WAS_DELETED ：事件已经被删除。
 #include <stdio.h>  
 int main (int argc, char *argv[])  
 {	  
-    …….  
+    // …….  
     while(1)  
 	{  
-        ……  
+        // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -8661,14 +8661,14 @@ int main (int argc, char *argv[])
 int main (int argc, char *argv[])  
 {  
     int             ret;  
-    ……  
+    // ……  
     ret = setpgrp();  
     if(ret < 0)  
     {  
         perror("setpgrp");  
     }  
 printf("pgrp is %d\n",ret);  
-    ……  
+    // ……  
 }  
 ```  
   
@@ -8686,11 +8686,11 @@ pid_t getpgrp
 ```  
   
   
-### 描 述：
+### 描述：
   
 获取进程组ID。  
   
-### 参 数：
+### 参数：
   
 无。  
   
@@ -8700,16 +8700,16 @@ pid_t getpgrp
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ERROR_KERNEL_IN_ISR ：系统处于中断中。  
-ERROR_KERNEL_HANDLE_NULL：句柄出错。  
-ERROR_EVENT_TYPE ：事件类型出错。  
-EDEADLK ：死锁。  
-EINTR ：中断回调。  
-ERROR_THREAD_WAIT_TIMEOUT：等待超时。  
-ERROR_EVENT_WAS_DELETED ：事件已经被删除。  
+- EINVAL ：参数无效。  
+- ERROR_KERNEL_IN_ISR ：系统处于中断中。  
+- ERROR_KERNEL_HANDLE_NULL：句柄出错。  
+- ERROR_EVENT_TYPE ：事件类型出错。  
+- EDEADLK ：死锁。  
+- EINTR ：中断回调。  
+- ERROR_THREAD_WAIT_TIMEOUT：等待超时。  
+- ERROR_EVENT_WAS_DELETED ：事件已经被删除。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -8719,9 +8719,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-    	……  
+    	// ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -8742,10 +8742,10 @@ int main (int argc, char *argv[])
 int main (int argc, char *argv[])  
 {  
     int         ret;  
-    ……  
+    // ……  
     fprintf(stdout, "pgid: %d,pgrp: %d,uid: %d, gid:%d, euid:%d, egid:%d\n",  
             getpgid(0),getpgrp(),getuid(), getgid(), geteuid(), getegid());  
-    ……  
+    // ……  
 }  
   
 ```  
@@ -8764,11 +8764,11 @@ pid_t getppid
 ```  
   
   
-### 描 述：
+### 描述：
   
 获取父进程ID。  
   
-### 参 数：
+### 参数：
   
 无。  
   
@@ -8778,9 +8778,9 @@ pid_t getppid
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -8796,14 +8796,14 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-    	……  
+    	// ……  
         ret = getppid();  
         if(ret < 0)  
         {  
             perror("getppid");  
         }  
         printf("parent pid is %d \n",ret);  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -8843,11 +8843,11 @@ int issetugid
 ```  
   
   
-### 描 述：
+### 描述：
   
 如果文件属性中S_ISUID位为1，则进程启动时会设置S_ISUID位，如果文件属性中S_ISGID位为1，则进程启动时会设置S_ISGID位。  
   
-### 参 数：
+### 参数：
   
 无。  
   
@@ -8859,7 +8859,7 @@ int issetugid
   
 无。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -8869,9 +8869,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-    	……  
+    	// ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
           
 	return  (0);  
@@ -8891,7 +8891,7 @@ int main (int argc, char *argv[])
 #include <stdlib.h>  
 int main (int argc, char *argv[])  
 {  
-    ……  
+    // ……  
 	if(issetugid())  
 	{  
         printf("trul\n");  
@@ -8900,7 +8900,7 @@ int main (int argc, char *argv[])
     {  
         printf("false\n");  
 	}  
-	……  
+	// ……  
 }  
   
 ```  
@@ -8917,11 +8917,11 @@ int setuid
 ```  
   
   
-### 描 述：
+### 描述：
   
 设置进程用户ID。  
   
-### 参 数：
+### 参数：
   
 - uid ：需要设置的进程用户ID。  
   
@@ -8931,9 +8931,9 @@ int setuid
   
 ### 错误码：
   
-EPERM ：没有权限。  
+- EPERM ：没有权限。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -8943,9 +8943,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-    	……  
+    	// ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -8966,13 +8966,13 @@ int main (int argc, char *argv[])
 int main (int argc, char *argv[])  
 {  
     int                       ret;  
-    ……  
+    // ……  
   
     if (setuid(1) != 0)  
     {  
         perror("setuid failed\n");  
 	}  
-	……  
+	// ……  
 }  
   
 ```  
@@ -8990,11 +8990,11 @@ uid_t getuid
 ```  
   
   
-### 描 述：
+### 描述：
   
 获取进程实际用户ID。  
   
-### 参 数：
+### 参数：
   
 无。  
   
@@ -9006,7 +9006,7 @@ uid_t getuid
   
 无。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -9016,9 +9016,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-    ……  
+    // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
 	      
 	return  (0);  
@@ -9038,12 +9038,12 @@ int main (int argc, char *argv[])
 #include <stdlib.h>  
 int main (int argc, char *argv[])  
 {  
-	…….  
+	// …….  
   
     fprintf(stdout, "pgid: %d,pgrp: %d,uid: %d, gid:%d, euid:%d, egid:%d\n",  
             getpgid(0),getpgrp(),getuid(), getgid(), geteuid(), getegid());   
   
-    …….  
+    // …….  
     return  (0);  
 }  
 ```  
@@ -9062,11 +9062,11 @@ int seteuid
 ```  
   
   
-### 描 述：
+### 描述：
   
 设置进程有效用户ID。  
   
-### 参 数：
+### 参数：
   
 - euid ：需要设置的进程有效用户ID。  
   
@@ -9078,7 +9078,7 @@ int seteuid
   
 无。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -9094,9 +9094,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-    ……  
+    // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -9129,7 +9129,7 @@ int main (int argc, char *argv[])
     fprintf(stdout, "pgid: %d,pgrp: %d,uid: %d, gid:%d, euid:%d, egid:%d\n",  
             getpgid(1),getpgrp(),getuid(), getgid(), geteuid(), getegid());  
   
-    …….  
+    // …….  
   
     return  (0);  
 }  
@@ -9148,11 +9148,11 @@ uid_t geteuid
 ```  
   
   
-### 描 述：
+### 描述：
   
 获取进程有效用户ID。  
   
-### 参 数：
+### 参数：
   
 无。  
   
@@ -9162,9 +9162,9 @@ uid_t geteuid
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -9180,9 +9180,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-    	……  
+    	// ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -9201,10 +9201,10 @@ int main (int argc, char *argv[])
 #include <stdlib.h>  
 int main (int argc, char *argv[])  
 {  
-    ……  
+    // ……  
     fprintf(stdout, "pgid: %d,pgrp: %d,uid: %d, gid:%d, euid:%d, egid:%d\n",  
             getpgid(1),getpgrp(),getuid(), getgid(), geteuid(), getegid());  
-    ……  
+    // ……  
     return  (0);  
 }  
   
@@ -9224,11 +9224,11 @@ int setgid
 ```  
   
   
-### 描 述：
+### 描述：
   
 设置进程用户组ID。如果当前用户为超级用户，即用户ID为0，setgid可以将用户组ID改成任何组ID，但是一旦设置成功，进程的实际用户组ID、有效用户组ID和保存的设置用户组ID全部被设置为新组ID。如果当前用户为普通用户，即用户ID不为0，则只能修改有效用户组ID，且只能被修改为实际用户组ID或保存的设置用户组ID。  
   
-### 参 数：
+### 参数：
   
 gid ：需要设置的进程的用户组ID。  
   
@@ -9240,7 +9240,7 @@ gid ：需要设置的进程的用户组ID。
   
 无。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -9256,9 +9256,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 {  
-    ……  
+    // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 }  
       
 return  (0);  
@@ -9290,7 +9290,7 @@ int main (int argc, char *argv[])
     fprintf(stdout, "pgid: %d,pgrp: %d,uid: %d, gid:%d, euid:%d, egid:%d\n",  
             getpgid(1),getpgrp(),getuid(), getgid(), geteuid(), getegid());  
   
-    …….  
+    // …….  
   
     return  (0);  
 }  
@@ -9311,11 +9311,11 @@ gid_t getgid
 ```  
   
   
-### 描 述：
+### 描述：
   
 获取进程实际用户组ID。  
   
-### 参 数：
+### 参数：
   
 无。  
   
@@ -9327,7 +9327,7 @@ gid_t getgid
   
 无。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -9343,9 +9343,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-    ……  
+    // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -9366,11 +9366,11 @@ int main (int argc, char *argv[])
 int main (int argc, char *argv[])  
 {  
   
-……  
+// ……  
   
     fprintf(stdout, "pgid: %d,pgrp: %d,uid: %d, gid:%d, euid:%d, egid:%d\n",getpgid(0),getpgrp(),getuid(), getgid(), geteuid(), getegid());  
   
-    …….  
+    // …….  
   
     return  (0);  
 }  
@@ -9389,11 +9389,11 @@ int setegid
 ```  
   
   
-### 描 述：
+### 描述：
   
 设置进程有效用户组ID。如果当前用户为超级用户，setegid可以将有效用户组ID成任何组ID。如果当前用户为普通用户，效用户组ID只能被修改为实际用户组ID或保存的设置用户组ID。  
   
-### 参 数：
+### 参数：
   
 - egid ：需要设置的进程的有效用户组ID。  
   
@@ -9405,7 +9405,7 @@ int setegid
   
 无。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -9421,9 +9421,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-        ……  
+        // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -9443,7 +9443,7 @@ int main (int argc, char *argv[])
 int main (int argc, char *argv[])  
 {  
     int    ret;  
-    ……  
+    // ……  
     fprintf(stdout, "pgid: %d,pgrp: %d,uid: %d, gid:%d, euid:%d, egid:%d\n",  
             getpgid(0),getpgrp(),getuid(), getgid(), geteuid(), getegid());  
     if (setegid(1) != 0)  
@@ -9454,7 +9454,7 @@ int main (int argc, char *argv[])
     fprintf(stdout, "pgid: %d,pgrp: %d,uid: %d, gid:%d, euid:%d, egid:%d\n",  
             getpgid(1),getpgrp(),getuid(), getgid(), geteuid(), getegid());  
   
-	……  
+	// ……  
   
     return  (0);  
 }  
@@ -9473,11 +9473,11 @@ gid_t getegid
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 获取进程有效用户组ID。  
   
-### 参 数：
+### 参数：
   
 无。  
   
@@ -9489,7 +9489,7 @@ gid_t getegid
   
 无。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -9505,9 +9505,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-    	……  
+    	// ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -9528,7 +9528,7 @@ int main (int argc, char *argv[])
 int main (int argc, char *argv[])  
 {  
     int                       ret;  
-    ……  
+    // ……  
     fprintf(stdout, "pgid: %d,pgrp: %d,uid: %d, gid:%d, euid:%d, egid:%d\n",  
             getpgid(0),getpgrp(),getuid(), getgid(), geteuid(), getegid());  
     if (setegid(1) != 0)  
@@ -9539,7 +9539,7 @@ int main (int argc, char *argv[])
     fprintf(stdout, "pgid: %d,pgrp: %d,uid: %d, gid:%d, euid:%d, egid:%d\n",  
             getpgid(1),getpgrp(),getuid(), getgid(), geteuid(), getegid());  
   
-	……  
+	// ……  
   
     return  (0);  
 }  
@@ -9561,11 +9561,11 @@ int setgroups
   
   
   
-### 描 述：
+### 描述：
   
 设置当前进程的扩展用户组ID，调用此函数进程必须拥有root权限，否则返回失败。  
   
-### 参 数：
+### 参数：
   
 - Groupsun ：参数grlist数组的大小。  
   
@@ -9577,10 +9577,10 @@ int setgroups
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-EPERM ：没有权限。  
+- EINVAL ：参数无效。  
+- EPERM ：没有权限。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -9596,9 +9596,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-        ……  
+        // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
           
 	return  (0);  
@@ -9621,7 +9621,7 @@ int main (int argc, char *argv[])
     int                       ret;  
     gid_t                     groups[]={0};  
   
-    ……  
+    // ……  
     fprintf(stdout, "getgroups: %d,pgrp: %d,uid: %d, gid:%d, euid:%d, egid:%d\n",  
             getgroups(1,groups),getpgrp(),getuid(), getgid(), geteuid(), getegid());  
   
@@ -9631,7 +9631,7 @@ int main (int argc, char *argv[])
   
     fprintf(stdout, "getgroups: %d,pgrp: %d,uid: %d, gid:%d, euid:%d, egid:%d\n",  
             getgroups(1,groups),getpgrp(),getuid(), getgid(), geteuid(), getegid());  
-    ……  
+    // ……  
   
     return  (0);  
 }  
@@ -9652,9 +9652,9 @@ int getgroups
 ```  
   
   
-### 描 述：
+### 描述：
   
-### 参 数：
+### 参数：
   
 - Groupsize ：参数grlist的大小，如果groupsize小于用户扩展用户组ID数量，则只填充groupsize个用户组ID。为0表示只统计扩展用户组ID数量。  
   
@@ -9668,7 +9668,7 @@ int getgroups
   
 无。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -9684,9 +9684,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-    ……  
+    // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -9709,7 +9709,7 @@ int main (int argc, char *argv[])
     int                       ret;  
     gid_t                     groups[]={0};  
   
-    ……  
+    // ……  
     fprintf(stdout, "getgroups: %d,pgrp: %d,uid: %d, gid:%d, euid:%d, egid:%d\n",  
             getgroups(1,groups),getpgrp(),getuid(), getgid(), geteuid(), getegid());  
   
@@ -9719,7 +9719,7 @@ int main (int argc, char *argv[])
   
     fprintf(stdout, "getgroups: %d,pgrp: %d,uid: %d, gid:%d, euid:%d, egid:%d\n",  
             getgroups(1,groups),getpgrp(),getuid(), getgid(), geteuid(), getegid());  
-    ……  
+    // ……  
   
     return  (0);  
 }  
@@ -9739,11 +9739,11 @@ void exit
 ```  
   
   
-### 描 述：
+### 描述：
   
 进程退出，exit函数调用进程中使用atexit函数注册的hook函数。  
   
-### 参 数：
+### 参数：
   
 - Status ：进程返回码。  
   
@@ -9755,7 +9755,7 @@ void exit
   
 无。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -9764,10 +9764,10 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-        ……  
+        // ……  
         printf("this is child process\n");  
 		exit(0);  
-        ……  
+        // ……  
 	}  
           
 	return  (0);  
@@ -9829,11 +9829,11 @@ void _Exit
 ```  
   
   
-### 描 述：
+### 描述：
   
 进程退出。  
   
-### 参 数：
+### 参数：
   
 - Status ：进程返回码。  
   
@@ -9845,7 +9845,7 @@ void _Exit
   
 无。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -9861,10 +9861,10 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-        ……  
+        // ……  
         printf("this is child process\n");  
         _Exit(0);  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -9907,7 +9907,7 @@ int main (int argc, char *argv[])
   
     printf("father go on\n");  
   
-   ……  
+   // ……  
   
     return  (0);  
 }  
@@ -9927,11 +9927,11 @@ void _exit
 ```  
   
   
-### 描 述：
+### 描述：
   
 进程退出。  
   
-### 参 数：
+### 参数：
   
 - Status ：进程返回码。  
   
@@ -9943,7 +9943,7 @@ void _exit
   
 无。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -9959,10 +9959,10 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-        ……  
+        // ……  
         printf("this is child process\n");  
 		_exit(0)  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -10002,7 +10002,7 @@ int main (int argc, char *argv[])
   
     printf("father go on\n");  
   
-   ……  
+   // ……  
   
     return  (0);  
 }  
@@ -10022,11 +10022,11 @@ void atexit
 ```  
   
   
-### 描 述：
+### 描述：
   
 注册进程退出hook。  
   
-### 参 数：
+### 参数：
   
 - Func ：进程退出hook函数，进程正常退出时（main函数return或调用exit函数）按atexit注册顺序的的逆序调用hook函数。  
   
@@ -10038,7 +10038,7 @@ void atexit
   
 无。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -10059,7 +10059,7 @@ void *fuction(void)
   
  int main (int argc, char *argv[])  
 {  
-    ……  
+    // ……  
     while(1)  
     {  
   
@@ -10112,7 +10112,7 @@ int main (int argc, char *argv[])
   
     printf("father go on\n");  
   
-   ……  
+   // ……  
   
     return  (0);  
 }  
@@ -10131,11 +10131,11 @@ pid_t wait
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 等待某个子进程结束。  
   
-### 参 数：
+### 参数：
   
 - stat_loc ：子进程退出码。  
   
@@ -10145,11 +10145,11 @@ pid_t wait
   
 ### 错误码：
   
-ECHILD ：无子进程。  
-EINVAL ：参数无效。  
-EINTR ：被中断打断。  
+- ECHILD ：无子进程。  
+- EINVAL ：参数无效。  
+- EINTR ：被中断打断。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -10165,9 +10165,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-        ……  
+        // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -10197,7 +10197,7 @@ int main (int argc, char *argv[])
         return -1;  
     }  
   
-   ……  
+   // ……  
   
     return  (0);  
 }  
@@ -10219,11 +10219,11 @@ int waitid
 ```  
   
   
-### 描 述：
+### 描述：
   
 等待子进程状态改变。  
   
-### 参 数：
+### 参数：
   
 - Idtype ：指示参数id的意义，有以下几种情况；  
   
@@ -10250,11 +10250,11 @@ int waitid
   
 ### 错误码：
   
-ECHILD ：无子进程。  
-EINVAL ：参数无效。  
-EINTR ：被中断打断。  
+- ECHILD ：无子进程。  
+- EINVAL ：参数无效。  
+- EINTR ：被中断打断。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -10270,9 +10270,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-    ……  
+    // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -10297,7 +10297,7 @@ int main (int argc, char *argv[])
     pid_t                     pid;  
 	siginfo_t                 infopl;  
   
-    ……  
+    // ……  
 	ret = waitid(P_ALL,pid,&infopl,WUNTRACED);    if(ret < 0)  
     {  
         perror("waitid");  
@@ -10324,11 +10324,11 @@ pid_t waitpid
 ```  
   
   
-### 描 述：
+### 描述：
   
 等待指定子进程状态改变。  
   
-### 参 数：
+### 参数：
   
 - pid ：可以有以下几种情况：  
   
@@ -10348,11 +10348,11 @@ pid_t waitpid
   
 ### 错误码：
   
-ECHILD ：无子进程。  
-EINVAL ：参数无效。  
-EINTR ：被中断打断。  
+- ECHILD ：无子进程。  
+- EINVAL ：参数无效。  
+- EINTR ：被中断打断。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -10368,9 +10368,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-    ……  
+    // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
 	      
 	return  (0);  
@@ -10403,7 +10403,7 @@ int main (int argc, char *argv[])
         perror("waitid");  
         return -1;  
     }  
-   ……  
+   // ……  
   
     return  (0);  
 }  
@@ -10424,11 +10424,11 @@ int getrusage
 ```  
   
   
-### 描 述：
+### 描述：
   
 获取进程资源使用情况。（目前，HYSylixOS只填充ru_utime和ru_stime两个字段，其他字段保留。）  
   
-### 参 数：
+### 参数：
   
 - Who ：被获取资源的对象，其值有以下几种情况：  
   
@@ -10445,9 +10445,9 @@ int getrusage
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -10463,9 +10463,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-    	……  
+    	// ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -10491,7 +10491,7 @@ int main (int argc, char *argv[])
     int                       stat_loc;  
 	struct  rusage            r_usage;  
   
-	……  
+	// ……  
   
     ret = getrusage(RUSAGE_SELF,&r_usage);  
     if(ret != 0)  
@@ -10503,7 +10503,7 @@ int main (int argc, char *argv[])
     printf("father used time %d\n",(int)r_usage.ru_utime.tv_usec);  
     printf("-----------------------------------------------\n");  
 	printf("father go on\n");  
-	……  
+	// ……  
 	return 0;  
 }  
 ```  
@@ -10521,11 +10521,11 @@ clock_t times
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 获取进程时间。  
   
-### 参 数：
+### 参数：
   
 - ptms ：进程及其子进程时间使用情况。  
   
@@ -10535,9 +10535,9 @@ clock_t times
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -10553,9 +10553,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-    	……  
+    	// ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
 	      
 	return  (0);  
@@ -10577,7 +10577,7 @@ int main (int argc, char *argv[])
     int                       ret;  
 	struct  tms               buffer;  
   
-	……  
+	// ……  
   
     ret = times(&buffer);  
     if(ret < 0)  
@@ -10590,7 +10590,7 @@ int main (int argc, char *argv[])
     printf("systerm time is %d \n",ret);  
     printf("-----------------------------------------------\n");  
 	printf("father go on\n");  
-	……  
+	// ……  
 	return 0;  
 }  
   
@@ -10609,11 +10609,11 @@ char *getenv
 ```  
   
   
-### 描 述：
+### 描述：
   
 获取环境变量。  
   
-### 参 数：
+### 参数：
   
 - name ：环境变量名称。  
   
@@ -10623,9 +10623,9 @@ char *getenv
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -10641,7 +10641,7 @@ int main (int argc, char *argv[])
     const char                *env_value = 0;  
     const char                *env_name  = "ENV_DEMO";  
   
-    ……  
+    // ……  
   
     env_value = getenv(env_name)    if (env_value)  
     {  
@@ -10653,7 +10653,7 @@ int main (int argc, char *argv[])
          printf("value of %s is not setted before setenv\n",  
                  env_name);  
     }  
-    ……  
+    // ……  
   
     return  (0);  
 }  
@@ -10673,11 +10673,11 @@ int putenv
 ```  
   
   
-### 描 述：
+### 描述：
   
 用来改变或者增加环境变量的内容。参数string的格式为name = value，如果该环境变量原先存在，则变量内容会依参数string改变，否则此参数内容会成为新的环境变量。  
   
-### 参 数：
+### 参数：
   
 - string ：环境变量设置字符串，其格式为：name=value，如果name已存在则先删除原来的定义。  
   
@@ -10689,7 +10689,7 @@ int putenv
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -10704,7 +10704,7 @@ int main (int argc, char *argv[])
     int                       ret;  
     const char                *env_value =NULL;  
   
-    ……  
+    // ……  
   
     env_value = getenv("hello");  
     if (env_value)  
@@ -10722,7 +10722,7 @@ int main (int argc, char *argv[])
   
     printf("hello + %s\n",getenv("hello"));  
   
-    ……  
+    // ……  
   
     return  (0);  
 }  
@@ -10743,11 +10743,11 @@ int setenv
 ```  
   
   
-### 描 述：
+### 描述：
   
 设置环境变量。  
   
-### 参 数：
+### 参数：
   
 - name ：需要设置的环境变量名称；  
   
@@ -10763,7 +10763,7 @@ int setenv
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -10779,7 +10779,7 @@ int main (int argc, char *argv[])
     const char                *env_value = 0;  
     const char                *env_name  = "ENV_DEMO";  
   
-    ……  
+    // ……  
   
         env_value = "test_value";  
      if (setenv(env_name, env_value, 0) != 0)  
@@ -10802,7 +10802,7 @@ int main (int argc, char *argv[])
                  env_name);  
     }  
   
-    ……  
+    // ……  
   
     return  (0);  
 }  
@@ -10821,11 +10821,11 @@ int unsetenv
 ```  
   
   
-### 描 述：
+### 描述：
   
 清除环境变量。  
   
-### 参 数：
+### 参数：
   
 - name ：需要清除的环境变量名称。  
   
@@ -10837,7 +10837,7 @@ int unsetenv
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -10853,7 +10853,7 @@ int main (int argc, char *argv[])
     const char                *env_value = 0;  
     const char                *env_name  = "ENV_DEMO";  
   
-    ……  
+    // ……  
   
     if (unsetenv(env_name) != 0)  
     {  
@@ -10876,7 +10876,7 @@ int main (int argc, char *argv[])
                     env_name);  
     }  
   
-    ……  
+    // ……  
   
     return  (0);  
 }  
@@ -10896,11 +10896,11 @@ int daemon
 ```  
   
   
-### 描 述：
+### 描述：
   
 设置当前进程为守护进程。用ps命令可以查看后台运行的守护进程。  
   
-### 参 数：
+### 参数：
   
 - Nochdir ：表示是否切换进程当前工作目录到根目录“/”。0表示切换，其他表示不切换；  
   
@@ -10912,9 +10912,9 @@ int daemon
   
 ### 错误码：
   
-ENOSYS ：函数未被定制。  
+- ENOSYS ：函数未被定制。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -10927,7 +10927,7 @@ int main (int argc, char *argv[])
 {  
 	int ret;  
   
-	……  
+	// ……  
     ret = daemon(0, 0);  
     if(ret < 0)  
     {  
@@ -10935,7 +10935,7 @@ int main (int argc, char *argv[])
         retur -1;  
 	}  
   
-	……  
+	// ……  
   
     return (0);  
 }  
@@ -10956,11 +10956,11 @@ pid_t wait3
 ```  
   
   
-### 描 述：
+### 描述：
   
 等待指定子进程状态改变  
   
-### 参 数：
+### 参数：
   
 - stat_loc ：子进程退出码；  
   
@@ -10974,10 +10974,10 @@ pid_t wait3
   
 ### 错误码：
   
-ECHILD ：无子进程。  
-EINTR ：中断回调错误。  
+- ECHILD ：无子进程。  
+- EINTR ：中断回调错误。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -10992,9 +10992,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-    ……  
+    // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -11018,7 +11018,7 @@ int main (int argc, char *argv[])
     int                       status;  
     struct rusage             rusage;  
   
-    ……  
+    // ……  
   
 	ret = wait3(&status, 0, &rusage);  
     if(ret < 0)  
@@ -11026,7 +11026,7 @@ int main (int argc, char *argv[])
         perror("wait3");  
         return -1;  
 	}  
-	……  
+	// ……  
     return  (0);  
 }  
 ```  
@@ -11048,12 +11048,12 @@ pid_t wait4
 ```  
   
   
-### 描 述：
+### 描述：
   
 如果由于子进程状态改变导致函数返回，返回子进程ID。如果options设置了WNOHANG  
 位，且没有子进程状态发生改变，则不等待且返回0。其他情况返回-1并设置错误码；  
   
-### 参 数：
+### 参数：
   
 - pid ：进程id号。  
   
@@ -11070,10 +11070,10 @@ pid_t wait4
   
 ### 错误码：
   
-ECHILD ：无子进程。  
-EINTR ：中断回调错误。  
+- ECHILD ：无子进程。  
+- EINTR ：中断回调错误。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -11088,9 +11088,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-    ……  
+    // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -11113,7 +11113,7 @@ int main (int argc, char *argv[])
     posix_spawnattr_t         spawnattr;  
     int                       status;  
     struct rusage             rusage;  
-    ……  
+    // ……  
 	ret = wait4(&status, 0, &rusage);  
     return  (0);  
 }  
@@ -11135,11 +11135,11 @@ int spawnl
 ```  
   
   
-### 描 述：
+### 描述：
   
 spawnl函数与exec函数的区别是：exec系列函数不会新建进程，只能在现有进程环境执行新的可执行文件。spawn系列函数可以选择在现有进程环境执行可执行文件，也可以选择新建子进程。  
   
-### 参 数：
+### 参数：
   
 - mode ：进程创建模式，其值可以有以下几种情况；  
   
@@ -11163,10 +11163,10 @@ spawnl函数与exec函数的区别是：exec系列函数不会新建进程，只
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ENOMEM ：内存不足。  
+- EINVAL ：参数无效。  
+- ENOMEM ：内存不足。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -11181,9 +11181,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-        ……  
+        // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -11208,7 +11208,7 @@ int main (int argc, char *argv[])
     int                       status;  
     struct rusage             rusage;  
   
-    ……  
+    // ……  
   
     if (posix_spawnattr_init(&spawnattr) != 0)  
     {  
@@ -11222,7 +11222,7 @@ int main (int argc, char *argv[])
    		perror("spawnl ");  
         return  (-6);  
     }  
-    ……  
+    // ……  
     return  (0);  
 }  
 ```  
@@ -11244,11 +11244,11 @@ int spawnle
 ```  
   
   
-### 描 述：
+### 描述：
   
 spawnle函数与exec函数的区别是：exec系列函数不会新建进程，只能在现有进程环境执行新的可执行文件。spawn系列函数可以选择在现有进程环境执行可执行文件，也可以选择新建子进程。  
   
-### 参 数：
+### 参数：
   
 - mode ：进程创建模式，其值可以有以下几种情况；  
   
@@ -11272,10 +11272,10 @@ spawnle函数与exec函数的区别是：exec系列函数不会新建进程，�
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ENOMEM ：内存不足。  
+- EINVAL ：参数无效。  
+- ENOMEM ：内存不足。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -11284,9 +11284,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 {  
-    ……  
+    // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 }  
       
 return  (0);  
@@ -11310,7 +11310,7 @@ int main (int argc, char *argv[])
     int                       status;  
     struct rusage             rusage;  
   
-    ……  
+    // ……  
   
     if (posix_spawnattr_init(&spawnattr) != 0)  
     {  
@@ -11325,7 +11325,7 @@ int main (int argc, char *argv[])
         return  (-6);  
     }  
   
-    ……  
+    // ……  
   
     return  (0);  
 }  
@@ -11348,11 +11348,11 @@ int spawnlp
 ```  
   
   
-### 描 述：
+### 描述：
   
 spawnlp函数与exec函数的区别是：exec系列函数不会新建进程，只能在现有进程环境执行新的可执行文件。spawn系列函数可以选择在现有进程环境执行可执行文件，也可以选择新建子进程。  
   
-### 参 数：
+### 参数：
   
 - mode ：进程创建模式，其值可以有以下几种情况；  
   
@@ -11376,10 +11376,10 @@ spawnlp函数与exec函数的区别是：exec系列函数不会新建进程，�
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ENOMEM ：内存不足。  
+- EINVAL ：参数无效。  
+- ENOMEM ：内存不足。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -11388,9 +11388,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-    ……  
+    // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -11415,7 +11415,7 @@ int main (int argc, char *argv[])
     int                       status;  
     struct rusage             rusage;  
   
-    ……  
+    // ……  
   
     if (posix_spawnattr_init(&spawnattr) != 0)  
     {  
@@ -11430,7 +11430,7 @@ int main (int argc, char *argv[])
         return  (-6);  
     }  
   
-    ……  
+    // ……  
   
     return  (0);  
 }  
@@ -11451,11 +11451,11 @@ int spawnv
 ```  
   
   
-### 描 述：
+### 描述：
   
 spawnv函数与exec函数的区别是：exec系列函数不会新建进程，只能在现有进程环境执行新的可执行文件。spawn系列函数可以选择在现有进程环境执行可执行文件，也可以选择新建子进程。  
   
-### 参 数：
+### 参数：
   
 - mode ：进程创建模式，其值可以有以下几种情况；  
   
@@ -11477,10 +11477,10 @@ spawnv函数与exec函数的区别是：exec系列函数不会新建进程，只
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ENOMEM ：内存不足。  
+- EINVAL ：参数无效。  
+- ENOMEM ：内存不足。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -11489,9 +11489,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 {  
-    ……  
+    // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
 	      
 	return  (0);  
@@ -11515,7 +11515,7 @@ int main (int argc, char *argv[])
     int                       status;  
     struct rusage             rusage;  
   
-    ……  
+    // ……  
   
     if (posix_spawnattr_init(&spawnattr) != 0)  
     {  
@@ -11529,7 +11529,7 @@ int main (int argc, char *argv[])
 		perror("spawnv");  
         return  (-6);  
     }   
-    ……  
+    // ……  
     return  (0);  
 }  
 ```  
@@ -11550,11 +11550,11 @@ int spawnve
 ```  
   
   
-### 描 述：
+### 描述：
   
 spawnve族函数与exec函数的区别是：exec系列函数不会新建进程，只能在现有进程环境执行新的可执行文件。spawn系列函数可以选择在现有进程环境执行可执行文件，也可以选择新建子进程。  
   
-### 参 数：
+### 参数：
   
 - mode ：进程创建模式，其值可以有以下几种情况；  
   
@@ -11578,10 +11578,10 @@ spawnve族函数与exec函数的区别是：exec系列函数不会新建进程�
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ENOMEM ：内存不足。  
+- EINVAL ：参数无效。  
+- ENOMEM ：内存不足。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -11590,9 +11590,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-        ……  
+        // ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
           
 return  (0);  
@@ -11617,7 +11617,7 @@ int main (int argc, char *argv[])
     int                       status;  
     struct rusage             rusage;  
   
-    ……  
+    // ……  
   
     if (posix_spawnattr_init(&spawnattr) != 0)  
     {  
@@ -11632,7 +11632,7 @@ int main (int argc, char *argv[])
         return  (-6);  
     }  
   
-    ……  
+    // ……  
   
     return  (0);  
 }  
@@ -11652,11 +11652,11 @@ int spawnvp
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 spawnvp函数与exec函数的区别是：exec系列函数不会新建进程，只能在现有进程环境执行新的可执行文件。spawn系列函数可以选择在现有进程环境执行可执行文件，也可以选择新建子进程。  
   
-### 参 数：
+### 参数：
   
 - mode ：进程创建模式。  
   
@@ -11680,11 +11680,11 @@ spawnvp函数与exec函数的区别是：exec系列函数不会新建进程，�
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ENOENT ：找不到文件。  
-ENOMEM ：内存不足。  
+- EINVAL ：参数无效。  
+- ENOENT ：找不到文件。  
+- ENOMEM ：内存不足。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -11693,9 +11693,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-    	……  
+    	// ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -11719,7 +11719,7 @@ int main (int argc, char *argv[])
     int                       status;  
     struct rusage             rusage;  
   
-    ……  
+    // ……  
   
     if (posix_spawnattr_init(&spawnattr) != 0)  
     {  
@@ -11733,7 +11733,7 @@ int main (int argc, char *argv[])
         perror("spawnvp ");  
         return  (-6);  
     }  
-    ……  
+    // ……  
     return  (0);  
 }  
 ```  
@@ -11754,11 +11754,11 @@ int spawnvpe
 ```  
   
   
-### 描 述：
+### 描述：
   
 spawn函数与exec函数的区别是：exec系列函数不会新建进程，只能在现有进程环境执行新的可执行文件。spawn系列函数可以选择在现有进程环境执行可执行文件，也可以选择新建子进程。  
   
-### 参 数：
+### 参数：
   
 - mode ：进程创建模式，其值可以有以下几种情况；  
   
@@ -11782,11 +11782,11 @@ spawn函数与exec函数的区别是：exec系列函数不会新建进程，只�
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ENOENT ：找不到文件。  
-ENOMEM ：内存不足。  
+- EINVAL ：参数无效。  
+- ENOENT ：找不到文件。  
+- ENOMEM ：内存不足。  
   
-### 样 例：
+### 样例：
   
 子进程：  
   
@@ -11795,9 +11795,9 @@ int main (int argc, char *argv[])
 {  
     while(1)  
 	{  
-    	……  
+    	// ……  
         printf("this is child process\n");  
-        ……  
+        // ……  
 	}  
       
 	return  (0);  
@@ -11850,11 +11850,11 @@ int  sem_init
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用于创建一个匿名的信号量，信号量的初始值为value。  
   
-### 参 数：
+### 参数：
   
 - psem ：信号量标识。  
   
@@ -11869,17 +11869,17 @@ int  sem_init
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ENOMEM ：内存不足。  
-ENOSPC ：非法操作。  
+- EINVAL ：参数无效。  
+- ENOMEM ：内存不足。  
+- ENOSPC ：非法操作。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。    
-ENOSPC ：非法操作。  
+- EINVAL ：参数无效。    
+- ENOSPC ：非法操作。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -11889,13 +11889,13 @@ static    pthread_t  tid1, tid 2;                               /*  线程 id   
 static    sem_t     psem;  
 static void *Thread1 (void *arg)  
 {  
-	……  
+	// ……  
   
 	return   NULL;  
 }  
 static void *Thread2 (void *arg)  
 {  
-	……  
+	// ……  
   
 	return NULL;  
 }  
@@ -11944,11 +11944,11 @@ int  sem_destroy
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于删除一个匿名的信号量。  
   
-### 参 数：
+### 参数：
   
 - psem ：信号量标识。  
   
@@ -11959,15 +11959,15 @@ int  sem_destroy
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
-EBUSY ：设备资源忙。  
+- EINVAL ：参数无效。  
+- EBUSY ：设备资源忙。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -11985,7 +11985,7 @@ int main (int argc, char **argv)
         perror("func sem_init error");  
         return -1;  
 	}  
-	……     
+	// ……     
                                  
 	ret = sem_destroy(&psem)                                /* 销毁信号量       */  
 	if(ret != 0)  
@@ -12013,11 +12013,11 @@ sem_t  *sem_open
 ```  
   
   
-### 描 述： 
+### 描述： 
   
 该接口用来创建或打开命名的二值或者计数信号量。  
   
-### 参 数：
+### 参数：
   
 - name ：信号量对象的名字。  
   
@@ -12054,23 +12054,23 @@ SEM_FAILED函数执行失败，并设置errno来指出错误。
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-ENAMETOOLONG ：路径名太长。  
-EEXIST ：文件已存在。  
-ENOMEM ：内存不足。  
-ENOSPC ：非法操作。  
-ENOENT ：文件或设备不存在。  
+- EINVAL ：参数无效。  
+- ENAMETOOLONG ：路径名太长。  
+- EEXIST ：文件已存在。  
+- ENOMEM ：内存不足。  
+- ENOSPC ：非法操作。  
+- ENOENT ：文件或设备不存在。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
-ENAMETOOLONG ：路径名太长。  
-EEXIST ：文件已存在。  
-ENOSPC ：非法操作。  
-ENOENT ：文件或设备不存在。  
+- EINVAL ：参数无效。  
+- ENAMETOOLONG ：路径名太长。  
+- EEXIST ：文件已存在。  
+- ENOSPC ：非法操作。  
+- ENOENT ：文件或设备不存在。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <unistd.h>  
@@ -12097,7 +12097,7 @@ int main (int argc, char **argv)
 		perror("func sem_open error\n");  
 		return -1;  
 	}  
- 	……  
+ 	// ……  
 }  
 ```  
   
@@ -12115,13 +12115,13 @@ int  sem_close
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口表示任务已经完成了对psem所指定信号量的使用，并关闭该信号量。  
   
 如果信号量没有调用sem_unlink()移除,那么sem_close()对信号量的状态没有影响。如果信号量在以O_CREAT调用sem_open()成功后调用sem_unlink()。那么当所打开该信号量的任务关闭它后，该信号量就不能访问了。  
   
-### 参 数：
+### 参数：
   
 - psem : 信号量标识。  
   
@@ -12132,13 +12132,13 @@ int  sem_close
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 错误码和GJB 7714-2012错误码相同  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <unistd.h>  
@@ -12165,14 +12165,14 @@ int main (int argc, char **argv)
 		perror("func sem_open error\n");  
 		return -1;  
 	}  
-    ……  
+    // ……  
     ret = sem_close(psem);                               /* 关闭命名信号量       */                                                
 	if(ret != 0)  
 	{  
 		perror("func sem_close error\n");  
 		return -1;  
 	}  
-……  
+// ……  
 }  
 ```  
   
@@ -12190,11 +12190,11 @@ int  sem_unlink
 ```  
   
   
-### 描 述： 
+### 描述： 
   
 该接口用于删除参数name指定的信号量。如果信号量当前被其他任务引用，函数返回0，不影响信号量状态，直到所有任务对该信号量的引用都通过调用sem_close()关闭，sem_unlink()才会删除该信号量。在所有引用被关闭前，sem_unlink()调用不会阻塞，它会立即返回。  
   
-### 参 数：
+### 参数：
   
 - name ：信号量名称。  
   
@@ -12205,17 +12205,17 @@ int  sem_unlink
   
 ### 错误码：
   
-ENOENT ：文件或设备不存在。  
-EBUSY ：设备资源忙。  
-EINVAL ：参数无效。  
+- ENOENT ：文件或设备不存在。  
+- EBUSY ：设备资源忙。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-ENAMETOOLONG ：路径名太长。  
-ENOENT ：文件或设备不存在。  
+- ENAMETOOLONG ：路径名太长。  
+- ENOENT ：文件或设备不存在。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <unistd.h>  
@@ -12242,7 +12242,7 @@ int main (int argc, char **argv)
 		perror("func sem_open error\n");  
 	 	return -1;  
 	}  
-    ……  
+    // ……  
     ret = sem_close(psem);                                /* 关闭命名信号量     */                                                
 	if(ret != 0)  
 	{  
@@ -12273,7 +12273,7 @@ int  sem_wait
 ```  
   
   
-### 描 述： 
+### 描述： 
   
 该接口用来锁定psem指定的信号量。  
   
@@ -12281,7 +12281,7 @@ int  sem_wait
   
 如果该接口调用成功，信号量状态变为锁定状态，且保持到sem_post()接口被成功调用。  
   
-### 参 数：
+### 参数：
   
 - psem ：信号量标识。  
   
@@ -12292,15 +12292,15 @@ int  sem_wait
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
-EINTR ：任务收到一个非阻塞或忽略的信号。  
+- EINVAL ：参数无效。  
+- EINTR ：任务收到一个非阻塞或忽略的信号。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -12338,12 +12338,12 @@ int  sem_trywait
 ```  
   
   
-### 描 述： 
+### 描述： 
   
 该接口会尝试在信号量psem上执行锁定操作，只有在信号量未被锁定，即信号量的取值为正数的情况下，该接口才能成功锁定信号量，否则该接口将无法锁定信号量。  
 该函数不会阻塞，若获取不到信号量，则直接返回。  
   
-### 参 数：
+### 参数：
   
 - psem ：信号量标识。  
   
@@ -12354,17 +12354,17 @@ int  sem_trywait
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-EAGAIN ：系统资源不足。  
+- EINVAL ：参数无效。  
+- EAGAIN ：系统资源不足。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
-EINTR ：任务收到一个非阻塞或忽略的信号。  
-EAGAIN ：统资源不足。  
+- EINVAL ：参数无效。  
+- EINTR ：任务收到一个非阻塞或忽略的信号。  
+- EAGAIN ：统资源不足。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -12409,13 +12409,13 @@ int  sem_timedwait
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口的功能与sem_wait()接口类似，都是用来锁定psem引用的信号量，但如果在指定的限时时间内没有其他任务执行sem_post()对信号量解锁的话，那么该接口将终止等待，返回错误。  
 如果任务等待的时间超过abs_timeout指定的绝对时间，或者调用该接口时已经超过了abs_timoout指定的绝对时间，就会发生超时。如果信号量可以被立即锁定的话，接口调用就不会超时而失败。  
 如果信号量可以被立即锁定的话，不会检测sem_timedwait的有效性。  
   
-### 参 数：
+### 参数：
   
 - psem ：信号量标识符。  
   
@@ -12428,15 +12428,15 @@ int  sem_timedwait
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-EINTR ：任务收到一个非阻塞或忽略的信号。  
-ETIMEDOUT ：等待超时。  
+- EINVAL ：参数无效。  
+- EINTR ：任务收到一个非阻塞或忽略的信号。  
+- ETIMEDOUT ：等待超时。  
   
-### 备 注：
+### 备注：
   
 错误码和GJB 7714-2012错误码相同。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <unistd.h>  
@@ -12451,7 +12451,7 @@ static void *Thread3 (void *arg)
 {  
 	struct timespec ts;  
 	int    ret;  
-	……  
+	// ……  
   
 	ts.tv_nsec = 0;  
 	ts.tv_sec = time(NULL) + 5;                             /* 设置 5s 钟等待超时 */  
@@ -12461,7 +12461,7 @@ static void *Thread3 (void *arg)
 		printf("Thread 3 wait timeout\n");  
 		pthread_exit(NULL);  
 	}  
-	……  
+	// ……  
   
 	return (NULL);  
 }  
@@ -12481,11 +12481,11 @@ int  sem_post
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来解锁psem指定的信号量。如果从该接口的操作结果中得到的信号量的值是正数，就表示没有任务在阻塞等待该信号量解锁，信号量的值只需要简单的递增；如果从该接口的操作结果中得到的信号量的值是0，那么其中一个阻塞等待该信号量的任务将成功从sem_wait()接口调用中返回。  
   
-### 参 数：
+### 参数：
   
 - psem ：信号量标识。  
   
@@ -12496,13 +12496,13 @@ int  sem_post
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 错误码和GJB 7714-2012错误码相同  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -12547,12 +12547,12 @@ int  sem_flush
 ```  
   
   
-### 描 述： 
+### 描述： 
   
 该接口将所有阻塞在psem指定的信号量上的任务解除阻塞，这些解除阻塞的任务全部进入就绪队列，此信号量的状态不会被改变。  
 在同步应用中，sem_flush可以用来进行广播。  
   
-### 参 数：
+### 参数：
   
 - psem ：信号量标识。  
   
@@ -12563,15 +12563,15 @@ int  sem_flush
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
-EMNOTINITED ：信号量模块未初始化。  
+- EINVAL ：参数无效。  
+- EMNOTINITED ：信号量模块未初始化。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -12613,12 +12613,12 @@ int  sem_getvalue
 ```  
   
   
-### 描 述： 
+### 描述： 
   
 该接口用来获取psem指定的信号量的值，并存放在参数pivalue指定的地址中。该接口并不影响信号量的状态。  
 如果psem被锁定了，那么pivalue指向的对象会被设为0或负数，如果是负数，其绝对值等于正在等待信号量的任务数目。  
   
-### 参 数：
+### 参数：
   
 - psem ：信号量标识。  
   
@@ -12631,15 +12631,15 @@ int  sem_getvalue
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
-EMNOTINITED ：信号量模块未初始化。  
+- EINVAL ：参数无效。  
+- EMNOTINITED ：信号量模块未初始化。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -12684,11 +12684,11 @@ int  sem_getinfo
 ```  
   
   
-### 描 述： 
+### 描述： 
   
 该接口用于获取指定的信号量的概要信息。包括等信号量的类型、名字、最大值、当前值、打开次数、link标记和阻塞在指定信号量上的任务数目等信息。  
   
-### 参 数：
+### 参数：
   
 - psem ：信号量标识。  
   
@@ -12701,13 +12701,13 @@ int  sem_getinfo
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 错误码和GJB 7714-2012错误码相同  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -12755,11 +12755,11 @@ int  sem_show
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于显示psem指定的信号量的相关信息。  
   
-### 参 数：
+### 参数：
   
 - psem ：信号量标识。  
   
@@ -12772,18 +12772,18 @@ int  sem_show
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
-EMNOTINITED ：信号量模块未初始化。  
-ETIMEDOUT ：等待超时。  
-EINTR ：任务收到一个非阻塞或忽略的信号。  
-EOBJDELETED ：因信号量对象被删除而终止阻塞等待。  
+- EINVAL ：参数无效。  
+- EMNOTINITED ：信号量模块未初始化。  
+- ETIMEDOUT ：等待超时。  
+- EINTR ：任务收到一个非阻塞或忽略的信号。  
+- EOBJDELETED ：因信号量对象被删除而终止阻塞等待。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -12830,11 +12830,11 @@ int sem_reltimedwait_np
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来等待一个带有超时阻塞的信号量。  
   
-### 参 数：
+### 参数：
   
 - psem ：信号量句柄。  
   
@@ -12848,15 +12848,15 @@ int sem_reltimedwait_np
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-EINTR ：任务收到一个非阻塞或忽略的信号。  
-ETIMEDOUT ：等待超时。  
+- EINVAL ：参数无效。  
+- EINTR ：任务收到一个非阻塞或忽略的信号。  
+- ETIMEDOUT ：等待超时。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012没有此接口  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <unistd.h>  
@@ -12873,7 +12873,7 @@ static void *Thread3 (void *arg)
 	int        ret;  
   
 	printf("this is Thread 3!\n");  
-	……  
+	// ……  
   
 	ts.tv_nsec = 0;  
 	ts.tv_sec = 5;                                   /* 设置 5s 钟等待超时       */  
@@ -12905,11 +12905,11 @@ int  sem_open_method
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口设置当前进程使用的信号量的类型。  
   
-### 参 数： 
+### 参数： 
   
 - method ：新的操作类型。取值有：  
   
@@ -12928,11 +12928,11 @@ int  sem_open_method
   
 无。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012没有此接口  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <unistd.h>  
@@ -12944,9 +12944,9 @@ GJB 7714-2012没有此接口
 #include <fcntl.h>  
 int main (int argc, char **argv)  
 {  
-	……  
+	// ……  
 	sem_open_method(SEM_OPEN_METHOD_POSIX, NULL);/* 以POSIX信号量打开 */  
-	……  
+	// ……  
   
 	return NULL;  
 }  
@@ -12969,11 +12969,11 @@ int	pthread_mutexattr_init
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于以缺省值来初始化一个互斥量属性pmutexattr。在使用互斥量的属性对象对一个或多个互斥量进行初始化后，任何影响属性对象的接口（包括删除接口）都不会影响到之前初始化的互斥量。将属性块的属性设为默认的值。  
   
-### 参 数：
+### 参数：
   
 - pmutexattr ：指向互斥量属性对象的指针。  
   
@@ -12983,13 +12983,13 @@ int	pthread_mutexattr_init
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 与GJB 7714-2012差别：无  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -13005,7 +13005,7 @@ int main (int  argc, char  *argv[])
 		perror("func pthread_mutexattr_init error");  
 		return -1;  
 	}  
-	……  
+	// ……  
 	return (0);  
 }  
 ```  
@@ -13024,11 +13024,11 @@ int	pthread_mutexattr_destroy
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于删除一个互斥量属性对象，也就是将对象变为未初始化状态。  
   
-### 参 数：
+### 参数：
   
 - pmutexattr ：指向互斥量属性对象的指针。  
   
@@ -13038,15 +13038,15 @@ int	pthread_mutexattr_destroy
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 与GJB 7714-2012错误码的差别：  
   
-EINVAL pmutexattr ：一个无效指针或者pmutexattr指向的的是未初始化的属性对象。  
+- EINVAL pmutexattr ：一个无效指针或者pmutexattr指向的的是未初始化的属性对象。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -13062,7 +13062,7 @@ int main (int  argc, char  *argv[])
 		perror("func pthread_mutexattr_init error");  
 		return -1;  
 	}  
-	……  
+	// ……  
 	pthread_mutexattr_destroy(&mutexattr);  
 	return (0);  
 }  
@@ -13083,11 +13083,11 @@ int	pthread_mutexattr_setprioceiling
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于设置互斥量的优先级置顶属性，该属性定义了互斥量的优先级置顶，该优先级是互斥量所保护的关键执行代码的最低优先级级别。为了避免优先级倒置，互斥量的优先级置顶应该被设置为比可能锁定该互斥量的所有任务的优先级更高或相等的优先级。  
   
-### 参 数： 
+### 参数： 
   
 - pmutexattr ：指向互斥量属性对象的指针。  
   
@@ -13099,14 +13099,14 @@ int	pthread_mutexattr_setprioceiling
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 与GJB 7714-2012错误码的差别：  
-EINVAL pmutexattr ：是一个无效指针或者pmutexattr指向的的是未初始化的属性对象，或者prioceiling指定的的优先级无效。  
+- EINVAL pmutexattr ：是一个无效指针或者pmutexattr指向的的是未初始化的属性对象，或者prioceiling指定的的优先级无效。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -13142,20 +13142,20 @@ int main (int  argc, char  *argv[])
 		printf("func  pthread_setschedprio error\n");  
 		return (-1);  
 	}  
-	……  
+	// ……  
 	return (0);  
 }  
 void    *Thread0(void  *arg)  
 {  
-	……  
+	// ……  
 }  
 void    *Thread1(void  *arg)  
 {  
-	……  
+	// ……  
 }  
 void    *Thread2(void  *arg)  
 {  
-	……  
+	// ……  
 }  
 ```  
   
@@ -13172,11 +13172,11 @@ int	pthread_mutexattr_getprioceiling
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来获取互斥量属性块的天花板优先级置顶属性。  
   
-### 参 数：
+### 参数：
   
 - pmutexattr ：指向互斥量属性对象的指针。  
   
@@ -13188,14 +13188,14 @@ int	pthread_mutexattr_getprioceiling
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 与GJB 7714-2012错误码的差别：  
-EINVAL pmutexattr ：是无效的指针，或者pmutexattr指向的是未初始化的属性对象。  
+- EINVAL pmutexattr ：是无效的指针，或者pmutexattr指向的是未初始化的属性对象。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -13237,20 +13237,20 @@ int main (int  argc, char  *argv[])
    		printf("func  pthread_setschedprio error\n");  
    		return (-1);  
     }  
-	……  
+	// ……  
 	return (0);  
 }  
 void    *Thread0(void  *arg)  
 {  
-	……  
+	// ……  
 }  
 void    *Thread1(void  *arg)  
 {  
-	……  
+	// ……  
 }  
 void    *Thread2(void  *arg)  
 {  
-	……  
+	// ……  
 }  
 ```  
   
@@ -13269,11 +13269,11 @@ int	pthread_mutexattr_setprotocol
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于设置互斥量属性对象pmutexattr中的协议属性protocol，该属性定义了互斥量为避免优先级反转所使用的协议。  
   
-### 参 数： 
+### 参数： 
   
 - pmutexattr ：指向互斥量属性对象的指针。  
   
@@ -13291,16 +13291,16 @@ int	pthread_mutexattr_setprotocol
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ENOTSUP ：系统不支持的设置。  
+- EINVAL ：参数无效。  
+- ENOTSUP ：系统不支持的设置。  
   
-### 备 注：
+### 备注：
   
 与GJB 7714-2012错误码的差别：  
-ENOTSUP protocol ：protocol的取值不合法或互斥量的阻塞等待策略冲突。  
-EINVAL pmutexattr ：是一个无效指针，或者pmutexattr指向的的是未初始化的属性对象。  
+- ENOTSUP protocol ：protocol的取值不合法或互斥量的阻塞等待策略冲突。  
+- EINVAL pmutexattr ：是一个无效指针，或者pmutexattr指向的的是未初始化的属性对象。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -13322,7 +13322,7 @@ int main (int  argc, char  *argv[])
 		perror("func pthread_mutexattr_setprotocol error\n");  
 		return (-1);  
 	}       
-	……  
+	// ……  
 	return (0);  
 }  
 ```  
@@ -13342,11 +13342,11 @@ int	pthread_mutexattr_getprotocol
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于获取互斥量属性对象协议属性的算法类型。  
   
-### 参 数：
+### 参数：
   
 - pmutexattr ：指向互斥量属性对象的指针。  
   
@@ -13358,14 +13358,14 @@ int	pthread_mutexattr_getprotocol
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 与GJB 7714-2012错误码的差别：  
-EINVAL pmutexattr ：是无效的指针，或者pmutexattr指向的是未初始化的属性对象。  
+- EINVAL pmutexattr ：是无效的指针，或者pmutexattr指向的是未初始化的属性对象。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -13393,7 +13393,7 @@ int main (int  argc, char  *argv[])
 		perror("func pthread_mutexattr_getprotocol error\n");  
 	    return -1;  
 	}  
-	……  
+	// ……  
 	return (0);  
 }  
 ```  
@@ -13413,11 +13413,11 @@ int	pthread_mutexattr_setpshared
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来设置互斥量属性块的共享属性，是否进程共享，只支持私有。  
   
-### 参 数： 
+### 参数： 
   
 - pmutexattr ：指向互斥量属性对象的指针。  
   
@@ -13429,13 +13429,13 @@ int	pthread_mutexattr_setpshared
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012无此接口。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -13459,20 +13459,20 @@ int main (int  argc, char  *argv[])
     	perror("func pthread_mutexattr_setpshared error\n");  
     	return -1;  
 	}  
-	……  
+	// ……  
 	return (0);  
 }  
 void	*Thread0(void  *arg)  
 {        
-	……  
+	// ……  
 }  
 void	*Thread1(void  *arg)  
 {        
-	……  
+	// ……  
 }  
 void	*Thread2(void  *arg)  
 {        
-	……  
+	// ……  
 }  
 ```  
   
@@ -13490,11 +13490,11 @@ int	pthread_mutexattr_getpshared
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来获取互斥量属性块的共享属性，是否进程共享。  
   
-### 参 数： 
+### 参数： 
   
 - pmutexattr ：指向互斥量属性对象的指针。  
   
@@ -13506,13 +13506,13 @@ int	pthread_mutexattr_getpshared
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012无此接口。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -13542,20 +13542,20 @@ int main (int  argc, char  *argv[])
    	{  
    		printf("mutexattr shared %d\n", shared);			  
    	}  
-	……  
+	// ……  
 	return (0);  
 }  
 void	*Thread0(void  *arg)  
 {        
-	……  
+	// ……  
 }  
 void	*Thread1(void  *arg)  
 {        
-	……  
+	// ……  
 }  
 void	*Thread2(void  *arg)  
 {        
-	……  
+	// ……  
 }  
 ```  
   
@@ -13573,11 +13573,11 @@ int	pthread_mutexattr_settype
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来设置互斥量属性块类型。  
   
-### 参 数：
+### 参数：
   
 - pmutexattr ：指向互斥量属性对象的指针。  
   
@@ -13595,14 +13595,14 @@ int	pthread_mutexattr_settype
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 与GJB 7714-2012错误码的差别：  
-EINVAL pmutexattr ：是一个无效指针，或者pmutexattr指向的的是未初始化的属性对象，或者type的取值不合法。  
+- EINVAL pmutexattr ：是一个无效指针，或者pmutexattr指向的的是未初始化的属性对象，或者type的取值不合法。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -13625,7 +13625,7 @@ int main (int  argc, char  *argv[])
 		perror("func pthread_mutexattr_settype error\n");  
     	return -1;  
 	}  
-	……  
+	// ……  
 	return (0);  
 }  
 ```  
@@ -13644,11 +13644,11 @@ int	pthread_mutexattr_gettype
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用来获取互斥量属性块类型。  
   
-### 参 数：
+### 参数：
   
 - pmutexattr ：指向互斥量属性对象的指针。  
   
@@ -13660,14 +13660,14 @@ int	pthread_mutexattr_gettype
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 与GJB 7714-2012错误码的差别：  
-EINVAL pmutexattr ：是一个无效指针，或者pmutexattr指向的的是未初始化的属性对象。  
+- EINVAL pmutexattr ：是一个无效指针，或者pmutexattr指向的的是未初始化的属性对象。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -13695,7 +13695,7 @@ int main (int  argc, char  *argv[])
 	{  
 		printf(" mutexattr type %d\n", type);  
 	}  
-	……  
+	// ……  
 	return (0);  
 }  
 ```  
@@ -13715,11 +13715,11 @@ int	pthread_mutexattr_setwaitqtype
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来设置互斥量属性块等待队列类型。  
   
-### 参 数：
+### 参数：
   
 - pmutexattr ：指向互斥量属性对象的指针。  
   
@@ -13738,17 +13738,17 @@ int	pthread_mutexattr_setwaitqtype
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 与GJB 7714-2012错误码的差别：  
-ENOTUSP ：系统不支持的设置；  
-EMNOTINITED ：模块尚未初始化；  
-ENOTSUP waitq_type :设置与互斥量的协议属性相冲突；  
-EINVAL pmutexattr ：是一个无效指针，或者pmutexattr指向的的是未初始化的属性对象。  
+- ENOTUSP ：系统不支持的设置；  
+- EMNOTINITED ：模块尚未初始化；  
+- ENOTSUP waitq_type :设置与互斥量的协议属性相冲突；  
+- EINVAL pmutexattr ：是一个无效指针，或者pmutexattr指向的的是未初始化的属性对象。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -13770,7 +13770,7 @@ int main (int  argc, char  *argv[])
 		perror("func pthread_mutexattr_setwaitqtype error\n");  
 	    return -1;  
 	}  
-	……  
+	// ……  
 	return (0);  
 }  
 ```  
@@ -13790,11 +13790,11 @@ int	pthread_mutexattr_getwaitqtype
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来获取互斥量属性块等待队列类型。  
   
-### 参 数： 
+### 参数： 
   
 - pmutexattr ：指向互斥量属性对象的指针。  
   
@@ -13806,15 +13806,15 @@ int	pthread_mutexattr_getwaitqtype
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 与GJB 7714-2012错误码的差别：  
-EMNOTINITED ：模块尚未初始化；  
-EINVAL pmutexattr ：是一个无效指针，或者pmutexattr指向的的是未初始化的属性对象。  
+- EMNOTINITED ：模块尚未初始化；  
+- EINVAL pmutexattr ：是一个无效指针，或者pmutexattr指向的的是未初始化的属性对象。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -13842,7 +13842,7 @@ int main (int  argc, char  *argv[])
 	{  
 		printf("mutexattr waittype %d\n", waittype);  
 	}  
-	……  
+	// ……  
 	return (0);  
 }  
 ```  
@@ -13861,13 +13861,13 @@ int	pthread_mutexattr_setcancelsafe
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于设置互斥量的任务删除安全属性，即互斥量在取消时是否安全。其取值包括：  
 PTHREAD_CANCEL_SAFE—如果任务锁定具有该属性的互斥量，则对该任务的取消操作将不成功，直到任务解锁互斥量才能取消任务。  
 PTHREAD_CANCEL_UNSAFE—如果任务锁定具有该属性的互斥量，则任务的取消状态和取消类型都保持不变。  
   
-### 参 数：
+### 参数：
   
 - pmutexattr ：指向互斥量属性对象的指针。  
   
@@ -13884,14 +13884,14 @@ PTHREAD_CANCEL_UNSAFE—如果任务锁定具有该属性的互斥量，则任�
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 与GJB 7714-2012错误码的差别：  
-EMNOTINITED ：模块尚未初始化。  
+- EMNOTINITED ：模块尚未初始化。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -13914,7 +13914,7 @@ int main (int  argc, char  *argv[])
       	 perror("func pthread_mutexattr_setcancelsafe error\n");  
       	 return -1;  
   	}  
-	……  
+	// ……  
 	return (0);  
 }  
 void	*Thread0(void  *arg)  
@@ -13955,11 +13955,11 @@ int	pthread_mutexattr_getcancelsafe
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来获取互斥量属性块安全类型。  
   
-### 参 数： 
+### 参数： 
   
 - pmutexattr ：指向互斥量属性对象的指针。  
   
@@ -13971,14 +13971,14 @@ int	pthread_mutexattr_getcancelsafe
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 与GJB 7714-2012错误码的差别：  
-EMNOTINITED ：模块尚未初始化。  
+- EMNOTINITED ：模块尚未初始化。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -14009,7 +14009,7 @@ int main (int  argc, char  *argv[])
 	{  
 		printf("mutexattr canselsafe %d\n", canselsafe);  
 	}  
-	……  
+	// ……  
 	return (0);  
 }  
 void	*Thread0(void  *arg)  
@@ -14049,12 +14049,12 @@ int	pthread_mutex_init
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来通过互斥量属性块中的属性创建一个互斥量。当属性块为NULL时，使用默认属性创建互斥量。初始化成功的话，互斥量的状态变为已初始化且未锁定的状态。  
 如果试图对一个已初始化的互斥量进行初始化，函数执行失败。  
   
-### 参 数： 
+### 参数： 
   
 - pmutex ：指向互斥量对象的指针。  
   
@@ -14066,14 +14066,14 @@ int	pthread_mutex_init
   
 ### 错误码： 
   
-EAGAIN ：系统资源不足。  
-EINVAL ：参数无效。  
+- EAGAIN ：系统资源不足。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 与GJB 7714-2012的规定差别：无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -14098,7 +14098,7 @@ int main (int  argc, char  *argv[])
 		perror("func pthread_mutex_init error");  
 		return -1;  
 	}  
- 	……  
+ 	// ……  
 	return (0);  
 }  
 ```  
@@ -14116,11 +14116,11 @@ int	pthread_mutex_destroy
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用来删除一个互斥量。  
   
-### 参 数： 
+### 参数： 
   
 - pmutex ：指向互斥量对象的指针。  
   
@@ -14130,15 +14130,15 @@ int	pthread_mutex_destroy
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 与GJB 7714-2012错误码的差别：  
-EBUSY ：对象忙。  
-EINVAL pmutex ：是一个无效的指针，或者mutex指定的互斥量不存在。  
+- EBUSY ：对象忙。  
+- EINVAL pmutex ：是一个无效的指针，或者mutex指定的互斥量不存在。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -14167,7 +14167,7 @@ int main (int  argc, char  *argv[])
 		perror("func pthread_mutex_init error");  
 		return -1;  
 	}  
-   	……  
+   	// ……  
    	return (0);  
 }  
 ```  
@@ -14184,14 +14184,14 @@ int	pthread_mutex_lock
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用来锁定互斥量，如果互斥量已经被锁定，调用任务会阻塞直到互斥量变为可用。成功锁定pmutex的任务将拥有互斥量的所有权。  
 如果互斥量类型为PTHREAD_MUTEX_NORMAL，则不会检测死锁。  
 如果互斥量类型为PTHREAD_MUTEX_ERRORCHECK，会提供错误检验。  
 如果互斥量类型为PTHREAD_MUTEX_RECURSIVE，那么互斥量会保存一个锁定计数。  
   
-### 参 数： 
+### 参数： 
   
 - pmutex ：指向互斥量对象的指针。  
   
@@ -14201,15 +14201,15 @@ int	pthread_mutex_lock
   
 ### 错误码：
   
-EDEADLK ：检测到死锁。  
-EINVAL ：参数无效。  
+- EDEADLK ：检测到死锁。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 与GJB 7714-2012错误码的差别：  
-EAGAIN ：系统资源不足。  
+- EAGAIN ：系统资源不足。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -14253,11 +14253,11 @@ int	pthread_mutex_trylock
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来尝试锁定互斥量，除了mutex引用的互斥量已被锁定的情况。  
   
-### 参 数： 
+### 参数： 
   
 - pmutex ：指向互斥量对象的指针。  
   
@@ -14267,16 +14267,16 @@ int	pthread_mutex_trylock
   
 ### 错误码： 
   
-EDEADLK ：检测到死锁。  
-EINVAL ：参数无效。  
-EAGAIN ：设备资源不足。  
+- EDEADLK ：检测到死锁。  
+- EINVAL ：参数无效。  
+- EAGAIN ：设备资源不足。  
   
-### 备 注：
+### 备注：
   
 与GJB 7714-2012错误码的差别：  
-EBUSY : 对象忙。  
+- EBUSY : 对象忙。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -14328,11 +14328,11 @@ int	pthread_mutex_timedlock
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来限时锁定互斥量（绝对时间）。如果其他任务已经锁定了互斥量，调用任务将阻塞等待一段指定的时间，如果任务在指定的时间内仍无法得到互斥量，它将因超时而停止等待并返回。  
   
-### 参 数：
+### 参数：
   
 - pmutex ：指向互斥量对象的指针。  
   
@@ -14344,16 +14344,16 @@ int	pthread_mutex_timedlock
   
 ### 错误码： 
   
-EDEADLK ：检测到死锁。  
-EINVAL ：参数无效。  
-EAGAIN ：设备资源不足。  
-ETIMEDOUT ：等待超时。  
+- EDEADLK ：检测到死锁。  
+- EINVAL ：参数无效。  
+- EAGAIN ：设备资源不足。  
+- ETIMEDOUT ：等待超时。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012的规定差别：无  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -14415,11 +14415,11 @@ int	pthread_mutex_reltimedlock_np
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来限时锁定互斥量（相对时间）。  
   
-### 参 数： 
+### 参数： 
   
 - pmutex ：指向互斥量对象的指针。  
   
@@ -14431,16 +14431,16 @@ int	pthread_mutex_reltimedlock_np
   
 ### 错误码： 
   
-EDEADLK ：检测到死锁。  
-EINVAL ：参数无效。  
-EAGAIN ：设备资源不足。  
-ETIMEDOUT ：等待超时。  
+- EDEADLK ：检测到死锁。  
+- EINVAL ：参数无效。  
+- EAGAIN ：设备资源不足。  
+- ETIMEDOUT ：等待超时。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012无此接口。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -14503,11 +14503,11 @@ int	pthread_mutex_unlock
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来解锁互斥量。  
   
-### 参 数： 
+### 参数： 
   
 - pmutex ：指向互斥量对象的指针。  
   
@@ -14517,14 +14517,14 @@ int	pthread_mutex_unlock
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-EPERM ：权限不足（不是锁定者）。  
+- EINVAL ：参数无效。  
+- EPERM ：权限不足（不是锁定者）。  
   
-### 备 注：
+### 备注：
   
 与GJB 7714-2012的差别规定：无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -14563,11 +14563,11 @@ int	pthread_mutex_setprioceiling
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用来设置互斥量优先级天花板。  
   
-### 参 数： 
+### 参数： 
   
 - pmutex ：指向互斥量对象的指针。  
   
@@ -14579,13 +14579,13 @@ int	pthread_mutex_setprioceiling
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012无此接口。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -14641,7 +14641,7 @@ int main (int  argc, char  *argv[])
 		printf("func  pthread_setschedprio error\n");  
      	return (-1);  
 	}  
-	……  
+	// ……  
 	return (0);  
 }  
 ```  
@@ -14661,11 +14661,11 @@ int	pthread_mutex_getprioceiling
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来获取互斥量优先级天花板。  
   
-### 参 数： 
+### 参数： 
   
 - pmutex ：指向互斥量对象的指针。  
   
@@ -14677,13 +14677,13 @@ int	pthread_mutex_getprioceiling
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 GJB 7714-2012无此接口。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -14745,7 +14745,7 @@ int main (int  argc, char  *argv[])
       	printf("func  pthread_setschedprio error\n");  
       	return (-1);  
 	}  
-	……  
+	// ……  
      
 	return (0);  
 }  
@@ -14766,11 +14766,11 @@ int	pthread_mutex_getinfo
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来获取互斥量信息。包括互斥量的类型、优先级倒置避免协议、优先级置顶、阻塞排队策略、任务取消安全属性、拥有者等信息。  
   
-### 参 数： 
+### 参数： 
   
 - pmutex ：指向互斥量对象的指针。  
   
@@ -14782,14 +14782,14 @@ int	pthread_mutex_getinfo
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 与GJB 7714-2012错误码的差别：  
-EMNOTINITED ：模块尚未初始化。  
+- EMNOTINITED ：模块尚未初始化。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -14812,7 +14812,7 @@ void	*Thread0(void  *arg)
        	printf("mutexattr_setcancelsafe  :%d\n", info);  
        	printf("************************end*********************\n");  
 	}	  
-	……  
+	// ……  
 	return (NULL);  
 }  
 ```  
@@ -14832,11 +14832,11 @@ int	pthread_mutex_show
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来显示互斥量信息。  
   
-### 参 数：
+### 参数：
   
 - pmutex ：指向互斥量对象的指针。  
   
@@ -14848,14 +14848,14 @@ int	pthread_mutex_show
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 与GJB 7714-2012错误码的差别：  
-EMNOTINITED ：模块尚未初始化。  
+- EMNOTINITED ：模块尚未初始化。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -14876,7 +14876,7 @@ void	*Thread0(void  *arg)
 		perror("func pthread_mutex_show error\n");  
 		return 0;  
 	}   
-	……  
+	// ……  
 	return (NULL);  
 }  
 ```  
@@ -14895,7 +14895,7 @@ int  pthread_condattr_init
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口以缺省值初始化条件变量的属性对象attr。在使用条件变量属性对象完成初始化条件变量之后，那些影响属性对象的接口改变属性对象时并不会影响之前已初始化的条件变量。  
   
@@ -14909,7 +14909,7 @@ int  pthread_condattr_init
   
 ### 错误码：
   
-EINVAL：参数无效。  
+- EINVAL：参数无效。  
   
 ### 备注：  
   
@@ -14929,7 +14929,7 @@ int main (int argc, char **argv)
 		perror("func pthread_condattr_init error\n");  
 		return -1;  
 	}  
-	……  
+	// ……  
 	return0;  
 }  
 ```  
@@ -14948,7 +14948,7 @@ int  pthread_condattr_ destroy
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口删除条件变量属性对象，属性对象会变为未初始状态。  
   
@@ -14962,8 +14962,8 @@ int  pthread_condattr_ destroy
   
 ### 错误码：
   
-EINVAL：参数无效。  
-EINVAL attr是无效指针，或者attr指向的是未初始化的属性对象。  
+- EINVAL：参数无效。  
+- EINVAL attr是无效指针，或者attr指向的是未初始化的属性对象。  
   
 ### 备注：  
   
@@ -14984,7 +14984,7 @@ int main (int argc, char **argv)
 		return -1;  
 	}  
   
-	……  
+	// ……  
   
 	ret = pthread_condattr_destroy(&condattr);  /* 销毁条件变量属性*/  
 	if(ret != 0)  
@@ -15011,7 +15011,7 @@ int  pthread_ condattr_ setclock
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用于设置条件变量属性块的计时时钟属性。  
   
@@ -15031,8 +15031,8 @@ int  pthread_ condattr_ setclock
   
 ### 错误码：
   
-EINVAL：参数无效。  
-EINVAL attr是无效指针，或者attr指向的是未初始化的属性对象，或者clock_id的取值不合法。  
+- EINVAL：参数无效。  
+- EINVAL attr是无效指针，或者attr指向的是未初始化的属性对象，或者clock_id的取值不合法。  
   
 ### 备注：  
   
@@ -15053,7 +15053,7 @@ int main (int argc, char **argv)
 		return -1;  
 	}  
   
-	……  
+	// ……  
   
 	ret = pthread_condattr_setclock(&condattr, CLOCK_REALTIME);  /* 设置条件变量时钟属性*/  
 	if(ret != 0)  
@@ -15062,7 +15062,7 @@ int main (int argc, char **argv)
 		return -1;  
 	}  
   
-	……  
+	// ……  
   
 	return 0;  
 }  
@@ -15084,7 +15084,7 @@ int  pthread_condattr_getclock
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来获取条件变量属性块的计时时钟属性。  
   
@@ -15100,8 +15100,8 @@ int  pthread_condattr_getclock
   
 ### 错误码：
   
-EINVAL：参数无效。  
-EINVAL attr或clock_id是无效指针，或者attr指向的是未初始化的属性对象。  
+- EINVAL：参数无效。  
+- EINVAL attr或clock_id是无效指针，或者attr指向的是未初始化的属性对象。  
   
 ### 备注：  
   
@@ -15123,7 +15123,7 @@ int main (int argc, char **argv)
 		return -1;  
 	}  
   
-	……  
+	// ……  
   
 	ret = pthread_condattr_getclock(&condattr, &clockid); /* 获取条件变量时钟属性*/  
 	if(ret != 0)  
@@ -15132,7 +15132,7 @@ int main (int argc, char **argv)
 		return -1;  
 	}  
   
-	……  
+	// ……  
   
 	return 0;  
 }  
@@ -15153,7 +15153,7 @@ int  pthread_cond_init
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口以pcondattr引用的属性对象初始化pcond指定的条件变量。如果pcondattr为空，则使用缺省的条件变量属性。  
   
@@ -15169,14 +15169,14 @@ int  pthread_cond_init
   
 ### 错误码：
   
-EAGAIN ：系统资源不足。  
-EINVAL ：参数无效。  
+- EAGAIN ：系统资源不足。  
+- EINVAL ：参数无效。  
   
 ### 备注：  
   
 GJB 7714-2012错误码：
-EINVAL ：参数无效；  
-EAGAIN ：系统资源不足。  
+- EINVAL ：参数无效；  
+- EAGAIN ：系统资源不足。  
   
 ### 样例：  
   
@@ -15251,7 +15251,7 @@ int  pthread_ cond_destroy
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用于删除有 pcond 指定的条件变量，并释放相关的资源。  
   
@@ -15265,13 +15265,13 @@ int  pthread_ cond_destroy
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
 ### 备注：  
   
 GJB 7714-2012错误码：
-EINVAL ：参数无效；  
-EBUSY ：对象忙。  
+- EINVAL ：参数无效；  
+- EBUSY ：对象忙。  
   
 ### 样例：  
   
@@ -15294,7 +15294,7 @@ int main (int argc, char **argv)
 		perror("func pthread_cond_init error\n");  
 		return -1;  
 	}  
-	……  
+	// ……  
 	ret = pthread_cond_destroy(&cond);   /* 销毁条件变量*/  
 	if(ret != 0)  
 	{  
@@ -15319,7 +15319,7 @@ int  pthread_cond_signal
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来向等待条件变量的线程发送信号。  
   
@@ -15333,14 +15333,14 @@ int  pthread_cond_signal
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
-ERROR_EVENT_TYPE ：事件类型出错。  
+- EINVAL ：参数无效。  
+- ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
+- ERROR_EVENT_TYPE ：事件类型出错。  
   
 ### 备注：  
   
 GJB 7714-2012错误码：
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
 ### 样例：  
   
@@ -15357,7 +15357,7 @@ void *Thread_condsend (void *arg)
 	int num = (int)arg;  
 	for (i = 0; i < 10; i++)  
 	{  
-	…….  
+	// …….  
         Gi_sum ++;  
 		printf("t%d: read sum value = %d\n", num + 1, Gi_sum);  
 		if (Gi_sum >= 10)  
@@ -15369,7 +15369,7 @@ void *Thread_condsend (void *arg)
 	            return (void*)-1;  
 	        }  
 		}  
-	……  
+	// ……  
 		sleep(1);     /* 延时1s，以更好的观察线程调度情况*/   
 	}  
 	return (NULL);     
@@ -15407,7 +15407,7 @@ void *Thread_condrecv (void *arg)
 }  
 int main (int argc, char *argv[])  
 {  
-	……  
+	// ……  
   
   
 	for (i = 0; i < 2; i++)  
@@ -15426,7 +15426,7 @@ int main (int argc, char *argv[])
 		printf("can't create thread !");  
 		return (-1);  
 	}  
-	……  
+	// ……  
   ret = pthread_join(tid[i], NULL);     /* 等待线程结束，并回收资源     */  
         if(ret != 0)  
         {  
@@ -15451,7 +15451,7 @@ int  pthread_cond_broadcast
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用来释放所有等待该条件变量的线程。  
   
@@ -15465,15 +15465,15 @@ int  pthread_cond_broadcast
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-EAGAIN ：系统资源不足  
-ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
-ERROR_EVENT_TYPE ：事件类型出错。  
+- EINVAL ：参数无效。  
+- EAGAIN ：系统资源不足  
+- ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
+- ERROR_EVENT_TYPE ：事件类型出错。  
   
 ### 备注：  
   
 GJB 7714-2012错误码：
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
 ### 样例：  
   
@@ -15494,7 +15494,7 @@ static void * Thread_condsend (void *arg)
 			perror("fun pthread_cond_signal error\n");  
 		}  
   
-		……  
+		// ……  
   
 		pthread_mutex_unlock(&mutex);   /* 解锁*/  
 	}  
@@ -15518,7 +15518,7 @@ int  pthread_cond_wait
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来使当前线程等待指定条件变量。  
   
@@ -15534,13 +15534,13 @@ int  pthread_cond_wait
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
 ### 备注：  
   
 GJB 7714-2012错误码：
-EINVAL ：参数无效。  
-EPRERM ：权限不足。  
+- EINVAL ：参数无效。  
+- EPRERM ：权限不足。  
   
 ### 样例：  
   
@@ -15561,7 +15561,7 @@ static void * Thread_condsend (void *arg)
 			perror("fun pthread_cond_wait error\n");  
 		}  
   
-		……  
+		// ……  
   
 		pthread_mutex_unlock(&mutex);    /* 解锁*/  
 	}  
@@ -15589,7 +15589,7 @@ int  pthread_cond_timedwait
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来使当前线程限时（绝对时间）等待指定条件变量。  
   
@@ -15607,17 +15607,17 @@ int  pthread_cond_timedwait
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ETIMEDOUT ：等待超时。  
+- EINVAL ：参数无效。  
+- ETIMEDOUT ：等待超时。  
   
 ### 备注：  
   
 GJB 7714-2012错误码：
-EINVAL ：参数无效；  
-EPRERM ：权限不足；  
-ETIMEDOUT ：超时。  
+- EINVAL ：参数无效；  
+- EPRERM ：权限不足；  
+- ETIMEDOUT ：超时。  
   
-注意：超时时间是绝对时间, 即一个确定的历史时间。  
+- 注意：超时时间是绝对时间, 即一个确定的历史时间。  
   
 ### 样例：  
   
@@ -15640,7 +15640,7 @@ ts.tv_nsec = 0;
 		{  
 			perror("fun pthread_cond_wait error\n");  
 		}  
-		……  
+		// ……  
 		pthread_mutex_unlock(&mutex);     /* 解锁*/  
 	}  
 	......  
@@ -15664,7 +15664,7 @@ int  pthread_cond_show
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来显示指定条件变量控制块的信息。  
   
@@ -15680,15 +15680,15 @@ int  pthread_cond_show
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ECALLEDINISR ：系统处于中断中。  
+- EINVAL ：参数无效。  
+- ECALLEDINISR ：系统处于中断中。  
   
 ### 备注：  
   
 GJB 7714-2012错误码：
-EINVAL ：参数无效；  
-EMNOTINITED ：模块尚未初始化；  
-ECALLEDINISR ：接口不能在中断上下文中调用。  
+- EINVAL ：参数无效；  
+- EMNOTINITED ：模块尚未初始化；  
+- ECALLEDINISR ：接口不能在中断上下文中调用。  
   
 ### 样例：  
   
@@ -15728,7 +15728,7 @@ int  pthread_cond_getinfo
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来获取指定条件变量控制块的信息。  
   
@@ -15744,14 +15744,14 @@ int  pthread_cond_getinfo
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
 ### 备注：  
   
 GJB 7714-2012错误码：
-EINVAL ：参数无效；  
-EMNOTINITED ：模块尚未初始化；  
-ECALLEDINISR ：接口不能在中断上下文中调用。  
+- EINVAL ：参数无效；  
+- EMNOTINITED ：模块尚未初始化；  
+- ECALLEDINISR ：接口不能在中断上下文中调用。  
   
 ### 样例：  
   
@@ -15797,7 +15797,7 @@ int  pthread_condattr_setpshared
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来设置一个条件变量属性控制块的共享属性。  
   
@@ -15818,7 +15818,7 @@ int  pthread_condattr_setpshared
   
 ### 错误码：
   
-EINVAL：参数无效。  
+- EINVAL：参数无效。  
   
 ### 备注：  
   
@@ -15846,7 +15846,7 @@ int main (int argc, char **argv)
 		return -1;  
 	}  
   
-	……  
+	// ……  
   
 	return 0;  
 }  
@@ -15868,7 +15868,7 @@ int  pthread_condattr_getpshared
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来获取一个条件变量属性控制块的共享属性。  
   
@@ -15889,7 +15889,7 @@ int  pthread_condattr_getpshared
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
 ### 备注：  
   
@@ -15910,14 +15910,14 @@ int main (int argc, char **argv)
 		perror("func pthread_condattr_init error\n");  
 		return -1;  
 	}  
-	……  
+	// ……  
 	ret = pthread_condattr_getpshared(&condattr, &share); /* 获取条件变量共享属性*/  
 	if(ret != 0)  
 	{  
 		perror("func pthread_condattr_getpshared error\n");  
 		return -1;  
 	}  
-	……  
+	// ……  
 	return 0;  
 }  
 ```  
@@ -15938,7 +15938,7 @@ int  pthread_cond_reltimedwait_np
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来使当前线程限时（相对时间）等待指定条件变量。  
   
@@ -15956,14 +15956,14 @@ int  pthread_cond_reltimedwait_np
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ETIMEDOUT ：等待超时。  
+- EINVAL ：参数无效。  
+- ETIMEDOUT ：等待超时。  
   
 ### 备注：  
   
 GJB 7714-2012无此函数接口。  
   
-注意：超时时间为相对时间。  
+- 注意：超时时间为相对时间。  
   
 ### 样例：  
   
@@ -15986,7 +15986,7 @@ static void * Thread_condsend (void *arg)
 		{  
 			perror("fun pthread_cond_reltimedwait_np error\n");  
 		}  
-		……  
+		// ……  
 		pthread_mutex_unlock(&mutex);     /* 解锁*/  
 	}  
 	......  
@@ -16011,7 +16011,7 @@ int  pthread_rwlockattr_init
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于初始化一个读写锁属性prwlockattr。默认写优先，进程之间不共享。  
   
@@ -16025,8 +16025,8 @@ int  pthread_rwlockattr_init
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ERROE_NONE ：没有错误。  
+- EINVAL ：参数无效。  
+- ERROE_NONE ：没有错误。  
   
 ### 备注：  
   
@@ -16045,7 +16045,7 @@ int main (int argc, char **argv)
 	int ret ;  
 	pthread_rwlockattr_t rwlockattr;  
   
-	……  
+	// ……  
   
 	ret = pthread_rwlockattr_init(&rwlockattr);			/*  初始化一个读写锁属性块 */  
 	if(ret != 0)  
@@ -16060,7 +16060,7 @@ int main (int argc, char **argv)
 		perror("func pthread_rwlockattr_destroy error\n");  
 		return -1;  
 	}  
-	……  
+	// ……  
 	return 0;  
 }  
 ```  
@@ -16079,7 +16079,7 @@ int  pthread_rwlockattr_destroy
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来销毁一个读写锁属性块。  
   
@@ -16093,8 +16093,8 @@ int  pthread_rwlockattr_destroy
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-ERROE_NONE ：没有错误。  
+- EINVAL ：参数无效。  
+- ERROE_NONE ：没有错误。  
   
 ### 备注：  
   
@@ -16107,19 +16107,19 @@ GJB 7714-2012无此接口。
 #include <pthread.h>  
 static pthread_spinlock_t G_spinlock;  
 static pthread_t G_tid1,G_tid2;  
-……  
+// ……  
 int main (int argc, char **argv)  
 {  
     int ret;  
    pthread_rwlockattr_t rwlockattr;  
-   ……  
+   // ……  
    ret = pthread_rwlockattr_destroy(&rwlockattr);  
 if(ret != 0)  
 {  
 		perror("func pthread_rwlockattr_destroy error\n");  
 		return -1;  
 	}  
-	……  
+	// ……  
     return  (0);  
 }  
 ```  
@@ -16138,7 +16138,7 @@ int  pthread_rwlockattr_setpshared
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用来设置指定读写锁属性块的共享属性，是否进程共享。  
   
@@ -16159,8 +16159,8 @@ int  pthread_rwlockattr_setpshared
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-ERROE_NONE ：没有错误。  
+- EINVAL ：参数无效。  
+- ERROE_NONE ：没有错误。  
   
 ### 样例：  
   
@@ -16169,19 +16169,19 @@ ERROE_NONE ：没有错误。
 #include <pthread.h>  
 static pthread_t G_tid1, G_tid2;  
 static pthread_rwlock_t G_rwlock;  
-……  
+// ……  
 int main (int argc, char **argv)  
 {  
 	int ret ;  
 	int shared;  
-	……  
+	// ……  
 	ret = pthread_rwlockattr_setpshared(&rwlockattr, 0); /*设置一个读写锁属性块是否进程共享*/  
 	if(ret != 0)  
 	{  
 		perror("func pthread_rwlockattr_setpshared error\n");  
 		return -1;  
 	}  
-	……  
+	// ……  
   
 	return 0;  
 }  
@@ -16202,7 +16202,7 @@ int  pthread_rwlockattr_getpshared
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来获取指定读写锁属性块的共享属性。  
   
@@ -16223,8 +16223,8 @@ int  pthread_rwlockattr_getpshared
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-ERROE_NONE ：没有错误。  
+- EINVAL ：参数无效。  
+- ERROE_NONE ：没有错误。  
   
 ### 备注：  
   
@@ -16237,19 +16237,19 @@ GJB 7714-2012无此接口。
 #include <pthread.h>  
 static pthread_t G_tid1, G_tid2;  
 static pthread_rwlock_t G_rwlock;  
-……  
+// ……  
 int main (int argc, char **argv)  
 {  
 	int ret ;  
 	int shared;  
-	……  
+	// ……  
 	ret = pthread_rwlockattr_getpshared(&rwlockattr, &shared);		  /*获取一个读写锁属性块是否进程共享*/  
 	if(ret == 0)  
 	{  
 		printf("rwlockattr shared :%d\n", shared);  
 	}  
   
-	……  
+	// ……  
 	return 0;  
 }  
 ```  
@@ -16269,7 +16269,7 @@ int  pthread_rwlockattr_setkind_np
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来设置指定读写锁属性块的读写优先权。（该锁只能在读锁定时体现其设置的优先级，在写锁定时默认使用等待线程自身的优先级以抢占的方式进行调度）  
   
@@ -16290,8 +16290,8 @@ int  pthread_rwlockattr_setkind_np
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ERROE_NONE ：没有错误。  
+- EINVAL ：参数无效。  
+- ERROE_NONE ：没有错误。  
   
 ### 备注：  
   
@@ -16304,13 +16304,13 @@ GJB 7714-2012无此接口。
 #include <pthread.h>  
 static pthread_t G_tid1, G_tid2, G_tid3;  
 static pthread_rwlock_t G_rwlock;  
-……  
+// ……  
 int main (int argc, char **argv)  
 {  
 	int ret ;  
 	int kind;  
 	pthread_rwlockattr_t rwlockattr;  
-	……  
+	// ……  
 	/*  
 	 * 设置一个读写锁属性块读写优先权  
 	*/  
@@ -16320,7 +16320,7 @@ int main (int argc, char **argv)
 		perror("func pthread_rwlockattr_setkind_np error\n");  
 	}  
   
-	……  
+	// ……  
 	return 0;  
 }  
 ```  
@@ -16340,7 +16340,7 @@ int	 pthread_rwlockattr_getkind_np
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来获取指定读写锁属性块的读写优先权。  
   
@@ -16361,8 +16361,8 @@ int	 pthread_rwlockattr_getkind_np
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-ERROE_NONE ：没有错误。  
+- EINVAL ：参数无效。  
+- ERROE_NONE ：没有错误。  
   
 ### 备注：  
   
@@ -16375,13 +16375,13 @@ GJB 7714-2012无此接口。
 #include <pthread.h>  
 static pthread_t G_tid1, G_tid2, G_tid3;  
 static pthread_rwlock_t G_rwlock;  
-……  
+// ……  
 int main (int argc, char **argv)  
 {  
 	int ret ;  
 	int kind;  
 	pthread_rwlockattr_t rwlockattr;  
-	……  
+	// ……  
 	/*  
  	* 设置一个读写锁属性块读写优先权  
 	*/  
@@ -16396,7 +16396,7 @@ int main (int argc, char **argv)
 	{  
 		printf("rwlockattr kind :%d\n", kind);  
 	}  
-	……  
+	// ……  
 	return 0;  
 }  
 ```  
@@ -16416,7 +16416,7 @@ int  pthread_rwlock_init
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口为 prwlock指导的读写锁分配资源，并把它初始化为未锁定的状态，且设为prwlockattr引用的读写锁属性对象的属性。若 prwlockattr 为空，则使用默认属性。  
   
@@ -16432,15 +16432,15 @@ int  pthread_rwlock_init
   
 ### 错误码：
   
-EINVAL ：参数有效。  
-ENOSPC ：非法操作。  
-ERROE_NONE ：没有错误。  
+- EINVAL ：参数有效。  
+- ENOSPC ：非法操作。  
+- ERROE_NONE ：没有错误。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
-EBUSY ：设备资源忙。  
+- EINVAL ：参数无效。  
+- EBUSY ：设备资源忙。  
   
 ### 样例：  
   
@@ -16449,12 +16449,12 @@ EBUSY ：设备资源忙。
 #include <pthread.h>  
 static pthread_t G_tid1, G_tid2;  
 static pthread_rwlock_t G_rwlock;  
-……  
+// ……  
 int main (int argc, char **argv)  
 {  
 	int ret ;  
 	pthread_rwlockattr_t rwlockattr;  
-……  
+// ……  
   
 	ret = pthread_rwlock_init(&G_rwlock, &rwlockattr);		/*  创建读写锁          */  
 	if(ret != 0)  
@@ -16463,7 +16463,7 @@ int main (int argc, char **argv)
 		return -1;  
 	}  
   
-	……  
+	// ……  
 	return 0;  
 }  
 ```  
@@ -16481,7 +16481,7 @@ int  pthread_rwlock_destroy
 );  
 ```  
   
-### 描 述： 
+### 描述： 
   
 该接口用于删除prwlock引用的读写锁对象并释放锁使用的资源。对象删除后不可以引用。需要通过pthread_rwlock_init()重新初始化后才可以继续引用。  
   
@@ -16495,14 +16495,14 @@ int  pthread_rwlock_destroy
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-ERROE_NONE ：没有错误。  
+- EINVAL ：参数无效。  
+- ERROE_NONE ：没有错误。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
-EBUSY ：设备资源忙。  
+- EINVAL ：参数无效。  
+- EBUSY ：设备资源忙。  
   
 ### 样例：  
   
@@ -16511,11 +16511,11 @@ EBUSY ：设备资源忙。
 #include <pthread.h>  
 static pthread_t G_tid1, G_tid2;  
 static pthread_rwlock_t G_rwlock;  
-……  
+// ……  
 int main (int argc, char **argv)  
 {  
 	int ret ;  
-	……  
+	// ……  
   
 	ret = pthread_rwlock_destroy(&G_rwlock);			/*  销毁读写锁               */  
 	if(ret != 0)  
@@ -16541,7 +16541,7 @@ int  pthread_rwlock_rdlock
 ```  
   
   
-### 描 述： 
+### 描述： 
   
 该接口用于向prwlock引用的读写锁申请读锁定。如果没有别的任务（写者）持有读写锁，调用任务就会获取读锁。否则，任务将一直阻塞到它能获取锁为止。  
   
@@ -16555,14 +16555,14 @@ int  pthread_rwlock_rdlock
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ERROE_NONE ：没有错误。  
+- EINVAL ：参数无效。  
+- ERROE_NONE ：没有错误。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
-EBUSY ：设备资源忙。  
+- EINVAL ：参数无效。  
+- EBUSY ：设备资源忙。  
   
 ### 样例：  
   
@@ -16581,7 +16581,7 @@ static void *Thread1(void *arg)
 		perror("func pthread_rwlock_rdlock error\n");  
 		return (void *)-1;  
 	}  
-	……  
+	// ……  
 	return NULL;  
 }  
 ```  
@@ -16600,7 +16600,7 @@ int  pthread_rwlock_tryrdlock
 ```  
   
   
-### 描 述： 
+### 描述： 
   
 尝试锁定读写锁用于读操作。当其他任务持有读写锁用于写操作情况下时会失败。  
   
@@ -16614,16 +16614,16 @@ int  pthread_rwlock_tryrdlock
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-EBUSY ：设备资源忙。  
-EDEADLK ：检测到死锁。  
-ERROE_NONE ：没有错误。  
+- EINVAL ：参数无效。  
+- EBUSY ：设备资源忙。  
+- EDEADLK ：检测到死锁。  
+- ERROE_NONE ：没有错误。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
-EBUSY ：设备资源忙。  
+- EINVAL ：参数无效。  
+- EBUSY ：设备资源忙。  
   
 ### 样例：  
   
@@ -16632,7 +16632,7 @@ EBUSY ：设备资源忙。
 #include <pthread.h>  
 static pthread_t G_tid1, G_tid2;  
 static pthread_rwlock_t G_rwlock;  
-……  
+// ……  
 static void *Thread2(void *arg)  
 {  
 	int ret = 0;  
@@ -16664,7 +16664,7 @@ int  pthread_rwlock_wrlock
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于向prwlock引用的读写锁申请写锁定。如果没有别的任务（读者或写者）持有读写锁prwlock，调用任务就会获取写锁，否则，任务将一直阻塞到它能获取锁为止。  
 当同时有同优先级读者任务和写者任务阻塞在锁上时，任务将优先级让写者任务获取该锁。  
@@ -16680,8 +16680,8 @@ int  pthread_rwlock_wrlock
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-ERROE_NONE ：没有错误。  
+- EINVAL ：参数无效。  
+- ERROE_NONE ：没有错误。  
   
 ### 备注：  
   
@@ -16703,7 +16703,7 @@ static void *Thread1(void *arg)
 		perror("func pthread_wrlock_wrlock error\n");  
 		return (void*)-1;  
 	}  
-	……  
+	// ……  
 	return NULL;  
 }  
 ```  
@@ -16723,7 +16723,7 @@ int  pthread_rwlock_reltimedrdlock_np
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来限时等待指定的读写锁的读锁定（相对超时时间）。  
   
@@ -16739,9 +16739,9 @@ int  pthread_rwlock_reltimedrdlock_np
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-ETIMEDOUT ：等待超时。  
-EDEADLK ：检测到死锁。  
+- EINVAL ：参数无效。  
+- ETIMEDOUT ：等待超时。  
+- EDEADLK ：检测到死锁。  
   
 ### 备注：  
   
@@ -16754,7 +16754,7 @@ GJB 7714-2012无此接口。
 #include <pthread.h>  
 static pthread_t G_tid1, G_tid2;  
 static pthread_rwlock_t G_rwlock;  
-……  
+// ……  
 static void *Thread2(void *arg)  
 {  
 	int ret = 0;  
@@ -16789,7 +16789,7 @@ int  pthread_rwlock_trywrlock
 ```  
   
   
-### 描 述：
+### 描述：
   
 尝试锁定读写锁的写操作，该接口和pthread_rwlock_wrlock()接口一样申请写锁存，除了有其他任务持有读写锁用于写操作或读操作情况下时会失败。  
   
@@ -16803,17 +16803,17 @@ int  pthread_rwlock_trywrlock
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-EBUSY ：设备资源忙。  
-EDEADLK ：检测到死锁。  
-ERROE_NONE ：没有错误。  
+- EINVAL ：参数无效。  
+- EBUSY ：设备资源忙。  
+- EDEADLK ：检测到死锁。  
+- ERROE_NONE ：没有错误。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EINVAL rwlock ：是一个无效的指针；  
-EINVAL rwlock ：指定的读写锁不存在；  
-EBUSY ：因为读写锁已经被锁定用于读操作或写操作，所以无法获取锁用于写。  
+- EINVAL rwlock ：是一个无效的指针；  
+- EINVAL rwlock ：指定的读写锁不存在；  
+- EBUSY ：因为读写锁已经被锁定用于读操作或写操作，所以无法获取锁用于写。  
   
 ### 样例：  
   
@@ -16856,7 +16856,7 @@ int  pthread_rwlock_unlock
 ```  
   
   
-### 描 述： 
+### 描述： 
   
 该接口会释放prlock引用的读写锁上的一个锁。如果调用该接口释放了读写锁对象的一个读锁且读写锁仍有其他读写，那么读写锁对象保持读锁定状态。如果该接口释放了最后一个读锁，读写锁对象将进入解锁状态。如果调用给接口释放了一个写锁，读写锁对象也将进入解锁状态。  
   
@@ -16870,14 +16870,14 @@ int  pthread_rwlock_unlock
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-EPERM ：权限不足（不是锁定者）。  
-ERROE_NONE ：没有错误。  
+- EINVAL ：参数无效。  
+- EPERM ：权限不足（不是锁定者）。  
+- ERROE_NONE ：没有错误。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
 ### 样例：  
   
@@ -16889,7 +16889,7 @@ static pthread_rwlock_t G_rwlock;
 static void *Thread1(void *arg)  
 {  
 	int ret = 0;  
-	……  
+	// ……  
 	ret = pthread_rwlock_unlock(&G_rwlock);  
  if(ret != 0)  
 	{  
@@ -16916,7 +16916,7 @@ int  pthread_rwlock_timedrdlock
 ```  
   
   
-### 描 述： 
+### 描述： 
   
 该接口用于在指定的时间内获取prwlock引用的读写锁申请读操作。如果在abs_timeout引用指定的时间中获取不到读锁时失败。  
 该接口像pthread_rwlock_rdlock()一样向rwlock引用的读写锁申请读锁定。然而，如果不等待其他任务解锁就无法获得锁的话，当指定的超时过期时，等待就会终止。超时由CLOCK_REALTIME时钟度量。当abs_tyimeout指定的绝对时间过去时，或在调用接口时abs_timeout指定的绝对时间已经过去，称为超时过期。  
@@ -16934,17 +16934,17 @@ int  pthread_rwlock_timedrdlock
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-ETIMEDOUT ：等待超时。  
-EDEADLK ：检测到死锁。  
-ERROE_NONE ：没有错误。  
+- EINVAL ：参数无效。  
+- ETIMEDOUT ：等待超时。  
+- EDEADLK ：检测到死锁。  
+- ERROE_NONE ：没有错误。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
-ETIMEDOUT ：操作超时。  
-EAGAIN ：系统资源不足。  
+- EINVAL ：参数无效。  
+- ETIMEDOUT ：操作超时。  
+- EAGAIN ：系统资源不足。  
   
 ### 样例：  
   
@@ -16953,7 +16953,7 @@ EAGAIN ：系统资源不足。
 #include <pthread.h>  
 static pthread_t G_tid1, G_tid2;  
 static pthread_rwlock_t G_rwlock;  
-……  
+// ……  
 static void *Thread2(void *arg)  
 {  
 	int ret = 0;  
@@ -16991,7 +16991,7 @@ int  pthread_rwlock_timedwrlock
 ```  
   
   
-### 描 述： 
+### 描述： 
   
 该接口像pthraed_rwlock_wrlock()一样向rwlock引用的读写锁申请读锁定。然而，如果不等待其他任务解锁就无法获取锁的话，当指定的超时过期时，等待就会终止。超时由CLOCK_REALTIME时钟度量。当abs_timeout指定的绝对时间过去时，或在调用接口时abs_timeout指定的绝对时间已经过去，称为超时过期。  
   
@@ -17007,16 +17007,16 @@ int  pthread_rwlock_timedwrlock
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-ETIMEDOUT ：等待超时。  
-EDEADLK ：检测到死锁。  
-ERROE_NONE ：没有错误。  
+- EINVAL ：参数无效。  
+- ETIMEDOUT ：等待超时。  
+- EDEADLK ：检测到死锁。  
+- ERROE_NONE ：没有错误。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
-ETIMEDOUT ：等待超时。  
+- EINVAL ：参数无效。  
+- ETIMEDOUT ：等待超时。  
   
 ### 样例：  
   
@@ -17025,7 +17025,7 @@ ETIMEDOUT ：等待超时。
 #include <pthread.h>  
 static pthread_t G_tid1, G_tid2;  
 static pthread_rwlock_t G_rwlock;  
-……  
+// ……  
 static void *Thread2(void *arg)  
 {  
   
@@ -17062,7 +17062,7 @@ int   pthread_rwlock_reltimedwrlock_np
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来限时等待指定的读写锁的读锁定（相对超时时间）。  
   
@@ -17078,10 +17078,10 @@ int   pthread_rwlock_reltimedwrlock_np
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-ETIMEDOUT ：等待超时。  
-EDEADLK ：检测到死锁。  
-ERROE_NONE ：没有错误。  
+- EINVAL ：参数无效。  
+- ETIMEDOUT ：等待超时。  
+- EDEADLK ：检测到死锁。  
+- ERROE_NONE ：没有错误。  
   
 ### 备注：  
   
@@ -17094,7 +17094,7 @@ GJB 7714-2012无此接口。
 #include <pthread.h>  
 static pthread_t G_tid1, G_tid2;  
 static pthread_rwlock_t G_rwlock;  
-……  
+// ……  
 static void *Thread2(void *arg)  
 {  
 	int ret = 0;  
@@ -17128,7 +17128,7 @@ int   pthread_rwlock_getinfo
 );  
 ```  
   
-### 描 述： 
+### 描述： 
   
 该接口用于获取指定的读写锁的概要信息。  
   
@@ -17144,15 +17144,15 @@ int   pthread_rwlock_getinfo
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-ERROE_NONE ：没有错误。  
+- EINVAL ：参数无效。  
+- ERROE_NONE ：没有错误。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
-ECALLEDINISR ：系统处于中断中。  
-EMNOTINITED ：模块未初始化。  
+- EINVAL ：参数无效。  
+- ECALLEDINISR ：系统处于中断中。  
+- EMNOTINITED ：模块未初始化。  
   
 ### 样例：  
   
@@ -17161,7 +17161,7 @@ EMNOTINITED ：模块未初始化。
 #include <pthread.h>  
 static pthread_t G_tid1, G_tid2;  
 static pthread_rwlock_t G_rwlock;  
-……  
+// ……  
 static void *Thread2(void *arg)  
 {  
 	int ret = 0;  
@@ -17201,11 +17201,11 @@ mqd_t	mq_create
 )  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用来创建一个匿名消息队列。  
   
-### 参 数：
+### 参数：
   
 - flag：消息队列对象的标志位。参数可以为：  
   
@@ -17231,18 +17231,18 @@ mqd_t	mq_create
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-ECALLEDINISR ：系统处于中断。  
-ENOMEM ：内存不足。  
+- EINVAL ：参数无效。  
+- ECALLEDINISR ：系统处于中断。  
+- ENOMEM ：内存不足。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
-ECALLEDINISR ：该接口不能在中段上下文中调用。  
-EMFILE ：系统中打开了过多的消息队列描述符。  
-ECALLEDINISR ：消息队列模块尚未初始化。  
-ENOMEM ：内存不足。  
+- EINVAL ：参数无效。  
+- ECALLEDINISR ：该接口不能在中段上下文中调用。  
+- EMFILE ：系统中打开了过多的消息队列描述符。  
+- ECALLEDINISR ：消息队列模块尚未初始化。  
+- ENOMEM ：内存不足。  
   
 ### 样例：  
   
@@ -17257,7 +17257,7 @@ int  main (int  argc, char  *argv[])
 {  
 	int ret;  
   
- 	……  
+ 	// ……  
   
 	/*  
 	*创建一个未命名的消息队列     
@@ -17269,7 +17269,7 @@ int  main (int  argc, char  *argv[])
 		return -1;  
 	}  
   
-	……  
+	// ……  
   
 	return (0);  
 }  
@@ -17289,11 +17289,11 @@ int	mq_delete
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来删除mq_create创建的消息队列。  
   
-### 参 数： 
+### 参数： 
   
 - mqd ：消息队列句柄。  
   
@@ -17303,17 +17303,17 @@ int	mq_delete
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-ECALLEDINISR ：系统处于中断。  
-EBADF ：句柄无效。  
+- EINVAL ：参数无效。  
+- ECALLEDINISR ：系统处于中断。  
+- EBADF ：句柄无效。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-ENOENT ：指定的消息队列不存在。  
-EINVAL ：所删除的消息队列不是mq_create()创建的未命名消息队列。  
-ECALLEDINISR ：该接口不能在中段上下文中调用。  
-EMNOTINITED ：消息队列模块尚未初始化。  
+- ENOENT ：指定的消息队列不存在。  
+- EINVAL ：所删除的消息队列不是mq_create()创建的未命名消息队列。  
+- ECALLEDINISR ：该接口不能在中段上下文中调用。  
+- EMNOTINITED ：消息队列模块尚未初始化。  
   
 ### 样例：  
   
@@ -17326,7 +17326,7 @@ static mqd_t Gmqd;
 static pthread_t  Gtid1, Gtid2;  
 int  main (int  argc, char  *argv[])  
 {  
-	……  
+	// ……  
   
 	mq_delete(Gmqd);                  /*  删除消息队列Gmqd           */  
   
@@ -17350,11 +17350,11 @@ mqd_t            mq_open
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来打开一个命名的消息队列。一般用于进程间通信。  
   
-### 参 数： 
+### 参数： 
   
 - name ：创建或打开消息队列的路径与名字。默认当前路径。  
   
@@ -17381,21 +17381,21 @@ mqd_t            mq_open
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ENAMETOOLONG ：路径名太长。  
-EEXIST ：文件已存在。  
-ENOMEM ：内存不足。  
-ENOENT ：文件或设备不存在。  
+- EINVAL ：参数无效。  
+- ENAMETOOLONG ：路径名太长。  
+- EEXIST ：文件已存在。  
+- ENOMEM ：内存不足。  
+- ENOENT ：文件或设备不存在。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EEXIST：同时设置了O_EXCL和O_CREAT。  
-EINVAL：参数无效。  
-ENFILE：系统中打开了过多的消息队列  
-EMFILE：形同中打开了过多的消息队列描述符。  
-ENAMETOOLONG：参数name的长度超过了NAME_MAX。  
-ENOENT：没有设置O_CREAD，且指定的消息队列不存在。  
+- EEXIST：同时设置了O_EXCL和O_CREAT。  
+- EINVAL：参数无效。  
+- ENFILE：系统中打开了过多的消息队列  
+- EMFILE：形同中打开了过多的消息队列描述符。  
+- ENAMETOOLONG：参数name的长度超过了NAME_MAX。  
+- ENOENT：没有设置O_CREAD，且指定的消息队列不存在。  
   
 ### 样例：  
   
@@ -17427,7 +17427,7 @@ int  main (int  argc   char  *argv[ ] )
     	printf("open msg failed\n");  
 		return  (-1);  
     }  
-	……  
+	// ……  
 	return NULL;  
 }  
 ```  
@@ -17446,11 +17446,11 @@ int              mq_close
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来关闭指定的命名消息队列。  
   
-### 参 数：
+### 参数：
   
 - mqd：消息队列句柄。  
   
@@ -17460,13 +17460,13 @@ int              mq_close
   
 ### 错误码： 
   
-EBADF：句柄无效。  
-ENOENT：文件或设备不存在。  
+- EBADF：句柄无效。  
+- ENOENT：文件或设备不存在。  
   
 ### 备注：   
   
 GJB 7714-2012错误码为：  
-EBADF：mqdes指定的消息队列描述符不合法。  
+- EBADF：mqdes指定的消息队列描述符不合法。  
   
 ### 样例：  
   
@@ -17484,7 +17484,7 @@ int  main (int  argc   char  *argv[ ] )
 {  
 	mqd_t  mq;  
 	int   ret;  
-	……  
+	// ……  
   
 	ret = mq_close(mq);              /*  关闭消息队列              */  
 	if (ret != 0)  
@@ -17510,11 +17510,11 @@ int              mq_unlink
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来删除指定的命名消息队列。  
   
-### 参 数： 
+### 参数： 
   
 - name：删除消息队列的路径与名字，默认当前路径。  
   
@@ -17524,16 +17524,16 @@ int              mq_unlink
   
 ### 错误码： 
   
-EBUSY ：设备资源忙。  
-EINVAL ：参数无效。  
-ENOENT ：文件或设备不存在。  
+- EBUSY ：设备资源忙。  
+- EINVAL ：参数无效。  
+- ENOENT ：文件或设备不存在。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EINVAL ：name是无效指针。  
-ENAMETOOLONG ：变量name的长度大于NAME-MAX。  
-ENOENT ：指定的命名消息队列不存在。  
+- EINVAL ：name是无效指针。  
+- ENAMETOOLONG ：变量name的长度大于NAME-MAX。  
+- ENOENT ：指定的命名消息队列不存在。  
   
 ### 样例：  
   
@@ -17553,7 +17553,7 @@ int  main (int  argc   char  *argv[ ] )
 	mqd_t  mq;  
 	int   ret;  
   
-	……  
+	// ……  
   
 	ret = mq_unlink(QUEUE_NAME);     /*  删除消息队列MQD_NAME   */  
 	if (ret != 0)  
@@ -17580,11 +17580,11 @@ int              mq_getattr
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用来获取指定消息队列的属性。  
   
-### 参 数： 
+### 参数： 
   
 - mqd ：消息队列句柄。  
   
@@ -17596,13 +17596,13 @@ int              mq_getattr
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-EBADF ：句柄无效。  
+- EINVAL ：参数无效。  
+- EBADF ：句柄无效。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EBADF：mqdes指定的消息队列描述符不合法。  
+- EBADF：mqdes指定的消息队列描述符不合法。  
   
 ### 样例：  
   
@@ -17618,7 +17618,7 @@ int  main (int  argc, char  *argv[])
 	int ret = 0;  
 	struct mq_attr mqattr;  
   
-	……  
+	// ……  
   
 	ret = mq_getattr(Gmqd, &mqattr);             /*  获取消息队列的属性 */  
 	if(ret != 0)  
@@ -17635,7 +17635,7 @@ int  main (int  argc, char  *argv[])
 		return -1;  
 	}  
   
-	……  
+	// ……  
   
 	return (0);  
 }  
@@ -17655,11 +17655,11 @@ int              mq_setattr
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用来设置指定消息队列的属性，并返回设置前的属性。  
   
-### 参 数： 
+### 参数： 
   
 - mqd：消息队列句柄。  
   
@@ -17673,12 +17673,12 @@ int              mq_setattr
   
 ### 错误码： 
   
-EBADF：句柄无效。  
+- EBADF：句柄无效。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EBADF：mqdes指定的消息队列描述符不合法，或者mqdes指定的消息队列是只读的。  
+- EBADF：mqdes指定的消息队列描述符不合法，或者mqdes指定的消息队列是只读的。  
   
 ### 样例：  
   
@@ -17693,7 +17693,7 @@ int  main (int  argc, char  *argv[])
 {  
 	int ret = 0;  
 	struct mq_attr mqattr;  
-	……  
+	// ……  
 	ret = mq_getattr(Gmqd, &mqattr);             /*  获取消息队列的属性 */  
 	if(ret != 0)  
 	{  
@@ -17708,7 +17708,7 @@ int  main (int  argc, char  *argv[])
 		return -1;  
 	}  
   
-	……  
+	// ……  
   
 	return (0);  
 }  
@@ -17731,11 +17731,11 @@ int              mq_send
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来向指定消息队列发送一条消息。  
   
-### 参 数： 
+### 参数： 
   
 - mqd ：消息队列句柄。  
   
@@ -17751,21 +17751,21 @@ int              mq_send
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-EBADF ：句柄无效。  
-EMSGSIZE ：消息长度超出限制。  
-ETIMEDOUT ：等待超时。  
-EINTR ：任务收到一个非阻塞或忽略的信号。  
-ENOENT ：文件或设备不存在。  
+- EINVAL ：参数无效。  
+- EBADF ：句柄无效。  
+- EMSGSIZE ：消息长度超出限制。  
+- ETIMEDOUT ：等待超时。  
+- EINTR ：任务收到一个非阻塞或忽略的信号。  
+- ENOENT ：文件或设备不存在。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EINVAL ：msg_ptr是无效的指针，或者msg_prio的取值不合法。  
-EBADF ：mqdes指定的消息队列描述符不合法，或者mqdes指定的消息队列是只读的。  
-EMSGSIZE ：msg_len指定的消息长度超过了消息队列的最大消息长度属性。  
-EAGAIN ：消息队列设置了O_NONBLOCK标志，并且调用该接口时消息队列已满。  
-EINTR ：调用任务被信号中断。  
+- EINVAL ：msg_ptr是无效的指针，或者msg_prio的取值不合法。  
+- EBADF ：mqdes指定的消息队列描述符不合法，或者mqdes指定的消息队列是只读的。  
+- EMSGSIZE ：msg_len指定的消息长度超过了消息队列的最大消息长度属性。  
+- EAGAIN ：消息队列设置了O_NONBLOCK标志，并且调用该接口时消息队列已满。  
+- EINTR ：调用任务被信号中断。  
   
 ### 样例：  
   
@@ -17780,7 +17780,7 @@ void* Thread 1(void  *arg)
 {  
 	int ret=0;  
   
-    ……  
+    // ……  
   
 	ret = mq_send(Gmqd, "HYSylixOS system", 1024, 20);  
 	if(ret != 0)  
@@ -17811,11 +17811,11 @@ ssize_t          mq_receive
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来从指定消息队列接受一条消息。  
   
-### 参 数： 
+### 参数： 
   
 - mqd ：消息队列句柄。  
   
@@ -17831,21 +17831,21 @@ ssize_t          mq_receive
   
 ### 错误码： 
   
-EINVAL：参数无效。  
-EBADF：句柄无效。  
-EMSGSIZE：缓存区长度太小。  
-ETIMEDOUT：等待超时。  
-EINTR：任务收到一个非阻塞或忽略的信号。  
-ENOENT:文件或设备不存在。  
+- EINVAL：参数无效。  
+- EBADF：句柄无效。  
+- EMSGSIZE：缓存区长度太小。  
+- ETIMEDOUT：等待超时。  
+- EINTR：任务收到一个非阻塞或忽略的信号。  
+- ENOENT:文件或设备不存在。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数msg_ptr是无效的指针。  
-EBADF ：mqdes指定的消息队列描述符不合法，或者mqdes指定的消息队列是只写的。  
-EMSGSIZE ：msg_len的值小于消息队列的消息大小属性。  
-EAGAIN ：消息队列描述符mqdes中设置了O_NONBLOCK标志位，且调用该接口时消息队列是空的。  
-EINTR ：接口调用被信号中断。  
+- EINVAL ：参数msg_ptr是无效的指针。  
+- EBADF ：mqdes指定的消息队列描述符不合法，或者mqdes指定的消息队列是只写的。  
+- EMSGSIZE ：msg_len的值小于消息队列的消息大小属性。  
+- EAGAIN ：消息队列描述符mqdes中设置了O_NONBLOCK标志位，且调用该接口时消息队列是空的。  
+- EINTR ：接口调用被信号中断。  
   
 ### 样例：  
   
@@ -17863,7 +17863,7 @@ void* Thread 2(void  *arg)
 	char msg[1024];  
 	memset(msg, 0, 1024);  
   
-	……  
+	// ……  
   
 	ret = mq_receive(Gmqd, msg, 1024, &prio);                           if(ret == -1)  
 	{  
@@ -17872,7 +17872,7 @@ void* Thread 2(void  *arg)
 	}  
 	printf("receive msg :%s\n", msg);  
   
-	…….  
+	// …….  
   
 	return NULL;  
 }  
@@ -17895,11 +17895,11 @@ int              mq_timedsend
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用来限时向指定消息队列发送一条消息（绝对时间）。  
   
-### 参 数： 
+### 参数： 
   
 - mqd ：消息队列句柄。  
   
@@ -17917,22 +17917,22 @@ int              mq_timedsend
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-EBADF ：句柄无效。  
-EMSGSIZE ：消息长度超出限制。  
-ETIMEDOUT ：等待超时。  
-EINTR ：任务收到一个非阻塞或忽略的信号。  
-ENOENT ：文件或设备不存在。  
+- EINVAL ：参数无效。  
+- EBADF ：句柄无效。  
+- EMSGSIZE ：消息长度超出限制。  
+- ETIMEDOUT ：等待超时。  
+- EINTR ：任务收到一个非阻塞或忽略的信号。  
+- ENOENT ：文件或设备不存在。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EINVAL ：msg_ptr是无效的指针，或者msg_prio的取值不合法，或者在任务被阻塞的情况下abs_timeout指定的纳秒值小于0或者大于等于1000000000  
-EBADF ：mqdes指定的消息队列描述符不合法，或者mqdes指定的消息队列是只读的。  
-ETIMEDOUT ：消息队列打开时没有设置O_NONNBLOCK标志，并且在消息添加进消息队列之前到达了超时时间。  
-EMSGSIZE ：msg_len指定的消息长度超过了消息队列的最大消息长度属性。  
-EAGAIN ：消息队列设置了O_NONBLOCK标志，并且调用该接口时消息队列已满。  
-EINTR：调用任务被信号中断。  
+- EINVAL ：msg_ptr是无效的指针，或者msg_prio的取值不合法，或者在任务被阻塞的情况下abs_timeout指定的纳秒值小于0或者大于等于1000000000  
+- EBADF ：mqdes指定的消息队列描述符不合法，或者mqdes指定的消息队列是只读的。  
+- ETIMEDOUT ：消息队列打开时没有设置O_NONNBLOCK标志，并且在消息添加进消息队列之前到达了超时时间。  
+- EMSGSIZE ：msg_len指定的消息长度超过了消息队列的最大消息长度属性。  
+- EAGAIN ：消息队列设置了O_NONBLOCK标志，并且调用该接口时消息队列已满。  
+- EINTR：调用任务被信号中断。  
   
 ### 样例：  
   
@@ -17986,11 +17986,11 @@ ssize_t	mq_timedreceive
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来限时从指定消息队列接受一条消息（绝对时间）。  
   
-### 参 数：
+### 参数：
   
 - mqd ：消息队列句柄。  
   
@@ -18008,22 +18008,22 @@ ssize_t	mq_timedreceive
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-EBADF ：句柄无效。  
-EMSGSIZE ：缓冲区长度太小。  
-ETIMEDOUT ：等待超时。  
-EINTR ：任务收到一个非阻塞或忽略的信号。  
-ENOENT ：文件或设备不存在。  
+- EINVAL ：参数无效。  
+- EBADF ：句柄无效。  
+- EMSGSIZE ：缓冲区长度太小。  
+- ETIMEDOUT ：等待超时。  
+- EINTR ：任务收到一个非阻塞或忽略的信号。  
+- ENOENT ：文件或设备不存在。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EINVAL ： msg_ptr是无效的指针，或者任务被阻塞的情况下，参数abs_timeout指定的纳秒值小于0或者大于等于1000000000  
-EBADF ：mqdes指定的消息队列描述符不合法，或者mqdes指定的消息队列是只写的。  
-EMSGSIZE ：msg_len的值小于消息队列的消息大小属性。  
-EAGAIN ：消息队列描述符mqdes中设置了O_NONBLOCK标志位，且接口调用时消息队列是空的。  
-EINTR ：接口调用被信号中断。  
-ETIMEDOUT：消息队列打开时没有设置标志O_NONBLOCK，但在指定时间到达前没有消息可接受。  
+- EINVAL ： msg_ptr是无效的指针，或者任务被阻塞的情况下，参数abs_timeout指定的纳秒值小于0或者大于等于1000000000  
+- EBADF ：mqdes指定的消息队列描述符不合法，或者mqdes指定的消息队列是只写的。  
+- EMSGSIZE ：msg_len的值小于消息队列的消息大小属性。  
+- EAGAIN ：消息队列描述符mqdes中设置了O_NONBLOCK标志位，且接口调用时消息队列是空的。  
+- EINTR ：接口调用被信号中断。  
+- ETIMEDOUT：消息队列打开时没有设置标志O_NONBLOCK，但在指定时间到达前没有消息可接受。  
   
 ### 样例：  
   
@@ -18084,11 +18084,11 @@ int              mq_reltimedsend_np
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来限时向指定消息队列发送一条消息（相对时间）。  
   
-### 参 数： 
+### 参数： 
   
 - mqd：消息队列句柄。  
   
@@ -18106,12 +18106,12 @@ int              mq_reltimedsend_np
   
 ### 错误码： 
   
-EINVAL ：参数无效。  
-EBADF ：句柄无效。  
-EMSGSIZE ：消息长度超出限制。  
-ETIMEDOUT ：等待超时。  
-EINTR ：任务收到一个非阻塞或忽略的信号。  
-ENOENT ：文件或设备不存在。  
+- EINVAL ：参数无效。  
+- EBADF ：句柄无效。  
+- EMSGSIZE ：消息长度超出限制。  
+- ETIMEDOUT ：等待超时。  
+- EINTR ：任务收到一个非阻塞或忽略的信号。  
+- ENOENT ：文件或设备不存在。  
   
 ### 样例：  
   
@@ -18166,11 +18166,11 @@ ssize_t          mq_reltimedreceive_np
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来限时从指定消息队列接受一条消息（相对时间）。  
   
-### 参 数： 
+### 参数： 
   
 - mqd：消息队列句柄。  
   
@@ -18188,14 +18188,14 @@ ssize_t          mq_reltimedreceive_np
   
 ### 错误码： 
   
-EINVAL：参数无效。  
-EBADF：句柄无效。  
-EMSGSIZE：缓冲区长度太小。  
-ETIMEDOUT：等待超时。  
-EINTR：任务收到一个非阻塞或忽略的信号。  
-ENOENT：文件或设备不存在。  
+- EINVAL：参数无效。  
+- EBADF：句柄无效。  
+- EMSGSIZE：缓冲区长度太小。  
+- ETIMEDOUT：等待超时。  
+- EINTR：任务收到一个非阻塞或忽略的信号。  
+- ENOENT：文件或设备不存在。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -18252,11 +18252,11 @@ int              mq_getinfo
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来获取指定消息队列的信息。  
   
-### 参 数： 
+### 参数： 
   
 - mqd：消息队列句柄。  
   
@@ -18268,17 +18268,17 @@ int              mq_getinfo
   
 ### 错误码： 
   
-EINVAL：参数无效。  
-EBADF：句柄无效。  
+- EINVAL：参数无效。  
+- EBADF：句柄无效。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EINVAL：参数mq_info是无效的指针。  
-EBADF：mqdes指定的消息队列描述符不合法。  
-EMNOTINITED：消息队列模块尚未初始化。  
+- EINVAL：参数mq_info是无效的指针。  
+- EBADF：mqdes指定的消息队列描述符不合法。  
+- EMNOTINITED：消息队列模块尚未初始化。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -18292,7 +18292,7 @@ svoid* Thread 1(void  *arg)
 	int ret=0;  
 	mq_info_t info;  
   
-	……  
+	// ……  
   
 	ret = mq_getinfo(Gmqd, &info);           /*  获取消息队列的信息  */  
 	if(ret != 0)  
@@ -18306,7 +18306,7 @@ svoid* Thread 1(void  *arg)
     printf("mq curmsg  %lu\n", info.attr.mq_curmsgs);  
 	printf("mq mode    0%o\n", info.mode);  
   
-	……  
+	// ……  
                                                 
 	return NULL;  
   
@@ -18327,11 +18327,11 @@ int              mq_show
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用来显示指定消息队列的信息。  
   
-### 参 数： 
+### 参数： 
   
 - mqd：消息队列句柄。  
   
@@ -18343,15 +18343,15 @@ int              mq_show
   
 ### 错误码： 
   
-EINVAL：参数无效。  
-EBADF：句柄无效。  
+- EINVAL：参数无效。  
+- EBADF：句柄无效。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EINVAL：level取值不合法。  
-EBADF：mqdes指定的消息队列描述符不合法。  
-EMNOTINITED：消息队列模块尚未初始化。  
+- EINVAL：level取值不合法。  
+- EBADF：mqdes指定的消息队列描述符不合法。  
+- EMNOTINITED：消息队列模块尚未初始化。  
   
 ### 样例：  
   
@@ -18367,7 +18367,7 @@ void* Thread 1(void  *arg)
 	int ret=0;  
 	mq_info_t info;  
   
-	……  
+	// ……  
   
 	ret = mq_getinfo(Gmqd, &info);           /*  获取消息队列的信息  */  
 	if(ret != 0)  
@@ -18378,7 +18378,7 @@ void* Thread 1(void  *arg)
   
 	mq_show(Gmqd, 1);                   /*  显示消息队列的信息  */  
   
-	……  
+	// ……  
                                                 
 	return NULL;  
 }  
@@ -18399,7 +18399,7 @@ int              mq_notify
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来在消息队列可读时，注册一个通知信号。  
   
@@ -18415,8 +18415,8 @@ int              mq_notify
   
 ### 错误码： 
   
-EINVAL：参数无效。  
-EBADF：句柄无效。  
+- EINVAL：参数无效。  
+- EBADF：句柄无效。  
   
 ### 样例：  
   
@@ -18432,7 +18432,7 @@ int  main (int  argc, char  *argv[])
 	int ret;  
 	struct sigevent notify;  
   
-	……  
+	// ……  
   
 	notify.sigev_signo = SIGEV_THREAD_ID | SIGEV_SIGNAL;  
 	notify.sigev_signo = SIGUSR1;  
@@ -18444,7 +18444,7 @@ int  main (int  argc, char  *argv[])
 		return -1;  
 	}  
   
-	……   
+	// ……   
   
     return (0);  
 }  
@@ -18464,7 +18464,7 @@ int              mq_open_method
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口设置当前进程使用的消息队列的类型。  
   
@@ -18498,11 +18498,11 @@ static mqd_t Gmqd;
 static pthread_t  Gtid1, Gtid2;  
 int  main (int  argc, char  *argv[])  
 {  
-	……  
+	// ……  
   
 	mq_open_method(MQ_OPEN_METHOD_POSIX, NULL);  
   
-	……  
+	// ……  
   
 	return NULL;  
 }  
@@ -18525,11 +18525,11 @@ int	pthread_barrierattr_init
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来初始化一个线程屏障属性块。  
   
-### 参 数：
+### 参数：
   
 - pbarrierattr：线程屏障属性块。  
   
@@ -18541,11 +18541,11 @@ int	pthread_barrierattr_init
   
 无。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -18559,14 +18559,14 @@ int main (int argc, char **argv)
 {  
     int ret;  
     pthread_barrierattr_t barrierattr;  
-    ……  
+    // ……  
     ret = pthread_barrierattr_init (&barrierattr);/*初始化线程屏障属性快  */  
     if (ret != 0)  
     {  
         printf ("func pthread_barrierattr_init error\n");  
         return -1;  
     }  
-	……  
+	// ……  
 	return (0);  
 }  
 ```  
@@ -18584,11 +18584,11 @@ int	pthread_barrierattr_destroy
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用来销毁一个线程屏障属性块。  
   
-### 参 数：
+### 参数：
   
 - pbarrierattr：线程屏障属性块。  
   
@@ -18600,11 +18600,11 @@ int	pthread_barrierattr_destroy
   
 无。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -18619,14 +18619,14 @@ int main (int argc, char **argv)
     int ret;  
     pthread_barrierattr_t barrierattr;  
     pthread_t tid1, tid2;  
-    ……  
+    // ……  
 	ret = pthread_barrierattr_destroy (&barrierattr);/*销毁线程屏障属性快  */  
     if (ret != 0)  
     {  
         printf ("func barrierattr_destroy error\n");  
         return -1;  
     }  
-    ……  
+    // ……  
     return (0);  
 }  
 ```  
@@ -18646,11 +18646,11 @@ int	pthread_barrierattr_setpshared
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来设置一个线程屏障属性块的共享状态。  
   
-### 参 数：
+### 参数：
   
 - pbarrierattr ：线程屏障属性块。  
   
@@ -18669,11 +18669,11 @@ int	pthread_barrierattr_setpshared
   
 无。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -18688,7 +18688,7 @@ int main (int argc, char **argv)
     int ret;  
     pthread_barrierattr_t barrierattr;  
     pthread_t tid1, tid2;  
-    ……  
+    // ……  
     /*  
     *设置线程屏障属性快的共享状态  
     */  
@@ -18699,7 +18699,7 @@ int main (int argc, char **argv)
         return -1;  
     }  
   
-    ……  
+    // ……  
   
     return (0);  
 }  
@@ -18719,11 +18719,11 @@ int	pthread_barrierattr_getpshared
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用来获取指定线程屏障属性块的共享状态。  
   
-### 参 数：
+### 参数：
   
 - pbarrierattr ：线程屏障属性块。  
   
@@ -18737,11 +18737,11 @@ int	pthread_barrierattr_getpshared
   
 无。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -18756,7 +18756,7 @@ int main (int argc, char **argv)
     int ret;  
     pthread_barrierattr_t barrierattr;  
     pthread_t tid1, tid2;  
-	……  
+	// ……  
   
 	/*  
 	*获取线程屏障属性快的共享状态  
@@ -18768,7 +18768,7 @@ int main (int argc, char **argv)
         return -1;  
     }  
     printf ("getpshared :%d\n", ptr);  
-  ……  
+  // ……  
   
     return (0);  
 }  
@@ -18789,11 +18789,11 @@ int	pthread_barrier_init
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来创建并初始化线程屏障。  
   
-### 参 数：
+### 参数：
   
 - pbarrier：保存线程屏障句柄的指针。  
   
@@ -18807,14 +18807,14 @@ int	pthread_barrier_init
   
 ### 错误码：
   
-EINVAL：参数无效。  
-ENOSPC：磁盘空间不足。  
+- EINVAL：参数无效。  
+- ENOSPC：磁盘空间不足。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -18829,7 +18829,7 @@ int main (int argc, char **argv)
     int ret;  
     pthread_barrierattr_t barrierattr;  
     pthread_t tid1, tid2;  
-    ……  
+    // ……  
     /*  
     *初始化线程屏障  
     */  
@@ -18840,7 +18840,7 @@ int main (int argc, char **argv)
         return -1;  
     }  
   
-    ……  
+    // ……  
   
     return (0);  
 }  
@@ -18860,11 +18860,11 @@ int	pthread_barrier_destroy
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来删除或销毁线程屏障。  
   
-### 参 数：
+### 参数：
   
 - pbarrier：线程屏障句柄的指针。  
   
@@ -18874,13 +18874,13 @@ int	pthread_barrier_destroy
   
 ### 错误码：
   
-EINVAL：参数无效。  
+- EINVAL：参数无效。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -18895,7 +18895,7 @@ int main (int argc, char **argv)
     int ret;  
     pthread_barrierattr_t barrierattr;  
     pthread_t tid1, tid2;  
-    ……  
+    // ……  
   
     ret = pthread_barrier_destroy (&G_barrier); /*销毁线程屏障*/  
     if (ret != 0)  
@@ -18922,11 +18922,11 @@ int	pthread_barrier_wait
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来等待线程屏障。调用此接口第一个返回的线程返回PTHREAD_BARRIER_SERIAL_THREAD，其他的线程返回0。  
   
-### 参 数：
+### 参数：
   
 - pbarrier：线程屏障句柄的指针。  
   
@@ -18943,13 +18943,13 @@ int	pthread_barrier_wait
   
 ### 错误码：
   
-EINVAL：参数无效。  
+- EINVAL：参数无效。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -18964,7 +18964,7 @@ int main (int argc, char **argv)
     int ret;  
     pthread_barrierattr_t barrierattr;  
     pthread_t tid1, tid2;  
-    ……  
+    // ……  
   
     ret = pthread_barrier_wait (&G_barrier);   /*等待线程屏障*/  
     if ( (ret != 0) && (ret != 1) )  
@@ -18973,7 +18973,7 @@ int main (int argc, char **argv)
         return -1;  
     }  
   
-    ……  
+    // ……  
   
     return (0);  
 }  
@@ -18997,11 +18997,11 @@ INT		mkfifo
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来创建一个新的命名管道。  
   
-### 参 数：
+### 参数：
   
 - pcFifoName：指定了命名管道的设备文件路径；  
   
@@ -19036,20 +19036,21 @@ INT		mkfifo
   
 ### 错误码：
   
-EFAULT ：错误地址；  
-ENOENT ：文件不存在；  
-ELOOP ：符号链接过多；  
-EXDEV ：交叉连接；  
+- EFAULT ：错误地址；  
+- ENOENT ：文件不存在；  
+- ELOOP ：符号链接过多；  
+- EXDEV ：交叉连接；  
   
-### 备 注：
+### 备注：
   
 创建命名管道类似于创建文件。  
 利用命名管道进行通信时，先创建管道，打开管道，写入数据；  
 再打开管道，读出数据，关闭管道，删除管道。  
   
-### 样 例：
+### 样例：
   
 ```c  
+无
 ```  
   
   
@@ -19066,11 +19067,11 @@ INT pipe
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于创建一个匿名管道，用在子父进程之间进行通信。  
   
-### 参 数：
+### 参数：
   
 - iFd[2]：用于记录匿名管道的两个文件描述符：  
   
@@ -19085,10 +19086,10 @@ INT pipe
   
 ### 错误码：
   
-ENVAl：参数无效；  
-ERROR_ID_FILE_EXIST：文件已存在；  
+- ENVAl：参数无效；  
+- ERROR_ID_FILE_EXIST：文件已存在；  
   
-### 备 注：
+### 备注：
   
 1.读管道：  
   
@@ -19112,7 +19113,7 @@ ERROR_ID_FILE_EXIST：文件已存在；
   
 （2）管道未满，write将数据写入，并返回实际写入的字节数。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -19125,7 +19126,7 @@ int main (int argc, char *argv[])
 {  
       
     int                 ret, i;  
-	……  
+	// ……  
     char *cmd[] = {"HYSylixOS-pipe", (char *)0};  
   
     ret = pipe (fd);              /*  建立匿名管道               */  
@@ -19135,7 +19136,7 @@ int main (int argc, char *argv[])
         return (-1);  
     }  
   
-    ……  
+    // ……  
   
     return  (0);  
 }  
@@ -19156,11 +19157,11 @@ INT		pipe2
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于创建一个匿名管道，用在子父进程之间进行通信。  
   
-### 参 数：
+### 参数：
   
 - iFd：用于记录匿名管道的两个文件描述符：iFd[0]为读端文件描述符，iFd[1]为写端文件描述符；  
   
@@ -19177,10 +19178,10 @@ INT		pipe2
   
 ### 错误码：
   
-ENVAl：参数无效；  
-ERROR_ID_FILE_EXIST：文件已存在；  
+- ENVAl：参数无效；  
+- ERROR_ID_FILE_EXIST：文件已存在；  
   
-### 备 注：
+### 备注：
   
 1.读管道：  
   
@@ -19204,7 +19205,7 @@ ERROR_ID_FILE_EXIST：文件已存在；
   
 （2）管道未满，write将数据写入，并返回实际写入的字节数。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -19216,14 +19217,14 @@ ERROR_ID_FILE_EXIST：文件已存在；
 int main (int argc, char *argv[])  
 {  
 	int  ret, i;  
-	……  
+	// ……  
     ret = pipe2 (fd, O_NONBLOCK);                                                       
 	if (ret < 0)   
 	{  
         printf ("func pipe error.\n");  
         return (-1);  
     }  
-	……  
+	// ……  
     return  (0);  
 }  
 ```  
@@ -19246,7 +19247,7 @@ INT sigqueue
 ```  
   
   
-### 描 述：
+### 描述：
   
 sigqueue()主要应用于发送实时信号，支持信号带参数(信号类型，指向信号的指针)。  
 sigqueue()将输入参数iSigNo指定的信号以排队方式发送到参数ulId所指定的任务，并且参数sigvalue作为信号的参数值。该函数只会对实时信号（信号编号范围在SIGRTMIN-SIGRTMAX）进行排队，其它信号有可能会丢失。  
@@ -19306,16 +19307,16 @@ sigqueue()将输入参数iSigNo指定的信号以排队方式发送到参数ulId
   
 ### 错误码：
   
-EINVAL ：参数无效；  
-ESRCH ：任务id对应的任务不存在；  
-ERROR_THREAD_OTHER_DELETE ：已经有其他线程在等待删除。  
+- EINVAL ：参数无效；  
+- ESRCH ：任务id对应的任务不存在；  
+- ERROR_THREAD_OTHER_DELETE ：已经有其他线程在等待删除。  
   
 ### 备注：  
   
 GJB 7714-2012的错误码为：  
-EAGAIN ：系统资源不足。  
-EINVAL ：参数无效。  
-ESRCH ：任务id对应的任务不存在。  
+- EAGAIN ：系统资源不足。  
+- EINVAL ：参数无效。  
+- ESRCH ：任务id对应的任务不存在。  
   
 ### 样例：  
   
@@ -19337,7 +19338,7 @@ void *Thread1 (void *arg)
         printf ("func sigqueue error \n");  
         return (PVOID)-1;  
     }  
-	……  
+	// ……  
 }  
 ```  
   
@@ -19355,7 +19356,7 @@ INT sigsuspend
 ```  
   
   
-### 描 述：
+### 描述：
   
 sigsuspend()使用sigsetMask指定的一组信号取代调用任务当前的信号掩码，然后将任务挂起，直到任务接收到一个信号来执行信号处理函数或终止任务。  
 在取代当前信号掩码时，如存在由之前信号掩码导致的阻塞信号，则该任务不会挂起，而是对该阻塞信号调用相应的处理程序，并恢复调用函数之前的信号掩码，返回-1。若无阻塞信号，则恢复信号掩码，将该任务挂起，直到接收到一个信号来执行信号处理函数或终止任务。  
@@ -19371,17 +19372,18 @@ sigsuspend()使用sigsetMask指定的一组信号取代调用任务当前的信�
   
 ### 错误码：
   
-EINTR ：被中断系统调用。  
-EINVAL ：参数无效。  
+- EINTR ：被中断系统调用。  
+- EINVAL ：参数无效。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EINTR ：接口调用期间有信号运行过。  
+- EINTR ：接口调用期间有信号运行过。  
   
 ### 样例：  
   
 ```c  
+无
 ```  
   
   
@@ -19399,7 +19401,7 @@ INT sigwait
 ```  
   
   
-### 描 述：
+### 描述：
   
 sigwait()会从sigset中选取一个未决的信号，自动的把它从系统的未决信号集中清除掉，然后将其信号编号返回到参数piSig中,信号将不会被执行。  
 如果在调用该接口前，同一个信号有多个实例挂在信号队列中，第一个未决的信号将从sigwait()返回，而其余则继续保持在队列中。  
@@ -19417,13 +19419,13 @@ sigwait()会从sigset中选取一个未决的信号，自动的把它从系统�
   
 ### 错误码：
   
-EINTR ：被中断系统调用。  
-EINVAL ：参数无效。  
+- EINTR ：被中断系统调用。  
+- EINVAL ：参数无效。  
   
 ### 备注：  
   
 GJB 7714-2012的错误码为：  
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
 ### 样例：  
   
@@ -19438,7 +19440,7 @@ void *Thread2 (void *arg)
     int      ret;  
     sigset_t set;  
     int      ptr;  
-    ……  
+    // ……  
     ret = sigwait (&set, &ptr);       /*  等待信号                   */  
     if (ret != 0)  
     {  
@@ -19467,7 +19469,7 @@ INT sigtimedwait
 ```  
   
   
-### 描 述：
+### 描述：
   
 sigtimedwait()用来在指定时间限制内等待sigset中的处于未决状态的信号，并返回未决信号的信息，等待的时间限制由pt指定。  
 如果信号集sigset中的有信号处于未决状态，则获取未决信号的信息并将其存放在psiginfo中；如果没有未决信号，则任务挂起，直到sigset中至少有一个信号处于未决状态，或者pt指定的时间超时。  
@@ -19486,18 +19488,18 @@ sigtimedwait()用来在指定时间限制内等待sigset中的处于未决状态
   
 ### 错误码：
   
-EINTR ：被中断系统调用。  
-EAGAIN ：系统资源不足。  
-EINVAL ：参数无效。  
+- EINTR ：被中断系统调用。  
+- EAGAIN ：系统资源不足。  
+- EINVAL ：参数无效。  
   
 ### 备注：  
   
 GJB 7714-2012的错误码为：  
-EINVAL ：参数无效。  
-EAGAIN ：在指定的时间段内，信号集没有产生。  
-EINTR ：被中断系统调用。  
+- EINVAL ：参数无效。  
+- EAGAIN ：在指定的时间段内，信号集没有产生。  
+- EINTR ：被中断系统调用。  
   
-在调用此函数时，需要先行设置超时时间。  
+- 在调用此函数时，需要先行设置超时时间。  
   
 ### 样例：  
   
@@ -19515,7 +19517,7 @@ void *Thread2 (void *arg)
     struct siginfo  info;  
     timeout.tv_nsec = 3;  
 timeout.tv_sec  = 3;  
-……  
+// ……  
     ret = sigtimedwait (&set, &info, &timeout);     /*  限时等待信号的到来         */  
     if (ret != -1)  
     {  
@@ -19524,7 +19526,7 @@ timeout.tv_sec  = 3;
         printf ("info no :%d\n", info.si_signo);  
         return (PVOID)-1;  
 }  
-……  
+// ……  
 }  
 ```  
   
@@ -19542,7 +19544,7 @@ INT sigwaitinfo
 ```  
   
   
-### 描 述：
+### 描述：
   
 sigwaitinfo()该接口会从psigset指定的信号集中选取未决的信号。如果调用接口时sigset_ptr中没有未决的信号，会把任务挂起，直到sigset_ptr中有信号转为未决信号或任务被一个捕捉到的非阻塞的信号中断，信号将不再被执行。  
   
@@ -19558,13 +19560,13 @@ sigwaitinfo()该接口会从psigset指定的信号集中选取未决的信号。
   
 ### 错误码：
   
-EINTR ：被中断系统调用。  
-EINVAL ：参数无效。  
+- EINTR ：被中断系统调用。  
+- EINVAL ：参数无效。  
   
 ### 备注：  
   
 GJB 7714-2012的错误码为：  
-EINTR ：任务收到一个非阻塞或忽略的信号。  
+- EINTR ：任务收到一个非阻塞或忽略的信号。  
   
 ### 样例：  
   
@@ -19581,7 +19583,7 @@ void *Thread2 (void *arg)
     sigset_t       set;  
     struct siginfo info;  
 ret = sigwaitinfo (&set, &info);     /*  等待信号到来               */  
-……  
+// ……  
     if (ret == -1)  
     {  
         perror ("func sigwaitinfo error");  
@@ -19592,7 +19594,7 @@ ret = sigwaitinfo (&set, &info);     /*  等待信号到来               */
     printf ("info code :%d\n", info.si_code);  
     printf ("info no :%d\n", info.si_signo);  
   
-    ……  
+    // ……  
 }  
 ```  
   
@@ -19610,7 +19612,7 @@ INT sighold
 ```  
   
   
-### 描 述：
+### 描述：
   
 sigqueue()将信号iSigNo加入到当前执行的任务的信号掩码中。  
   
@@ -19634,7 +19636,7 @@ sigqueue()将信号iSigNo加入到当前执行的任务的信号掩码中。
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
 ### 备注：  
   
@@ -19657,7 +19659,7 @@ void *Thread (void *arg)
 		printf ("dunc sighold error\n");  
 		return  (PVOID)-1;  
 	}  
-	……  
+	// ……  
 }  
 ```  
   
@@ -19675,7 +19677,7 @@ INT sigignore
 ```  
   
   
-### 描 述：
+### 描述：
   
 sigignore()将当前运行的任务中指定信号的处理函数设置为SIG_IGN。  
   
@@ -19694,7 +19696,7 @@ sigignore()将当前运行的任务中指定信号的处理函数设置为SIG_IG
   
 ### 错误码：
   
-EINVAL：参数无效。  
+- EINVAL：参数无效。  
   
 ### 备注：  
   
@@ -19712,7 +19714,7 @@ void *Thread1 (void *arg)
     int     ret;  
     void *old;  
   
-    ……  
+    // ……  
   
     ret = sigignore (SIGHUP);             /*  忽略信号                   */  
     if (ret != 0)  
@@ -19721,7 +19723,7 @@ void *Thread1 (void *arg)
         return  (PVOID)-1;  
 }  
   
-    ……  
+    // ……  
 }  
 ```  
   
@@ -19739,7 +19741,7 @@ INT sigpause
 ```  
   
   
-### 描 述：
+### 描述：
   
 sigpause()将信号iSigMask从调用任务的信号掩码中删除，并将调用任务挂起，直至调用任务接收到一个信号。sigpause()返回前，恢复调用任务信号掩码的初始状态。  
   
@@ -19753,20 +19755,21 @@ sigpause()将信号iSigMask从调用任务的信号掩码中删除，并将调�
   
 ### 错误码：
   
-EINTER ：被中断系统调用。  
-EINVAL ：参数无效。  
-ERROR_THREAD_OTHER_DELETE ：已经有其他线程在等待删除。  
+- EINTER ：被中断系统调用。  
+- EINVAL ：参数无效。  
+- ERROR_THREAD_OTHER_DELETE ：已经有其他线程在等待删除。  
   
 ### 备注：  
   
 SylixOS中iSigMask为信号掩码。  
 GJB 7714-2012中iSigMask参数为某个信号编号。  
-GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
+- GJB 7714-2012错误码为：  
+- EINVAL ：参数无效。  
   
 ### 样例：  
   
 ```c  
+无
 ```  
   
 ## sigrelse() ：将信号从调用任务的信号掩码中删除
@@ -19782,7 +19785,7 @@ INT sigrelse
 ```  
   
   
-### 描 述：
+### 描述：
   
 sigrelse()将信号iSigNo从调用任务的信号掩码中删除。  
   
@@ -19796,7 +19799,7 @@ sigrelse()将信号iSigNo从调用任务的信号掩码中删除。
   
 ### 错误码：
   
-EINVAL：参数无效。  
+- EINVAL：参数无效。  
   
 ### 备注：  
   
@@ -19815,7 +19818,7 @@ void *Thread (void *arg)
 	int mask;  
 	void *old;  
   
-	……  
+	// ……  
     ret = sigrelse (SIGINT);         /*  将信号从掩码中删除         */  
 	if (ret != 0)  
 	{  
@@ -19823,7 +19826,7 @@ void *Thread (void *arg)
 		return  (PVOID)-1;  
 	}  
   
-	……  
+	// ……  
 }  
 ```  
   
@@ -19842,7 +19845,7 @@ INT sigaddset
 ```  
   
   
-### 描 述：
+### 描述：
   
 将 iSigNo 指定的信号添加到 psigset 指定的信号集中。  
   
@@ -19858,7 +19861,7 @@ INT sigaddset
   
 ### 错误码：
   
-EINVAL：参数无效。  
+- EINVAL：参数无效。  
   
 ### 备注：  
   
@@ -19876,7 +19879,7 @@ void *Thread (void *arg)
 	int ret;  
 	sigset_t set, oset, pend;  
   
-	……  
+	// ……  
   
     ret = sigaddset (&set, SIGINT);        /*  向信号集中添加信号         */  
 	if (ret != 0)  
@@ -19884,7 +19887,7 @@ void *Thread (void *arg)
 		printf ("func sigaddset error\n");  
 		return (PVOID)-1;  
 	}  
-	……  
+	// ……  
 }  
 ```  
   
@@ -19903,7 +19906,7 @@ INT sigdelset
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口将 iSigNo 指定的信号从 psigset 指定的信号集中删除。  
   
@@ -19919,7 +19922,7 @@ INT sigdelset
   
 ### 错误码：
   
-EINVAL：参数无效。  
+- EINVAL：参数无效。  
   
 ### 备注：  
   
@@ -19938,7 +19941,7 @@ void *Thread (void *arg)
     int      ret;  
     sigset_t set;  
   
-    ……  
+    // ……  
   
     ret = sigdelset (&set, SIGHUP);              /*  将信号从信号集中删除       */  
     if (ret != 0)  
@@ -19947,7 +19950,7 @@ void *Thread (void *arg)
         return  (PVOID)-1;  
     }  
   
-    ……  
+    // ……  
 }  
 ```  
   
@@ -19965,7 +19968,7 @@ INT sigemptyset
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口将对指定的信号集进行初始化，并将信号集置空。  
   
@@ -20005,9 +20008,9 @@ void *Thread (void *arg)
 		return (PVOID)-1;  
 	}  
   
-    ……  
+    // ……  
 }  
-	……  
+	// ……  
 ```  
   
   
@@ -20024,7 +20027,7 @@ INT sigfillset
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口将psigset 指向的信号集初始化，并将信号集置满。  
   
@@ -20063,9 +20066,9 @@ void *Thread (void *arg)
         return  (PVOID)-1;  
     }  
   
-    ……  
+    // ……  
 }  
-	……  
+	// ……  
 ```  
   
   
@@ -20083,7 +20086,7 @@ INT sigismember
 ```  
   
   
-### 描 述：
+### 描述：
   
 sigismember()用于检测信号iSigNo是否为psigset指向的信号集中的成员。  
   
@@ -20099,7 +20102,7 @@ sigismember()用于检测信号iSigNo是否为psigset指向的信号集中的成
   
 ### 错误码：
   
-EINVAL：参数无效。  
+- EINVAL：参数无效。  
   
 ### 备注：  
   
@@ -20117,7 +20120,7 @@ void *Thread (void *arg)
     int      ret;  
     sigset_t set;  
   
-    ……  
+    // ……  
   
     ret = sigismember (&set, SIGHUP);       /*  检测信号是否在信号集中     */  
     if (ret == 1)  
@@ -20133,7 +20136,7 @@ void *Thread (void *arg)
         printf ("func sigismember error %d\n", ret);  
     }  
   
-    ……  
+    // ……  
 }  
 ```  
   
@@ -20152,7 +20155,7 @@ INT sigaction
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口允许调用任务检测和或指定信号的相关行为。如果该接口调用失败，则信号的相关行为不会改变。  
   
@@ -20170,7 +20173,7 @@ INT sigaction
   
 ### 错误码：
   
-EINVAL：参数无效。  
+- EINVAL：参数无效。  
   
 ### 备注：  
   
@@ -20202,7 +20205,7 @@ void *Thread (void *arg)
     act.sa_flags = 0;  
     act._u._sa_handler = handle;  
   
-    ……  
+    // ……  
   
     ret = sigaction (SIGHUP, &act, NULL);  
     if (ret != 0)  
@@ -20211,9 +20214,9 @@ void *Thread (void *arg)
         return  (PVOID)-1;  
     }  
   
-    ……  
+    // ……  
 }  
-	……  
+	// ……  
 ```  
   
   
@@ -20231,7 +20234,7 @@ PSIGNAL_HANDLE signal
 ```  
   
   
-### 描 述：
+### 描述：
   
 signal()会选择以下三种方法中的一种来处理接收到的信号iSigNo：  
 pfuncHandler 值为 SIG_IGN 信号会被忽略；  
@@ -20256,7 +20259,7 @@ pfuncHandler 值为SIG_DFL 对信号做默认的方式处理；
   
 ### 错误码：
   
-EINVAL：参数无效。  
+- EINVAL：参数无效。  
   
 ### 备注：  
   
@@ -20281,9 +20284,9 @@ void *Thread1 (void *arg)
         return  (PVOID)-1;  
     }  
   
-    ……  
+    // ……  
 }  
-	……  
+	// ……  
   
 ```  
   
@@ -20302,7 +20305,7 @@ INT kill
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于向任务发送信号。要发送的信号有 iSigNo 指定，如果 iSigNo 为0（空信号），会执行错误检验，但不发送信号，可以用来检验 ulId 的有效性。  
 如果认为 ulId 没有阻塞 iSigNo，那么在接口返回之前，信号 iSigNo 会被传递给任务ulID。如果失败，则信号不发送。  
@@ -20359,16 +20362,16 @@ INT kill
   
 ### 错误码：
   
-ESRCH ：任务不存在。  
-EINVAL ：参数无效。  
-ERROR_THREAD_OTHER_DELETE ：已经有其他线程在等待删除。  
+- ESRCH ：任务不存在。  
+- EINVAL ：参数无效。  
+- ERROR_THREAD_OTHER_DELETE ：已经有其他线程在等待删除。  
   
 ### 备注：  
   
 GJB 7714-2012 错误码为：  
-EINVAL ：参数无效。  
-ESRCH ：线程不存在。  
-EAGAIN ：系统资源不足。  
+- EINVAL ：参数无效。  
+- ESRCH ：线程不存在。  
+- EAGAIN ：系统资源不足。  
   
 ### 样例：  
   
@@ -20383,7 +20386,7 @@ void *Thread2 (void *arg)
     sigset_t set;  
     int ret;  
   
-    ……  
+    // ……  
   
     ret = kill (G_tid1, SIGHUP);              /*  向指定线程发送信号         */  
     if (ret != 0)  
@@ -20392,7 +20395,7 @@ void *Thread2 (void *arg)
         return  (PVOID)-1;  
     }  
   
-    ……  
+    // ……  
 }  
 ```  
   
@@ -20409,7 +20412,7 @@ INT raise
 ```  
   
   
-### 描 述：
+### 描述：
   
 raise()该接口把信号发送到当前任务。如果一个信号处理函数被调用，那么raise()将在信号处理函数返回后再返回。  
   
@@ -20423,13 +20426,13 @@ raise()该接口把信号发送到当前任务。如果一个信号处理函数�
   
 ### 错误码：
   
-ESRCH ：任务不存在。  
-EINVAL ：参数无效。  
+- ESRCH ：任务不存在。  
+- EINVAL ：参数无效。  
   
 ### 备注：  
   
 GJB 7714-2012 错误码为：  
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
 ### 样例：  
   
@@ -20441,7 +20444,7 @@ void *Thread (void *arg)
 {  
   
 	int 	ret;  
-	……  
+	// ……  
   
     ret = raise (SIGINT);            /*  向当前任务发送信号         */  
 	if (ret != 0)  
@@ -20450,7 +20453,7 @@ void *Thread (void *arg)
 		return  (PVOID)-1;  
 	}  
   
-	……  
+	// ……  
 }  
 ```  
   
@@ -20470,7 +20473,7 @@ INT sigprocmask
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来检查或改变当前任务的信号掩码，在该接口调用时，如果有未阻塞的信号处于未决状态，那么该接口返回前会处理被未决的信号。  
   
@@ -20486,7 +20489,7 @@ INT sigprocmask
 |SIGSEGV|11|无效内存引用|  
 |SIGSTOP|17|停止进程执行|  
   
-### 参 数：
+### 参数：
   
 - iHow ：其取值决定了改接口对信号集的处理方式：  
   
@@ -20506,7 +20509,7 @@ INT sigprocmask
   
 ### 错误码：
   
-EINVAL：参数无效。  
+- EINVAL：参数无效。  
   
 ### 备注：  
   
@@ -20524,7 +20527,7 @@ void *Thread1 (void *arg)
 	int      ret;  
 	sigset_t set;  
 	int      mask;  
-	……  
+	// ……  
   
     ret = sigprocmask (SIG_BLOCK, &set,NULL);   /*  设置新的信号掩码集         */  
 	if (ret != 0)  
@@ -20532,7 +20535,7 @@ void *Thread1 (void *arg)
 		printf ("func sigprocmask error\n");  
 		return  (PVOID)-1;  
 	}  
-    ……  
+    // ……  
 }  
 ```  
   
@@ -20550,7 +20553,7 @@ sighandler_t    bsd_signal
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口与signal()接口功能相同。  
 pfuncHandler 值为 SIG_IGN 信号会被忽略；pfuncHandler 值为SIG_DFL对信号做默认的方式处理；或者为一个函数指针，pfuncHandler指向的函数被调用。  
@@ -20573,7 +20576,7 @@ pfuncHandler 值为 SIG_IGN 信号会被忽略；pfuncHandler 值为SIG_DFL对�
   
 ### 错误码：
   
-EINVAL：参数无效。  
+- EINVAL：参数无效。  
   
 ### 备注：  
   
@@ -20598,7 +20601,7 @@ void *Thread1 (void *arg)
         return  (PVOID)-1;  
     }  
   
-	……  
+	// ……  
 }  
 ```  
   
@@ -20616,7 +20619,7 @@ INT   sigmask
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口通过一个指定信号来获取一个信号掩码。  
   
@@ -20630,7 +20633,7 @@ INT   sigmask
   
 ### 错误码：
   
-EINVAL：参数无效。  
+- EINVAL：参数无效。  
   
 ### 备注：  
   
@@ -20653,7 +20656,7 @@ void *Thread (void *arg)
 		return (PVOID)-1;  
 	}  
   
-	……  
+	// ……  
 }  
 ```  
   
@@ -20670,7 +20673,7 @@ INT    siggetmask
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来获取当前线程的信号掩码。  
   
@@ -20684,7 +20687,7 @@ INT    siggetmask
   
 ### 错误码：
   
-EINVAL：参数无效。  
+- EINVAL：参数无效。  
   
 ### 备注：  
   
@@ -20702,7 +20705,7 @@ void *Thread (void *arg)
 	int      ret;  
 	sigset_t set;  
 	int      mask;  
-	……  
+	// ……  
   
 	mask = siggetmask();  
 	printf ("get mask is :%d\n", mask);  
@@ -20711,7 +20714,7 @@ void *Thread (void *arg)
 		printf ("sigprocmask set SIG_BLOCK success !\n");  
 	}  
   
-	……  
+	// ……  
 }  
   
 ```  
@@ -20730,7 +20733,7 @@ INT      sigsetmask
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来设置当前任务的信号掩码。  
   
@@ -20744,7 +20747,7 @@ INT      sigsetmask
   
 ### 错误码：
   
-EINVAL：参数无效。  
+- EINVAL：参数无效。  
   
 ### 备注：  
   
@@ -20761,7 +20764,7 @@ void *Thread1 (void *arg)
     int      ret;  
     sigset_t set;  
     int      mask;  
-    ……  
+    // ……  
   
     ret = sigsetmask (set);          /*  给任务设置新的掩码         */  
     if (ret != 0)  
@@ -20770,7 +20773,7 @@ void *Thread1 (void *arg)
         return  (PVOID)-1;  
     }  
   
-    ……  
+    // ……  
 }  
 ```  
   
@@ -20788,7 +20791,7 @@ INT             sigblock
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来将新的需要阻塞的信号添加到当前任务中。  
   
@@ -20802,7 +20805,7 @@ INT             sigblock
   
 ### 错误码：
   
-EINVAL：参数无效。  
+- EINVAL：参数无效。  
   
 ### 备注：  
   
@@ -20811,6 +20814,7 @@ EINVAL：参数无效。
 ### 样例：  
   
 ```c  
+无
 ```  
   
   
@@ -20829,7 +20833,7 @@ INT             sigvec
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口允许调用任务指定信号的相关行为。  
   
@@ -20849,7 +20853,7 @@ INT             sigvec
   
 ### 错误码：
   
-EINVAL：参数无效。  
+- EINVAL：参数无效。  
   
 ### 备注：  
   
@@ -20868,7 +20872,7 @@ void *Thread (void *arg)
   
     act.sv_handler = handle;  
     act.sv_flags = 0;  
-    ……  
+    // ……  
   
     ret = sigvec (SIGHUP, &act, &oact);       /*  设置信号处理函数           */  
     if (ret != 0)  
@@ -20876,7 +20880,7 @@ void *Thread (void *arg)
         printf ("func sigvec error\n");  
         return  (PVOID)-1;  
     }  
-    ……  
+    // ……  
 }  
   
 ```  
@@ -20895,7 +20899,7 @@ INT sigpending
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来获取当前任务中被阻塞而没有得到处理的信号，并将这些信号放在由sigset指定的信号集中。  
   
@@ -20928,7 +20932,7 @@ void *Thread (void *arg)
     int ret;  
     sigset_t set, oset, pend;  
   
-    ……  
+    // ……  
     ret = sigpending (&pend);  
     if (ret != 0)  
     {  
@@ -20937,9 +20941,9 @@ void *Thread (void *arg)
     }  
     printf ("pending set is :%llu\n", pend);  
   
-    ……  
+    // ……  
 }  
-	……  
+	// ……  
   
 ```  
   
@@ -20955,7 +20959,7 @@ INT pause
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用来等待一个信号的到来，如果没有接收到信号则任务会挂起。  
   
@@ -20969,7 +20973,7 @@ INT pause
   
 ### 错误码：
   
-EINTR：被中断系统调用。  
+- EINTR：被中断系统调用。  
   
 ### 备注：  
   
@@ -20987,7 +20991,7 @@ static pthread_t G_tid1, G_tid2;
 void *Thread2 (void *arg)  
 {  
     int   ret;  
-    ……  
+    // ……  
   
     ret = pause ();         /*  等待未决信号               */  
     if (ret != -1)  
@@ -20996,7 +21000,7 @@ void *Thread2 (void *arg)
         return (PVOID)-1;  
     }  
   
-    ……  
+    // ……  
 }  
 ```  
   
@@ -21015,7 +21019,7 @@ int pthread_kill
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于向任务发送信号。要发送的信号有 signo 指定，如果 signo 为 0（空信号），会执行错误检验，但不发送信号。  
   
@@ -21031,7 +21035,7 @@ int pthread_kill
   
 ### 错误码：
   
-ESRCH：任务不存在。  
+- ESRCH：任务不存在。  
   
 ### 备注：  
   
@@ -21048,7 +21052,7 @@ void *Thread3 (void *arg)
 {  
     int     ret;  
   
-    ……  
+    // ……  
     ret = pthread_kill (G_tid2, SIGHUP);  
     if (ret != 0)  
     {  
@@ -21056,7 +21060,7 @@ void *Thread3 (void *arg)
         return  (PVOID)-1;  
     }  
   
-    ……  
+    // ……  
 }  
 ```  
   
@@ -21076,7 +21080,7 @@ int pthread_sigmask
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来修改posix线程的信号掩码，在该接口调用时，如果有未阻塞的信号处于未决状态，那么该接口返回前会处理未决信号。  
   
@@ -21112,7 +21116,7 @@ int pthread_sigmask
   
 ### 错误码：
   
-EINVAL：参数无效。  
+- EINVAL：参数无效。  
   
 ### 备注：  
   
@@ -21129,7 +21133,7 @@ void *Thread1 (void *arg)
     int      ret;  
     sigset_t set;  
     int      mask;  
-    ……  
+    // ……  
     ret = pthread_sigmask (SIG_BLOCK, &set,NULL);     /*  修改掩码         */  
     if (ret != 0)  
     {  
@@ -21137,7 +21141,7 @@ void *Thread1 (void *arg)
         return  (PVOID)-1;  
     }  
   
-    ……  
+    // ……  
 }  
 ```  
   
@@ -21156,7 +21160,7 @@ INT             siginterrupt
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来改变信号的SA_RESTART选项。  
   
@@ -21172,7 +21176,7 @@ INT             siginterrupt
   
 ### 错误码：
   
-EINVAL：参数无效  
+- EINVAL：参数无效  
   
 ### 备注：  
   
@@ -21181,6 +21185,7 @@ EINVAL：参数无效
 ### 样例：  
   
 ```c  
+无
 ```  
   
 # 中断异常  
@@ -21203,11 +21208,11 @@ int   Int_install_handler
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来安装中断处理函数，使得相关硬件产生中断后由安装的中断函数在中断线程环境中处理。HYSylixoS默认支持256个中断源，也就是支持256个中断向量。具体使用哪个中断向量，可通过阅读芯片手册获得。  
   
-### 参 数：
+### 参数：
   
 - name ：中断名称。  
   
@@ -21225,24 +21230,24 @@ int   Int_install_handler
   
 ### 错误码： 
   
-EACCES ：权限不足（需要进程ID为0）。  
-EINVAL ：参数无效。  
-ENOMEM ：内存不足。  
+- EACCES ：权限不足（需要进程ID为0）。  
+- EINVAL ：参数无效。  
+- ENOMEM ：内存不足。  
   
-### 样 例：
+### 样例：
   
 ```c  
 int module_init (void)  
 {  
     int ret = 0;  
-    ……  
+    // ……  
     ret = int_install_handler("init_time2", irq, 20, Timer2Handle, NULL);  
     if(ret != 0)  
     {  
          printk("func int_install_handler error\n");  
          return -1;  
     }  
-    ……  
+    // ……  
     return 0;  
 }  
 ```  
@@ -21261,11 +21266,11 @@ int    int_uninstall_handler
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来卸载中断处理函数，并屏蔽相关中断。  
   
-### 参 数：
+### 参数：
   
 - vecnum ：系统规定的中断向量号。  
   
@@ -21275,16 +21280,16 @@ int    int_uninstall_handler
   
 ### 错误码：
   
-EACCES ：权限不足（需要进程ID为0）。  
-EINVAL ：参数无效。  
+- EACCES ：权限不足（需要进程ID为0）。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 ```c  
 void module_exit (void)  
 {  
 	int ret;  
-	……  
+	// ……  
   
     ret = int_uninstall_handler(irq);  
     if(ret != 0)  
@@ -21292,7 +21297,7 @@ void module_exit (void)
          printk("func int_uninstall_handler error\n");  
 	}  
   
-	……  
+	// ……  
 }  
 ```  
   
@@ -21309,11 +21314,11 @@ int     int_lock
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口在当前任务下锁中断，从而实现屏蔽系统中断，此接口可以嵌套使用。  
   
-### 参 数：
+### 参数：
   
 无。  
   
@@ -21325,18 +21330,18 @@ int     int_lock
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 static void Timer2Handle(void *arg)  
 {  
     int     level;  
   
-    ……  
+    // ……  
   
     level = int_lock();  
   
-    ……  
+    // ……  
   
 	int_unlock(level);  
 }  
@@ -21356,11 +21361,11 @@ void  int_unlock
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口在当前任务下解锁中断，重新使能系统中断。  
   
-### 参 数：
+### 参数：
   
 - level ：中断掩码。  
   
@@ -21372,18 +21377,18 @@ void  int_unlock
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 static void Timer2Handle(void *arg)  
 {  
     int     level;  
   
-    ……  
+    // ……  
   
     level = int_lock();  
   
-    ……  
+    // ……  
   
 	int_unlock(level);  
 }  
@@ -21403,11 +21408,11 @@ void  int_enable_pic
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口使能指定中断号的中断。  
   
-### 参 数：
+### 参数：
   
 - irq ：要使能的中断向量值。  
   
@@ -21417,16 +21422,16 @@ void  int_enable_pic
   
 ### 错误码： 
   
-ERROR_KERNEL_VECTOR_NULL ：中断向量出错。  
+- ERROR_KERNEL_VECTOR_NULL ：中断向量出错。  
   
-### 样 例：
+### 样例：
   
 ```c  
 int module_init (void)  
 {  
-    ……  
+    // ……  
     int_enable_pic(irq);  
-    ……  
+    // ……  
     return 0;  
 }  
 ```  
@@ -21445,11 +21450,11 @@ void  int_disable_pic
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口屏蔽指定中断号的中断，使该中断不能发生。  
   
-### 参 数：
+### 参数：
   
 - irq ：屏蔽的中断向量值。  
   
@@ -21461,14 +21466,14 @@ void  int_disable_pic
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 void module_exit (void)  
 {  
-    ……  
+    // ……  
     int_disable_pic(irq);  
-    ……  
+    // ……  
 }  
 ```  
   
@@ -21486,11 +21491,11 @@ EXC_HANDLER  exception_handler_set
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口设置异常处理句柄，发生异常时通过设置的处理函数进行异常处理。  
   
-### 参 数：
+### 参数：
   
 - exc_handler ：异常处理函数。  
   
@@ -21500,11 +21505,12 @@ EXC_HANDLER  exception_handler_set
   
 ### 错误码：
   
-ENOSYS ：函数不支持此操作。  
+- ENOSYS ：函数不支持此操作。  
   
-### 样 例：
+### 样例：
   
 ```c  
+无
 ```  
   
   
@@ -21523,11 +21529,11 @@ int  	shared_int_install
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用来设置共享处理函数，使得相关硬件产身该中断后调用安装的所有相关处理函数。  
   
-### 参 数：
+### 参数：
   
 - vecnum ：系统规定的中断向量号。  
   
@@ -21541,18 +21547,18 @@ int  	shared_int_install
   
 ### 错误码： 
   
-EACCES ：权限不足（需要进程ID为0）。  
-EINVAL ：参数无效。  
-ENOMEM ：内存不足。  
+- EACCES ：权限不足（需要进程ID为0）。  
+- EINVAL ：参数无效。  
+- ENOMEM ：内存不足。  
   
-### 样 例：
+### 样例：
   
 ```c  
 int module_init (void)  
 {  
 int ret = 0;  
   
-    ……  
+    // ……  
   
     ret = shared_int_install(irq, ShareHandle, NULL);  
     if(ret != 0)  
@@ -21560,7 +21566,7 @@ int ret = 0;
         printk("func int_install_handler error\n");  
         return -1;  
 }  
-……  
+// ……  
   
     return 0;  
 }  
@@ -21580,11 +21586,11 @@ int     shared_int_uninstall
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用来卸载共享中断处理函数，当同一中断所有共享函数都卸载时，屏蔽该中断。  
   
-### 参 数：
+### 参数：
   
 - vecnum : 系统规定的中断向量号。  
   
@@ -21596,10 +21602,10 @@ int     shared_int_uninstall
   
 ### 错误码： 
   
-EACCES ：权限不足（需要进程ID为0）。  
-EINVAL ：参数无效。  
+- EACCES ：权限不足（需要进程ID为0）。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 ```c  
 void module_exit (void)  
@@ -21611,7 +21617,7 @@ void module_exit (void)
     {  
         printk("shared_int_uninstall is error\n");  
 	}  
-	……  
+	// ……  
 }  
 ```  
   
@@ -21630,7 +21636,7 @@ uint64_t  tick_get
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口返回系统时钟滴答计时器的当前计数值。  
   
@@ -21660,7 +21666,7 @@ int main (int argc, char **argv)
 	uint64_t tick;  
 	tick = tick_get();                          /* 获取系统tick数             */  
 	printf("system tick num at present :%llu\n", tick);  
-	……  
+	// ……  
 	return (0);  
 }  
 ```  
@@ -21680,7 +21686,7 @@ void  tick_set
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口将系统时钟滴答计数器设置为指定的值。  
   
@@ -21694,7 +21700,7 @@ void  tick_set
   
 ### 错误码：
   
-ENOTSUP ：系统不支持的操作。  
+- ENOTSUP ：系统不支持的操作。  
   
 ### 备注：  
   
@@ -21703,6 +21709,7 @@ GJB 7714-2012错误码：无。
 ### 样例：  
   
 ```c  
+无
 ```  
   
   
@@ -21720,7 +21727,7 @@ uint32_t  sys_clk_rate_get
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于获取系统时钟频率，频率值为系统时钟每秒的时钟滴答数。  
   
@@ -21748,10 +21755,10 @@ GJB 7714-2012错误码：无。
 int main (int argc, char **argv)  
 {  
 	uint32_t rate;  
-	……  
+	// ……  
 	rate = sys_clk_rate_get();                    /* 获取系统tick数(64位)        */  
 	printf("system rate num at present :%u\n", rate);  
-	……  
+	// ……  
 	return (0);  
 }	  
 ```  
@@ -21770,7 +21777,7 @@ int  sys_clk_rate_set
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用来设置系统 tick 频率。  
   
@@ -21784,17 +21791,18 @@ int  sys_clk_rate_set
   
 ### 错误码：
   
-ENOTSUP ：系统不支持的操作。  
+- ENOTSUP ：系统不支持的操作。  
   
 ### 备注：  
   
 GJB 7714-2012返回值：
-0 设置成功；  
+- 0 设置成功；  
 -1 设置失败。  
   
 ### 样例：  
   
 ```c  
+无
 ```  
   
   
@@ -21812,7 +21820,7 @@ int  clock_getcpuclockid
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口获取有 pid 指定任务 CPU 时间时钟的标识符。  
   
@@ -21828,7 +21836,7 @@ int  clock_getcpuclockid
   
 ### 错误码：
   
-EINVAL：参数无效。  
+- EINVAL：参数无效。  
   
 ### 备注：  
   
@@ -21841,13 +21849,13 @@ int main(int argc, char **argv)
 {  
 	int res = 0;  
 	clockid_t clock_id;  
-	……  
+	// ……  
 	res = clock_getcpuclockid(0, &clock_id);  /* 访问任务CPU时间时钟          */  
 	if(res == 0)  
 	{  
 		printf("clock_id = %d\n", clock_id);  
 	}  
-	……  
+	// ……  
 	return 0;  
 }  
 ```  
@@ -21868,7 +21876,7 @@ int  clock_gettime
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于获取指定时钟 clockid 的当前值，并存放在参数 tv 指定的地址中。  
   
@@ -21891,8 +21899,8 @@ int  clock_gettime
   
 ### 错误码：
   
-ESRCH ：任务不存在。  
-EINVAL ：参数无效。  
+- ESRCH ：任务不存在。  
+- EINVAL ：参数无效。  
   
 ### 备注：  
   
@@ -21905,13 +21913,13 @@ int main(int argc, char **argv)
 {  
 	int res = 0;  
 	struct timespec tp;  
-	……  
+	// ……  
 	res = clock_gettime(CLOCK_REALTIME, &tp);    /* 获取进程CPU占用时间   */  
 	if(res == 0)  
 	{  
 		printf("CLOCK_REALTIME value :%lld : %ld\n", tp.tv_sec, tp.tv_nsec);  
 	}  
-	……  
+	// ……  
 	return 0;  
 }  
 ```  
@@ -21931,7 +21939,7 @@ INT  clock_settime
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口会把 clock_id 指定的时钟设为 tv 指定的值。如果时间值是介于指定时钟精度的两个连续非负整倍数间，那么它会被截取为较小的精度倍数。时钟可以是系统范围或是任务的。  
   
@@ -21947,13 +21955,13 @@ INT  clock_settime
   
 ### 错误码：
   
-ESRCH ：任务不存在。  
-EINVAL ：参数无效。  
+- ESRCH ：任务不存在。  
+- EINVAL ：参数无效。  
   
 ### 备注：  
   
 GJB 7714-2012错误码：
-EINVAL ：参数无效，或者赋给变量tp的纳秒值小于0或大于等于1’000’000’000。  
+- EINVAL ：参数无效，或者赋给变量tp的纳秒值小于0或大于等于1’000’000’000。  
   
 ### 样例：  
   
@@ -21961,7 +21969,7 @@ EINVAL ：参数无效，或者赋给变量tp的纳秒值小于0或大于等于1
 int main(int argc, char **argv)  
 {  
 	int res = 0;  
-	……  
+	// ……  
 	struct timespec tv;  
 	tv.tv_sec = 20000;  
 	tv.tv_nsec = 10000;  
@@ -21970,7 +21978,7 @@ int main(int argc, char **argv)
 	{  
 		perror("fun clock_settime error\n");  
 	}  
-	……  
+	// ……  
 	return 0;  
 }  
 ```  
@@ -21991,7 +21999,7 @@ INT  clock_getres
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来获取 clockid 指定的时钟的精度。  
   
@@ -22007,12 +22015,12 @@ INT  clock_getres
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
 ### 备注：  
   
 GJB 7714-2012错误码：
-EINVAL ：参数无效，或者res是无效指针。  
+- EINVAL ：参数无效，或者res是无效指针。  
   
 ### 样例：  
   
@@ -22020,14 +22028,14 @@ EINVAL ：参数无效，或者res是无效指针。
 int main(int argc, char **argv)  
 {  
 	int res = 0;  
-	……  
+	// ……  
 	struct timespec tp;  
 	res = clock_getres(CLOCK_REALTIME, &tp);       /* 获取时钟精度       */  
 	if(res == 0)  
 	{  
 		printf("CLOCK_REALTIME precision :%lld : %ld\n", tp.tv_sec, tp.tv_nsec);  
 	}  
-	……  
+	// ……  
 	return 0;  
 }  
 ```  
@@ -22047,7 +22055,7 @@ int  wdg_create
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于创建一个看门狗，并将看门狗ID通过参数wdg_id输出。创建的看门狗定时器处于非活动状态。需要显式地通过wdg_start()函数激活。  
   
@@ -22061,16 +22069,16 @@ int  wdg_create
   
 ### 错误码：
   
-ERROR_KERNEL_IN_ISR ：系统处于中断中。  
-ERROR_TIMER_FULL ：定时器已满。  
-EINVAL ：参数无效。  
+- ERROR_KERNEL_IN_ISR ：系统处于中断中。  
+- ERROR_TIMER_FULL ：定时器已满。  
+- EINVAL ：参数无效。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为 ：  
-ECALLEDINISR ：系统处于中断中。  
-EMNOTINITED ：模块未初始化。  
-EAGAIN ：系统资源不足。  
+- ECALLEDINISR ：系统处于中断中。  
+- EMNOTINITED ：模块未初始化。  
+- EAGAIN ：系统资源不足。  
   
 ### 样例：  
   
@@ -22088,7 +22096,7 @@ int main (int argc, char **argv)
 		return -1;  
 	}  
   
-	……  
+	// ……  
   
     return  (0);  
 }  
@@ -22110,7 +22118,7 @@ INT  nanosleep
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口将使调用的任务休眠，知道经过参数 rqtp  
 指定的时间间隔。但在任务休眠期间，若接收到信号，都会打断任务的休眠。  
@@ -22127,14 +22135,14 @@ INT  nanosleep
   
 ### 错误码：
   
-EINTR ：被信号激活。  
-EINVAL ：参数无效。  
+- EINTR ：被信号激活。  
+- EINVAL ：参数无效。  
   
 ### 备注：  
   
 GJB 7714-2012错误码：
-EINVAL ：参数无效；  
-EINTR ：被信号激活。  
+- EINVAL ：参数无效；  
+- EINTR ：被信号激活。  
   
 ### 样例：  
   
@@ -22143,14 +22151,14 @@ int main(int argc, char **argv)
 {  
 	int res = 0;  
 	struct timespec tp;  
-	……  
+	// ……  
 	tp.tv_sec = 5000000;  
 	res = nanosleep(&tp, NULL);  
 	if(res == 0)  
 	{  
 		printf("nanosleep normal quit\n");  
 	}  
-	……  
+	// ……  
 	return 0;  
 }  
 ```  
@@ -22173,7 +22181,7 @@ int  wdg_start
 ```  
   
   
-### 描 述：
+### 描述：
   
 启动看门狗定时器。  
   
@@ -22193,15 +22201,15 @@ int  wdg_start
   
 ### 错误码：
   
-ERROR_TIMER_CALLBACK_NULL ：回调函数为空。  
-ERROR_TIMER_TIME ：时间出错。  
-EINVAL ：参数无效。  
+- ERROR_TIMER_CALLBACK_NULL ：回调函数为空。  
+- ERROR_TIMER_TIME ：时间出错。  
+- EINVAL ：参数无效。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
-EMNOTINITED ：模块未初始化。  
+- EINVAL ：参数无效。  
+- EMNOTINITED ：模块未初始化。  
   
 ### 样例：  
   
@@ -22264,7 +22272,7 @@ Int  wdg_cancel
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口通过将看门狗的延迟计数归零来取消wdg_id指定的看门狗。  
   
@@ -22278,15 +22286,15 @@ Int  wdg_cancel
   
 ### 错误码：
   
-ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
-ERROR_TIMER_NULL ：定时器为空。  
-ERROR_TIMER_TIME ：时间出错。  
+- ERROR_KERNEL_HANDLE_NULL ：句柄出错。  
+- ERROR_TIMER_NULL ：定时器为空。  
+- ERROR_TIMER_TIME ：时间出错。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
-EMNOTINITED ：模块未初始化。  
+- EINVAL ：参数无效。  
+- EMNOTINITED ：模块未初始化。  
   
 ### 样例：  
   
@@ -22303,14 +22311,14 @@ int main (int argc, char **argv)
 		perror("func wdg_create error\n");  
 		return -1;  
 	}  
-	……  
+	// ……  
 	ret = wdg_cancel(wdg);                     /* 停止看门狗定时器       */  
 	if(ret != 0)  
 	{  
 	perror("func wdg_cancel error\n");  
 	return -1;  
 	}  
-	……  
+	// ……  
 	return (0);  
 }  
 ```  
@@ -22330,7 +22338,7 @@ int  wdg_delete
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来删除看门狗定时器。  
   
@@ -22344,14 +22352,14 @@ int  wdg_delete
   
 ### 错误码：
   
-EINVAL：参数无效。  
+- EINVAL：参数无效。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
-ECALLEDINISR ：系统处于中断中。  
-EMNOTINITED ：模块未初始化。  
+- EINVAL ：参数无效。  
+- ECALLEDINISR ：系统处于中断中。  
+- EMNOTINITED ：模块未初始化。  
   
 ### 样例：  
   
@@ -22368,7 +22376,7 @@ int main (int argc, char **argv)
 		perror("func wdg_create error\n");  
 		return -1;  
 	}  
-	……  
+	// ……  
 	ret = wdg_cancel(wdg);  
 	if(ret != 0)  
 	{  
@@ -22401,7 +22409,7 @@ Int  wdg_getinfo
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来获取wdg_id指定的定时器的概要信息。包括定时器相关的信号信息、看门狗ID、时钟ID、任务ID、定时器状态、定时器启动信息等。  
   
@@ -22417,20 +22425,20 @@ Int  wdg_getinfo
   
 ### 错误码：
   
-EINVAL：参数无效。  
+- EINVAL：参数无效。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
-EMNOTINITED ：模块未初始化。  
+- EINVAL ：参数无效。  
+- EMNOTINITED ：模块未初始化。  
   
 ### 样例：  
   
 ```c  
 void fun(void *arg)  
 {  
-	……  
+	// ……  
   
 	wdg_info_t info;  
 	ret = wdg_getinfo(wdg, &info);      /* 获取看门狗定时器概要信息     */  
@@ -22438,7 +22446,7 @@ void fun(void *arg)
 		printf(“func wdg_getinfo failed!\n”);  
 	}  
   
-	……  
+	// ……  
   
 }  
 ```  
@@ -22458,7 +22466,7 @@ int  wdg_show
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于显示定时器的信息。  
   
@@ -22472,24 +22480,24 @@ int  wdg_show
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
-EMNOTINITED ：模块未初始化。  
+- EINVAL ：参数无效。  
+- EMNOTINITED ：模块未初始化。  
   
 ### 样例：  
   
 ```c  
 void fun(void *arg)  
 {  
-	……  
+	// ……  
   
 	wdg_show(wdg);           /* 显示看门狗定时器信息         */  
   
-	……  
+	// ……  
   
 }  
 ```  
@@ -22510,7 +22518,7 @@ INT  timer_create
 )  
 ```  
   
-### 描 述：
+### 描述：
   
 该解口用于以clockid指定的时钟作为计时基准创建定时器。  
   
@@ -22533,15 +22541,15 @@ INT  timer_create
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ENOTSUP ：系统不支持的操作。  
+- EINVAL ：参数无效。  
+- ENOTSUP ：系统不支持的操作。  
   
 ### 备注：  
   
 GJB 7714-2012错误码为：  
-EINVAL ：参数无效。  
-ENOTSUP ：系统不支持的设置。  
-EAGAIN ：系统资源不足。  
+- EINVAL ：参数无效。  
+- ENOTSUP ：系统不支持的设置。  
+- EAGAIN ：系统资源不足。  
   
 ### 样例：  
   
@@ -22553,7 +22561,7 @@ EAGAIN ：系统资源不足。
   
 void *timer_thread (void *arg)  
 {  
-    ……  
+    // ……  
 }  
 int main (int argc, char *argv[])  
 {  
@@ -22564,7 +22572,7 @@ int main (int argc, char *argv[])
     struct sigevent		    sigev;  
     timer_t				timerid;  
   
-	……  
+	// ……  
   
     sigev.sigev_notify 				= SIGEV_THREAD_ID | SIGEV_SIGNAL;  
     sigev.sigev_signo 			  	= SIGUSR1;  
@@ -22575,7 +22583,7 @@ int main (int argc, char *argv[])
         fprintf(stderr, "timer create failed.\n");  
         return -1;  
     }  
-    ……  
+    // ……  
   
     return  0;  
 }  
@@ -22596,7 +22604,7 @@ INT  timer_delete
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于删除timer指定的定时器。  
   
@@ -22610,13 +22618,13 @@ INT  timer_delete
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ETIMEDOUT ：等待超时。  
+- EINVAL ：参数无效。  
+- ETIMEDOUT ：等待超时。  
   
 ### 备注：  
   
 GJB 7714-2012 错误码：
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
 ### 样例：  
   
@@ -22628,7 +22636,7 @@ EINVAL ：参数无效。
 int main (int argc, char *argv[])  
 {  
 timer_t       timerid;  
-…….  
+// …….  
     ret = timer_delete(timerid);          /* 删除定时器                   */  
     if (ret)  
     {  
@@ -22658,7 +22666,7 @@ int  timer_settime
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于将参数 ptvNew 的成员 it_value 的值设置定时器 timer 的定时时间，并在it_value 不为零的情况下启动定时器。  
   
@@ -22682,12 +22690,12 @@ int  timer_settime
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
 ### 备注：  
   
 GJB 7714-2012 错误码：
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
 ### 样例：  
   
@@ -22704,7 +22712,7 @@ EINVAL ：参数无效。
     int                 ret;  
     struct sigevent     sigev;  
 	timer_t             timerid; clude <pthread.h>  
-	……  
+	// ……  
 	ret = timer_settime(timerid, 0, &tspec, LW_NULL); /* 设置定时器时间     */  
 if (ret)   
 	{  
@@ -22729,7 +22737,7 @@ INT  timer_gettime
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口会把定时器 timer 到期前的时间和定时器的重载入值保存到参数 ptvTime  
 指向的位置。  
@@ -22747,12 +22755,12 @@ INT  timer_gettime
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
 ### 备注：  
   
 GJB 7714-2012 错误码：
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
 ### 样例：  
   
@@ -22763,12 +22771,12 @@ EINVAL ：参数无效。
 #include <pthread.h>  
 void *timer_thread (void *arg)  
 {  
-	……  
+	// ……  
 	return NULL;  
 }  
 int main (int argc, char *argv[])  
 {	  
-	……  
+	// ……  
 	ret = timer_gettime(timerid, &tv);       /* 获取定时器时间               */  
 	if(ret == 0)  
 	{  
@@ -22796,7 +22804,7 @@ Int  timer_getinfo
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来获取 wdg_id 指定的定时器的概要信息。包括定时器相关的信号信息、看门狗 ID、时钟 ID、任务 ID、定时器状态、定时器启动信息等。  
   
@@ -22812,12 +22820,12 @@ Int  timer_getinfo
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
 ### 备注：  
   
 GJB 7714-2012 错误码：
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
 ### 样例：  
   
@@ -22828,13 +22836,13 @@ EINVAL ：参数无效。
 #include <pthread.h>  
 void *timer_thread (void *arg)  
 {  
-	……  
+	// ……  
 }  
 int main (int argc, char *argv[])  
 {  
 	timer_t timerid;  
 	timer_info_t info;  
-	……	  
+	// ……	  
 	ret = timer_getinfo(timerid, &info);        /* 显示定时器信息               */  
 	if(ret == 0)  
 	{  
@@ -22861,7 +22869,7 @@ int   ftime
 );  
 ```  
   
-### 描 述：
+### 描述：
   
 该接口用来获取当前时间与相关参数。  
   
@@ -22875,7 +22883,7 @@ int   ftime
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
 ### 备注：  
   
@@ -22894,10 +22902,10 @@ int main (int argc, char **argv)
 	ret = ftime(&t);             /* 获取和当前时间相关的参数     */  
 	if(ret == 0)  
 	{  
-		……  
+		// ……  
 	}  
   
-	……  
+	// ……  
   
     return  (0);  
 }  
@@ -22917,7 +22925,7 @@ time_t  time
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来获取UTC时间,time_t在某些类Unix系统中定义为一个32位的有符号整型数，能表示的最大正秒数为2147483647秒，它能表示的最晚时间为2038年1月19日03:14:07。  
   
@@ -22947,12 +22955,12 @@ int main (int argc, char **argv)
 	clock_t start, end;  
 	start = time(NULL); /            * 获取和当前时间     */  
   
-    ……  
+    // ……  
   
 	end = time(NULL);  
 	printf("func use time %f\n", 1.0 * (end - start)/CLOCKS_PER_SEC);   
   
-    ……  
+    // ……  
   
     return  (0);  
 }  
@@ -22973,7 +22981,7 @@ time_t  time
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于显示定时器的信息。  
   
@@ -23033,7 +23041,7 @@ Int  gettimeofday
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于获取时间及时区信息。  
   
@@ -23095,7 +23103,7 @@ int  settimeofday
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于设置时间及时区信息。  
   
@@ -23167,7 +23175,7 @@ void   tzset
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于设置系统的时区。  
   
@@ -23221,7 +23229,7 @@ struct  tm  *gmtime
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于转换为结构体类型时间格式。  
   
@@ -23283,7 +23291,7 @@ struct  tm  *gmtime_r
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于转换为结构体类型时间格式（可重入）。  
   
@@ -23346,7 +23354,7 @@ char  *asctime
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于转换为常用时间格式, 处理参数ptm时，将不会作任何时区转换,函数返回的时间字符串的格式如“Tue May 21 13:46:221991n”，因此在使用该函数的可重入版本asctime_r时，其参数pcBuffer必须保证长度不小于26个字节。  
   
@@ -23397,7 +23405,7 @@ Char  *asctime_r
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于转换为常用时间格式, 处理参数ptm时，将不会作任何时区转换,函数返回的时间字符串的格式如“Tue May 21 13:46:221991n”，因此在使用该函数的可重入版本asctime_r时，其参数pcBuffer必须保证长度不小于26个字节（可重入）。  
   
@@ -23455,7 +23463,7 @@ struct  tm  *localtime
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于转换为当地时间，内部会进行UTC时间到本地时间的转换处理。  
   
@@ -23517,7 +23525,7 @@ Struct  tm  *localtime_r
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于转换为当地时间（可重入），内部会进行UTC时间到本地时间的转换处理。  
   
@@ -23580,7 +23588,7 @@ Char  *ctime
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于转换为常用时间格式。  
   
@@ -23631,7 +23639,7 @@ Char  *ctime_r
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于转换为常用时间格式（可重入）。  
   
@@ -23688,7 +23696,7 @@ time_t  mktime
 ```  
   
   
-### 描 述：
+### 描述：
   
 该函数的功能是将本地时间转换为UTC时间，它内部会进行本地时间到UTC时间的转换，因此正确的输入参数应该为本地时间。  
   
@@ -23739,7 +23747,7 @@ time_t  timegm
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口进行tm到time_t数据类型的转换，正确的输入参数应该为UTC时间。  
   
@@ -23790,7 +23798,7 @@ clock_t  clock
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于获取处理器调用某个进程或函数的时钟计数。  
   
@@ -23845,7 +23853,7 @@ int  pthread_getcpuclockid
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于获得线程时钟源。只支持一种CLOCK_THREAD_CPUTIME_ID线程:从启动开始所消耗的CPU时间。  
   
@@ -23878,7 +23886,7 @@ static clock_t clockid;
 static pthread_t thread;  
 void *routine (void *arg)  
 {  
-    ……  
+    // ……  
 }  
 int main (int argc, char *argv[])  
 {  
@@ -23886,7 +23894,7 @@ int main (int argc, char *argv[])
     clock_t clockid;  
     pthread_t thread;  
   
-    ……  
+    // ……  
     ret = pthread_getcpuclockid(thread, &clockid);       /* 获取线程时钟源    */  
     if (ret != 0)  
     {  
@@ -23916,7 +23924,7 @@ void	 timeradd
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于两个时间相加，结构保存于result中，内部会自动处理微秒到秒的进位问题。（注意，此操作内部不会有溢出或大小等任何安全性检测，因此结果可能出现不符合预期时间值，这些问题需要应用程序处理），此接口为一个宏定义。  
   
@@ -23966,7 +23974,7 @@ int main(int argc, char *argv[])
   
     timeradd(&a, &b, &result);                                /* 时间相加      */  
   
-    ……  
+    // ……  
   
     return  (0);  
 }  
@@ -23989,7 +23997,7 @@ Void 	timersub
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于两个时间相减，结构保存于result中，内部会自动处理微秒到秒的进位问题。（注意，此操作内部不会有溢出或大小等任何安全性检测，因此结果可能出现不符合预期时间值，这些问题需要应用程序处理），此接口为一个宏定义。  
   
@@ -24040,7 +24048,7 @@ int main(int argc, char *argv[])
     timeradd(&a, &b, &result);  
     timeval_show("time a + b: ", result);  
     timersub(&a, &b, &result);                             /* 时间相减            */  
-    ……  
+    // ……  
   
     return  (0);  
 }  
@@ -24061,7 +24069,7 @@ void	 timerclear
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于将一个时间值清零。  
   
@@ -24106,7 +24114,7 @@ int main(int argc, char *argv[])
     timeval_show("time a: ", a);  
     timeval_show("time b: ", b);  
   
-    ……  
+    // ……  
   
     timerclear(&result);            /* 时间清零     */  
     if (timerisset(&result))  
@@ -24116,7 +24124,7 @@ int main(int argc, char *argv[])
         timeval_show("time is zero: ", result);  
     }  
   
-    ……  
+    // ……  
   
     return  (0);  
 }  
@@ -24136,7 +24144,7 @@ int	 timerisset
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于检测该时间值是否为0。  
   
@@ -24177,7 +24185,7 @@ int main(int argc, char *argv[])
     b.tv_sec    = 80;  
     b.tv_usec   = 330000;  
   
-    ……  
+    // ……  
     if (timerisset(&result))               /* 检测时间是否为0              */  
     {  
         timeval_show("time is set: ", result);  
@@ -24185,7 +24193,7 @@ int main(int argc, char *argv[])
         timeval_show("time is zero: ", result);  
     }  
   
-    ……  
+    // ……  
   
     return  (0);  
 }  
@@ -24208,7 +24216,7 @@ int		timercmp
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用于比较两个时间，CMP为一个操作符，如>、==、<、!=、<=等，此接口为一个宏定义，此接口为一个宏定义。  
   
@@ -24254,7 +24262,7 @@ int main(int argc, char *argv[])
     b.tv_sec    = 80;  
     b.tv_usec   = 330000;  
   
-    ……  
+    // ……  
   
     if (timercmp(&a, &b, >))                 /* 两个时间相比较            */  
     {  
@@ -24286,11 +24294,11 @@ void openlog
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来打开一个到系统日志记录程序的连接。  
   
-### 参 数：
+### 参数：
   
 - ident : 任意的字符串，将固定地加在每行日志的前面以标识这个日志，该标志通常设置为程序的名称。  
   
@@ -24331,11 +24339,11 @@ void openlog
   
 无。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -24349,7 +24357,7 @@ void *Thread2 (void *arg)
     sleep (3);  
     openlog("SylixOS-SYSLOG", LOG_PID, LOG_LOCAL0); /* 打开一个到日志的链接  */  
   
-    ……  
+    // ……  
     return (0);  
 }  
 ```  
@@ -24367,11 +24375,11 @@ void     closelog
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来关闭到系统日志记录程序的连接。  
   
-### 参 数：
+### 参数：
   
 无。  
   
@@ -24383,11 +24391,11 @@ void     closelog
   
 无。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -24399,9 +24407,9 @@ void     closelog
 void *Thread2 (void *arg)  
 {  
     sleep (3);  
-	……  
+	// ……  
 	syslog (LOG_ALERT, "ggm logalert\n");   /*  向日志发送消息             */  
-	……  
+	// ……  
     closelog();  
     return (0);  
 }  
@@ -24421,11 +24429,11 @@ int      setlogmask
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来设置默认系统日志结构的syslog记录屏蔽字。  
   
-### 参 数：
+### 参数：
   
 - maskpri ：屏蔽码。  
   
@@ -24437,13 +24445,14 @@ int      setlogmask
   
 无。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
+无
 ```  
   
   
@@ -24461,11 +24470,11 @@ int      setlogmask_r
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来设置指定日志结构记录屏蔽字。  
   
-### 参 数： 
+### 参数： 
   
 - maskpri ：屏蔽码。  
   
@@ -24477,15 +24486,16 @@ int      setlogmask_r
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 备 注：
+### 备注：
   
 无。  
   
-### 样 例：
+### 样例：
   
 ```c  
+无
 ```  
   
   
@@ -24504,11 +24514,11 @@ void     syslog
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来提交信息到系统日志。  
   
-### 参 数：
+### 参数：
   
 - priority ：消息的紧急级别。取值有：  
   
@@ -24533,11 +24543,11 @@ void     syslog
   
 无。  
   
-### 备 注：
+### 备注：
   
 在openlog时可以通过是否设置LOG_PERROR与LOG_CONS这两个选项标志来控制是否打印到终端上；还可以利用网络来将日志打印到指定文件中。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -24549,9 +24559,9 @@ void     syslog
 void *Thread2 (void *arg)  
 {  
     sleep (3);  
-	……  
+	// ……  
 	syslog (LOG_ALERT, "ggm logalert\n");   /*  向日志发送消息             */  
-	……  
+	// ……  
     return (0);  
 }  
 ```  
@@ -24573,11 +24583,11 @@ void     syslog_r
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来提交信息到打开的指定的日志中。  
   
-### 参 数：
+### 参数：
   
 - priority ：消息的紧急级别，取值同表1.9.3。  
   
@@ -24591,13 +24601,13 @@ void     syslog_r
   
 ### 错误码：
   
-EINVAL：参数无效。  
+- EINVAL：参数无效。  
   
-### 备 注：
+### 备注：
   
 在openlog时可以通过是否设置LOG_PERROR与LOG_CONS这两个选项标志来控制是否打印到终端上；还可以利用网络来将日志打印到指定文件中。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -24607,10 +24617,10 @@ int main (int argc, char **argv)
 	struct syslog_data data = SYSLOG_DATA_INIT;  
 	data.log_stat = LOG_CONS;  
   
-    ……  
+    // ……  
   
     syslog_r (LOG_ALERT, &data, "ggm logalert\n");   /*  提交信息到系统日志    */  
-    ……  
+    // ……  
     return  (0);  
 }  
 ```  
@@ -24632,11 +24642,11 @@ int		pthread_spin_init
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来创建一个自旋锁。  
   
-### 参 数：
+### 参数：
   
 - pspinlock ：用来初始化自旋锁控制块指针。  
   
@@ -24648,15 +24658,15 @@ int		pthread_spin_init
   
 ### 错误码：
   
-EINVAL ：参 数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
 #include <pthread.h>  
 static pthread_spinlock_t G_spinlock;  
-……  
+// ……  
 int main (int argc, char **argv)  
 {  
     int ret;  
@@ -24667,7 +24677,7 @@ int main (int argc, char **argv)
     	return -1;  
     }  
   
-	……  
+	// ……  
     return  (0);  
 }  
 ```  
@@ -24686,11 +24696,11 @@ int		pthread_spin_destroy
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来销毁一个自旋锁。  
   
-### 参 数：
+### 参数：
   
 - pspinlock ：需要销毁的自旋锁控制块指针。  
   
@@ -24700,19 +24710,19 @@ int		pthread_spin_destroy
   
 ### 错误码：
   
-EINVAL ：参 数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
 #include <pthread.h>  
 static pthread_spinlock_t G_spinlock;  
-……  
+// ……  
 int main (int argc, char **argv)  
 {  
 	int ret;  
-	……  
+	// ……  
   
     ret = pthread_spin_destroy(&G_spinlock);	        /*  销毁自旋锁              */  
     if(ret != 0)  
@@ -24740,11 +24750,11 @@ int		pthread_spin_lock
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来给自旋锁上锁，不能在中断中调用。  
   
-### 参 数：
+### 参数：
   
 - pspinlock ：自旋锁控制块指针。  
   
@@ -24754,9 +24764,9 @@ int		pthread_spin_lock
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -24772,7 +24782,7 @@ static void *Thread1(void *arg)
 		printf("func spin lock error\n");  
 		return (void*)-1;  
 	}  
-	……  
+	// ……  
   
 	printf("this is Thread1\n");  
 	return NULL;  
@@ -24792,11 +24802,11 @@ int		pthread_spin_unlock
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来给自旋锁解锁，不能在中断中调用。  
   
-### 参 数：
+### 参数：
   
 - pspinlock ：自旋锁控制块指针。  
   
@@ -24806,9 +24816,9 @@ int		pthread_spin_unlock
   
 ### 错误码：
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -24817,7 +24827,7 @@ static pthread_spinlock_t G_spinlock;
 static void *Thread1(void *arg)  
 {  
 	int ret;  
-	……  
+	// ……  
 	ret = pthread_spin_unlock(&G_spinlock);		    /*  unlock 一个自旋锁        */  
 	if(ret != 0)  
 	{  
@@ -24844,11 +24854,11 @@ int		pthread_spin_trylock
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来尝试给自旋锁上锁，不能在中断中调用。  
   
-### 参 数：
+### 参数：
   
 - pspinlock ：自旋锁控制块指针。  
   
@@ -24858,16 +24868,16 @@ int		pthread_spin_trylock
   
 ### 错误码：
   
-EINVAL ：参 数无效。  
-EBUSY ：设备资源忙。  
+- EINVAL ：参数无效。  
+- EBUSY ：设备资源忙。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
 #include <pthread.h>  
 static pthread_spinlock_t G_spinlock;  
-……  
+// ……  
 static void *Thread2(void *arg)  
 {  
 	int ret;  
@@ -24898,11 +24908,11 @@ pthread_int_t *irqctx
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来给自旋锁上锁，并同时锁定中断，不能在中断中调用。  
   
-### 参 数：
+### 参数：
   
 - pspinlock ：自旋锁控制块指针。  
   
@@ -24914,9 +24924,9 @@ pthread_int_t *irqctx
   
 ### 错误码：
   
-EINVAL ：参 数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -24935,7 +24945,7 @@ static void *Thread1(void *arg)
 		return (void*)-1;  
 	}  
 	printf("this is Thread1\n");  
-	……  
+	// ……  
   
 	return NULL;  
 }  
@@ -24955,11 +24965,11 @@ int		pthread_spin_unlock_irq_np
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来给自旋锁解锁，并同时解锁中断，允许中断响应。不能在中断中调用。  
   
-### 参 数：
+### 参数：
   
 - pspinlock ：自旋锁控制块指针。  
   
@@ -24971,9 +24981,9 @@ int		pthread_spin_unlock_irq_np
   
 ### 错误码：
   
-EINVAL ：参 数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -25018,11 +25028,11 @@ int		pthread_spin_trylock_irq_np
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来尝试给自旋锁上锁，如果成功同时锁定中断，不能在中断中调用。  
   
-### 参 数：
+### 参数：
   
 - pspinlock ：自旋锁控制块指针。  
   
@@ -25034,10 +25044,10 @@ int		pthread_spin_trylock_irq_np
   
 ### 错误码：
   
-EINVAL ：参 数无效。  
-EBUSY ：设备资源忙。  
+- EINVAL ：参数无效。  
+- EBUSY ：设备资源忙。  
   
-### 样 例：
+### 样例：
   
 ```c  
 #include <stdio.h>  
@@ -25085,7 +25095,7 @@ int  pthread_once
 ```  
   
   
-### 描 述：
+### 描述：
   
 该接口用来一次性初始化。  
   
@@ -25100,7 +25110,7 @@ pfunc :完成一次性初始化的函数指针。
   
 ### 错误码： 
   
-ERROR_NONE ：没有错误。  
+- ERROR_NONE ：没有错误。  
   
 ### 样例：  
   

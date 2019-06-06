@@ -1,7 +1,6 @@
 # 概述
   
-POSIX标准内存管理相关的函数在功能和内部行为上与HYSylixOS变长内存管理完全相同。  
-本文档描述了HYSylixOS支持的POSIX标准内存管理编程接口。  
+POSIX标准内存管理相关的函数在功能和内部行为上与HYSylixOS变长内存管理完全相同。本文档描述了HYSylixOS支持的POSIX标准内存管理编程接口。  
   
 # 内存管理编程接口
   
@@ -40,9 +39,9 @@ int mem_findmax
 int main (int argc, char**argv)   
 {   
     int maxmem = 0;   
-    ……   
+    // ……   
     maxmem = mem_findmax(); /* 取当前系统内存最长空闲区域的大小*/   
-    ……   
+    // ……   
     return (0);   
 }  
 ```  
@@ -72,8 +71,8 @@ int mem_getinfo
   
 ### 错误码：  
   
-EINVAL ：参数无效。  
-EACCES ：权限不足（非系统线程）。  
+- EINVAL ：参数无效。  
+- EACCES ：权限不足（非系统线程）。  
   
 ### 样例：
   
@@ -238,8 +237,8 @@ int mpart_create
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ENOSPC ：非法操作。  
+- EINVAL ：参数无效。  
+- ENOSPC ：非法操作。  
   
 ### 样例：
   
@@ -259,7 +258,7 @@ int main (int argc, char**argv)
         perror("func mpart_create errorn");   
         return -1;   
     }   
-    ……   
+    // ……   
     return (0);   
 }  
 ```  
@@ -289,8 +288,8 @@ int mpart_delete
   
 ### 错误码：  
   
-EINVAL ：参数无效。  
-EBUSY ：设备资源忙。  
+- EINVAL ：参数无效。  
+- EBUSY ：设备资源忙。  
   
 ### 样例：
   
@@ -310,7 +309,7 @@ int main (int argc, char**argv)
         perror("func mpart_create errorn");   
         return -1;   
     }   
-    ……   
+    // ……   
     ret = mpart_delete(mpid); /* 删除一个内存大小可变分区*/   
     if(ret != 0)   
     {   
@@ -350,10 +349,10 @@ int mpart_addmem
   
 ### 错误码：  
   
-EINVAL ：参数无效。  
-ERROR_KERNEL_IN_ISR ：系统处于中断中。  
-ERROR_KERNEL_MEMORY ：内存地址出现错误。  
-ERROR_REGION_SIZE ：分区大小太小。  
+- EINVAL ：参数无效。  
+- ERROR_KERNEL_IN_ISR ：系统处于中断中。  
+- ERROR_KERNEL_MEMORY ：内存地址出现错误。  
+- ERROR_REGION_SIZE ：分区大小太小。  
   
 ### 样例：
   
@@ -380,7 +379,7 @@ int main (int argc, char**argv)
         perror("func mpart_addmem errorn");   
         return -1;   
     }   
-    ……   
+    // ……   
     return 0;   
 }  
 ```  
@@ -412,11 +411,11 @@ void*mpart_alloc
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ERROR_KERNEL_IN_ISR ：系统处于中断中。  
-ENOMEM ：内存不足。  
-ERROR_KERNEL_HANDLE_NULL ：句柄无效。  
-ERROR_REGION_SIZE ：分区大小太小。  
+- EINVAL ：参数无效。  
+- ERROR_KERNEL_IN_ISR ：系统处于中断中。  
+- ENOMEM ：内存不足。  
+- ERROR_KERNEL_HANDLE_NULL ：句柄无效。  
+- ERROR_REGION_SIZE ：分区大小太小。  
   
 ### 样例：
   
@@ -443,7 +442,7 @@ int main (int argc, char**argv)
     {   
         perror("func mpart_alloc errorn");   
     }   
-    ……   
+    // ……   
     return (0);   
 }  
 ```  
@@ -477,12 +476,12 @@ void*mpart_memalign
   
 ### 错误码：  
   
-EINVAL ：参数无效。  
-ERROR_KERNEL_IN_ISR ：系统处于中断中。  
-ENOMEM ：内存不足。  
-ERROR_KERNEL_HANDLE_NULL ：句柄无效。  
-ERROR_REGION_SIZE ：分区大小太小。  
-ERROR_REGION_ALIGN ：对齐关系错误。  
+- EINVAL ：参数无效。  
+- ERROR_KERNEL_IN_ISR ：系统处于中断中。  
+- ENOMEM ：内存不足。  
+- ERROR_KERNEL_HANDLE_NULL ：句柄无效。  
+- ERROR_REGION_SIZE ：分区大小太小。  
+- ERROR_REGION_ALIGN ：对齐关系错误。  
   
 ### 样例：
   
@@ -509,7 +508,7 @@ int main (int argc, char**argv)
     {   
         perror("func mpart_alloc errorn");   
     }   
-    ……   
+    // ……   
     return (0);   
 }  
   
@@ -544,10 +543,10 @@ void*mpart_realloc
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ERROR_KERNEL_IN_ISR ：系统处于中断中。  
-ERROR_KERNEL_HANDLE_NULL ：句柄无效。  
-ENOMEM ：内存不足。  
+- EINVAL ：参数无效。  
+- ERROR_KERNEL_IN_ISR ：系统处于中断中。  
+- ERROR_KERNEL_HANDLE_NULL ：句柄无效。  
+- ENOMEM ：内存不足。  
   
 ### 样例：
   
@@ -574,13 +573,13 @@ int main (int argc, char**argv)
     {   
         perror("func mpart_alloc errorn");   
     }   
-    …… /** 从指定内存大小可变分区中重新分配内存*/   
+    // …… /** 从指定内存大小可变分区中重新分配内存*/   
     p = (char*)mpart_realloc(mpid, p, 1024* 5);   
     if(p == NULL)   
     {   
         perror("func mpart_realloc errorn");   
     }   
-    ……   
+    // ……   
     return (0);   
 }  
 ```  
@@ -612,10 +611,10 @@ int mpart_free
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ERROR_KERNEL_IN_ISR ：系统处于中断中。  
-ERROR_REGION_NULL ：控制块错误。  
-ERROR_KERNEL_HANDLE_NULL ：句柄无效。  
+- EINVAL ：参数无效。  
+- ERROR_KERNEL_IN_ISR ：系统处于中断中。  
+- ERROR_REGION_NULL ：控制块错误。  
+- ERROR_KERNEL_HANDLE_NULL ：句柄无效。  
   
 ### 样例：
   
@@ -642,13 +641,13 @@ int main (int argc, char**argv)
         perror("func mpart_alloc errorn");   
         return -1;  
     }   
-    ……   
+    // ……   
     ret = mpart_free(mpid, p); /*释放从指定内存大小可变分区中分配的内存*/   
     if(ret != 0)   
     {   
         perror("func mpart_free errorn");   
     }   
-    ……   
+    // ……   
     return (0);   
 }  
 ```  
@@ -678,7 +677,7 @@ int mpart_findmaxfree
   
 ### 错误码：
   
-ERROR_KERNEL_HANDLE_NULL ：句柄无效。  
+- ERROR_KERNEL_HANDLE_NULL ：句柄无效。  
   
 ### 样例：
   
@@ -699,14 +698,14 @@ int main (int argc, char**argv)
         perror("func mpart_create errorn");   
         return -1;   
     }   
-    ……   
+    // ……   
     /**获取指定内存大小可变分区最大空闲分断*/   
     maxfree = mpart_findmaxfree(mpid);   
     if(maxfree != -1)   
     {   
         printf("mpid max free :%dn", maxfree);   
     }   
-    ……   
+    // ……   
     return (0);   
 }  
 ```  
@@ -738,8 +737,8 @@ int mpart_getinfo
   
 ### 错误码：  
   
-EINVAL ：参数无效。  
-ERROR_KERNEL_HANDLE_NULL ：句柄无效。  
+- EINVAL ：参数无效。  
+- ERROR_KERNEL_HANDLE_NULL ：句柄无效。  
   
 ### 样例：
   
@@ -760,13 +759,13 @@ int main (int argc, char**argv)
         perror("func mpart_create errorn");   
         return -1;   
     }   
-    ……   
+    // ……   
     ret = mpart_getinfo(mpid,&info); /* 获取指定内存大小可变分区信息*/   
     if(ret == 0)   
     {   
-        ……   
+        // ……   
     }   
-    ……   
+    // ……   
     return (0);   
 }  
 ```  
@@ -783,11 +782,11 @@ int mlock
 );  
 ```  
   
-### 描 述：  
+### 描述：  
   
 该接口用来锁定指定内存地址空间不进行换页处理。  
   
-### 参 数：  
+### 参数：  
   
 - pvAddr ：起始地址。  
 - stLen ：内存空间长度。  
@@ -798,9 +797,9 @@ int mlock
   
 ### 错误码：
   
-EACCES ：权限不足（需要进程ID为0）。  
+- EACCES ：权限不足（需要进程ID为0）。  
   
-### 样 例：  
+### 样例：  
   
 ```c  
 ```  
@@ -817,11 +816,11 @@ int munlock
 );  
 ```  
   
-### 描 述：  
+### 描述：  
   
 该接口用来解锁指定内存地址空间，允许进行换页处理。  
   
-### 参 数：   
+### 参数：   
   
 - pvAddr ：起始地址。  
 - stLen ：内存空间长度。  
@@ -832,9 +831,9 @@ int munlock
   
 ### 错误码：
   
-EACCES ：权限不足（需要进程ID为0）。  
+- EACCES ：权限不足（需要进程ID为0）。  
   
-### 样 例：  
+### 样例：  
   
 ```c  
 ```  
@@ -850,11 +849,11 @@ int mlockall
 );  
 ```  
   
-### 描 述：  
+### 描述：  
   
 该接口用来锁定进程空间不进行换页处理。  
   
-### 参 数：   
+### 参数：   
   
 iFlag ：锁定选项。取值有：  
   
@@ -871,7 +870,7 @@ iFlag ：锁定选项。取值有：
   
 无。  
   
-### 样 例：  
+### 样例：  
   
 ```c  
 ```  
@@ -887,11 +886,11 @@ int munlockall
 );  
 ```  
   
-### 描 述：  
+### 描述：  
   
 该接口用来解锁进程空间，允许进行换页处理。  
   
-### 参 数：   
+### 参数：   
   
 无。  
   
@@ -903,7 +902,7 @@ int munlockall
   
 无。  
   
-### 样 例：  
+### 样例：  
   
 ```c  
 ```  
@@ -924,11 +923,11 @@ void*mmap
 );  
 ```  
   
-### 描 述：  
+### 描述：  
   
 该接口用来内存文件映射。  
   
-### 参 数：   
+### 参数：   
   
 - pvAddr ：起始地址 (这里必须为 NULL, 系统将自动分配内存)。  
 - stLen ：映射长度 (4096的整倍数)。  
@@ -959,11 +958,11 @@ void*mmap
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ENOTSUP ：系统不支持的操作。  
-ERROR_VMM_VIRTUAL_PAGE ：虚拟页面错误。  
+- EINVAL ：参数无效。  
+- ENOTSUP ：系统不支持的操作。  
+- ERROR_VMM_VIRTUAL_PAGE ：虚拟页面错误。  
   
-### 样 例：  
+### 样例：  
   
 ```c  
 #include<stdio.h>  
@@ -1003,11 +1002,11 @@ void*mmap64
 );  
 ```  
   
-### 描 述：  
+### 描述：  
   
 该接口用来内存文件映射。  
   
-### 参 数：   
+### 参数：   
   
 - pvAddr ：起始地址 (这里必须为 NULL, 系统将自动分配内存)。  
 - stLen ：映射长度(4096的整倍数)。  
@@ -1038,11 +1037,11 @@ void*mmap64
   
 ### 错误码：  
   
-EINVAL ：参数无效。  
-ENOTSUP ：系统不支持的操作。  
-ERROR_VMM_VIRTUAL_PAGE ：虚拟页面错误。  
+- EINVAL ：参数无效。  
+- ENOTSUP ：系统不支持的操作。  
+- ERROR_VMM_VIRTUAL_PAGE ：虚拟页面错误。  
   
-### 样 例：  
+### 样例：  
   
 ```c  
 #include<stdio.h>  
@@ -1080,11 +1079,11 @@ void*mremap
 );  
 ```  
   
-### 描 述：  
+### 描述：  
   
 该接口用来重新设置内存映射文件的大小。  
   
-### 参 数：   
+### 参数：   
   
 - pvAddr ：起始地址。  
 - stOldSize ：当前映射内存区域大小。  
@@ -1102,10 +1101,10 @@ void*mremap
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ENOTSUP ：系统不支持的操作。  
+- EINVAL ：参数无效。  
+- ENOTSUP ：系统不支持的操作。  
   
-### 样 例：  
+### 样例：  
   
 ```c  
 #include<stdio.h>  
@@ -1122,7 +1121,7 @@ int main (int argc, char**argv)
     {   
         perror("func mremap error");   
     }   
-    ……   
+    // ……   
     return 0;   
 }  
 ```  
@@ -1139,11 +1138,11 @@ int munmap
 );  
 ```  
   
-### 描 述：  
+### 描述：  
   
 该接口用来取消内存文件映射。  
   
-### 参 数：  
+### 参数：  
   
 - pvAddr ：起始地址。  
 - stLen ：映射内存区域大小。  
@@ -1154,9 +1153,9 @@ int munmap
   
 ### 错误码：  
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：  
+### 样例：  
   
 ```c  
 #include<stdio.h>  
@@ -1193,11 +1192,11 @@ int msync
 );  
 ```  
   
-### 描 述：  
+### 描述：  
   
 该接口用来将内存中映射的文件数据回显在文件中，来实现磁盘文件内容与共享内存区中的内容一致,即同步操作。  
   
-### 参 数：   
+### 参数：   
   
 - pvAddr ：起始地址。  
 - stLen ：映射内存区域大小。  
@@ -1215,9 +1214,9 @@ int msync
   
 ### 错误码：  
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：  
+### 样例：  
   
 ```c  
 #include<stdio.h>  
@@ -1253,11 +1252,11 @@ int mprotect
 );  
 ```  
   
-### 描 述：  
+### 描述：  
   
 该接口用来设置进程内指定的地址段属性。  
   
-### 参 数：   
+### 参数：   
   
 - pvAddr ：起始地址。  
 - stLen ：长度。  
@@ -1276,11 +1275,11 @@ int mprotect
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-ENOTSUP ：系统不支持的操作。  
-ERROR_VMM_VIRTUAL_PAGE ：虚拟页面错误。  
+- EINVAL ：参数无效。  
+- ENOTSUP ：系统不支持的操作。  
+- ERROR_VMM_VIRTUAL_PAGE ：虚拟页面错误。  
   
-### 样 例：  
+### 样例：  
   
 ```c  
 #include<stdio.h>  
@@ -1317,11 +1316,11 @@ int shm_open
 );  
 ```  
   
-### 描 述：  
+### 描述：  
   
 该接口用来创建或打开一个共享内存,成功返回一个整数的文件描述符。用mmap映射此文件描述符，不可以使用msync函数同步内存。  
   
-### 参 数：   
+### 参数：   
   
 - name ：共享内存区的名字，默认路径在/dev/shm/下。  
 - oflag ：打开标志位。  
@@ -1333,9 +1332,9 @@ int shm_open
   
 ### 错误码：  
   
-EINVAL ：参数无效。  
+- EINVAL ：参数无效。  
   
-### 样 例：  
+### 样例：  
   
 ```c  
 #include<stdio.h>  
@@ -1352,7 +1351,7 @@ int main (int argc, char**argv)
         perror("func shm_open errorn");   
         return -1;   
     }   
-    ……   
+    // ……   
     return (0);   
 }  
 ```  
@@ -1368,11 +1367,11 @@ int shm_unlink
 );  
 ```  
   
-### 描 述：  
+### 描述：  
   
 该接口用来移除一个共享内存。  
   
-### 参 数：   
+### 参数：   
   
 - name ：共享内存区的名字，默认路径在/dev/shm/下。  
   
@@ -1382,14 +1381,14 @@ int shm_unlink
   
 ### 错误码：
   
-EINVAL ：参数无效。  
-EFAULT ：地址错误。  
-ENOENT ：文件或设备不存在。  
-EBUSY ：设备资源忙。  
-ELOOP ：链接文件层数太多。  
-EXDEV ：交叉设备连接。  
+- EINVAL ：参数无效。  
+- EFAULT ：地址错误。  
+- ENOENT ：文件或设备不存在。  
+- EBUSY ：设备资源忙。  
+- ELOOP ：链接文件层数太多。  
+- EXDEV ：交叉设备连接。  
   
-### 样 例：  
+### 样例：  
   
 ```c  
 #include<stdio.h>  
@@ -1405,7 +1404,7 @@ int main (int argc, char**argv)
         perror("func shm_open errorn");   
         return -1;   
     }   
-    ……   
+    // ……   
     shm_unlink("file"); /* 移除一个共享内存*/   
     return (0);   
 }  
@@ -1424,11 +1423,11 @@ int posix_madvise
 );  
 ```  
   
-### 描 述：  
+### 描述：  
   
 从addr指定的地址开始，长度为len的范围内，该区域的用户虚拟内存应遵循特定的使用模式。  
   
-### 参 数：  
+### 参数：  
   
 - addr ：起始地址。  
 - len ：长度参数。  
@@ -1442,7 +1441,7 @@ int posix_madvise
   
 无。  
   
-### 样 例：  
+### 样例：  
   
 ```c  
 ```  

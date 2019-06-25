@@ -1063,6 +1063,7 @@ int  pthread_attr_setinheritsched
 ### 备注：
   
 GJB 7714-2012错误码返回只有：  
+
 - EINVAL ： 参数无效。  
   
 ### 样例：
@@ -1403,6 +1404,7 @@ int  pthread_create
 ### 备注：
   
 GJB 7714-2012错误码返回只有：  
+
 - EINVAL ：参数无效。  
 - EAGAIN ：系统资源不足。  
   
@@ -1569,6 +1571,7 @@ int  pthread_getid
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - ESRCH ：线程不存在。  
 - EINVAL ：参数无效。  
 - RTYPENOTMATCH ：任务类型不匹配。  
@@ -1743,6 +1746,7 @@ int  pthread_suspend
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - ESRCH ：线程不存在。  
 - EINVAL ：参数无效。  
   
@@ -1802,6 +1806,7 @@ int  pthread_resume
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - ESRCH ：线程不存在。  
 - EINVAL ：参数无效。  
   
@@ -1861,7 +1866,8 @@ int  pthread_delay
   
 ### 备注：
   
-GJB 7714-2012错误码为：  
+GJB 7714-2012错误码为： 
+
 - ENOTSUP ：系统不支持设置。  
 - EINTR ：线程收到一个非阻塞或忽略的信号。  
   
@@ -2041,6 +2047,7 @@ boolean  pthread_is_ready
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - ESRCH ：线程不存在。  
   
 ### 样例：
@@ -2443,6 +2450,7 @@ int  pthread_getschedprio
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - ESRCH ：线程不存在。  
 - EINVAL ：参数无效。  
 - ENOTSUP ：系统不支持设置。  
@@ -2841,6 +2849,7 @@ int  pthread_cancelforce
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - ESRCH ：线程不存在。  
 - RTYPENOTMATCH ：任务类型不匹配。  
   
@@ -2903,6 +2912,7 @@ int  pthread_join
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - ESRCH ：线程不存在。  
 - EINVAL ：参数无效。  
 - EDEADLK ：检测到死锁。  
@@ -2994,6 +3004,7 @@ int  pthread_detach
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - ESRCH ：线程不存在。  
 - EINVAL ：参数无效。  
   
@@ -3196,6 +3207,7 @@ int   pthread_show
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - ESRCH ：线程不存在。  
 - EINVAL ：参数无效。  
   
@@ -3247,6 +3259,7 @@ int  pthread_showstack
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - ESRCH ：线程不存在。  
   
 - 返回值为无。  
@@ -3300,6 +3313,7 @@ int  pthread_showstackframe
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - ESRCH ：线程不存在。  
   
 - 返回值为无。  
@@ -3357,6 +3371,7 @@ int  sched_rr_get_interval
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - ESRCH ：线程不存在。  
   
 ### 样例：
@@ -3523,6 +3538,7 @@ int   pthread_create_hook_add
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
 - EAGAIN ：系统资源不足。  
   
@@ -3589,6 +3605,7 @@ int  pthread_create_hook_delete
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
   
 ### 样例：
@@ -3651,6 +3668,7 @@ int  pthread_switch_hook_add
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
 - EAGAIN ：系统资源不足。  
   
@@ -3716,6 +3734,7 @@ int  pthread_switch_hook_delete
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
   
 ### 样例：
@@ -3777,6 +3796,7 @@ int  pthread_close_hook_add
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
 - EAGAIN ：系统资源不足。  
   
@@ -3843,6 +3863,7 @@ int  pthread_close_hook_delete
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
   
 ### 样例：
@@ -3913,6 +3934,7 @@ int  pthread_key_create
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - EAGAIN ：系统资源不足。  
 - ENOMEM ：内存不足。  
   
@@ -4064,6 +4086,7 @@ int  pthread_setspecific
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
   
 ### 样例：
@@ -4188,6 +4211,7 @@ int  pthread_addvar
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
 - ESRCH ：线程不存在。  
   
@@ -4955,7 +4979,7 @@ int execl
   
 ### 描述：
   
-用来执行参数path字符串所代表的文件路径，接下来的参数代表执行该文件时传递过去的argv[0]// ……，最后一个参数必须用空指针NULL作结束。  
+用来执行参数path字符串所代表的文件路径，接下来的参数代表执行该文件时传递过去的argv[0]……，最后一个参数必须用空指针NULL作结束。  
 本函数只能由当前进程主线程调用，否则会返回失败。其具体实现是由spawnv()函数完成。  
   
 ### 参数：
@@ -5047,7 +5071,7 @@ int execle
   
 ### 描述：
   
-用来执行参数path字符串所代表的文件路径，接下来的参数代表执行该文件时传递过去的argv[0]// ……，最后一个参数必须用空指针NULL作结束。本函数只能由当前进程主线程调用，否则会返回失败。其具体操作是由spawnve完成。  
+用来执行参数path字符串所代表的文件路径，接下来的参数代表执行该文件时传递过去的argv[0] ……，最后一个参数必须用空指针NULL作结束。本函数只能由当前进程主线程调用，否则会返回失败。其具体操作是由spawnve完成。  
   
 ### 参数：
   
@@ -5147,7 +5171,7 @@ int execlp
   
 ### 描述：
   
-用来执行参数path字符串所代表的文件路径，接下来的参数代表执行该文件时传递过去的argv[0]// ……，最后一个参数必须用空指针NULL作结束。  
+用来执行参数path字符串所代表的文件路径，接下来的参数代表执行该文件时传递过去的argv[0] ……，最后一个参数必须用空指针NULL作结束。  
 本函数只能由当前进程主线程调用，否则会返回失败。  
   
 ### 参数：
@@ -5446,7 +5470,7 @@ int execvp
   
 ### 描述：
   
-用来执行参数path字符串所代表的文件路径，接下来的参数代表执行该文件时传递过去的argv[0]、argv[1]// ……，最后一个参数必须用空指针NULL作结束。本函数只能由当前进程主线程调用，否则会返回失败。  
+用来执行参数path字符串所代表的文件路径，接下来的参数代表执行该文件时传递过去的argv[0]、argv[1] ……，最后一个参数必须用空指针NULL作结束。本函数只能由当前进程主线程调用，否则会返回失败。  
   
 ### 参数：
   
@@ -5550,7 +5574,7 @@ int execvpe
   
 ### 描述：
   
-用来执行参数path字符串所代表的文件路径，接下来的参数代表执行该文件时传递过去的argv[0]、argv[1]// ……  
+用来执行参数path字符串所代表的文件路径，接下来的参数代表执行该文件时传递过去的argv[0]、argv[1]……  
   
 ### 参数：
   
@@ -11876,6 +11900,7 @@ int  sem_init
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。    
 - ENOSPC ：非法操作。  
   
@@ -11964,6 +11989,7 @@ int  sem_destroy
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
 - EBUSY ：设备资源忙。  
   
@@ -12029,6 +12055,7 @@ sem_t  *sem_open
 |O_EXCL|信号量不存在时不会创建|  
   
 创建信号量，需要附加4个参数。  
+
 - mode_t mode ：信号量的权限位。  
   
 - uint_t value ：信号量的初值。  
@@ -12064,6 +12091,7 @@ SEM_FAILED函数执行失败，并设置errno来指出错误。
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
 - ENAMETOOLONG ：路径名太长。  
 - EEXIST ：文件已存在。  
@@ -12212,6 +12240,7 @@ int  sem_unlink
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - ENAMETOOLONG ：路径名太长。  
 - ENOENT ：文件或设备不存在。  
   
@@ -12297,6 +12326,7 @@ int  sem_wait
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
 - EINTR ：任务收到一个非阻塞或忽略的信号。  
   
@@ -12360,6 +12390,7 @@ int  sem_trywait
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
 - EINTR ：任务收到一个非阻塞或忽略的信号。  
 - EAGAIN ：统资源不足。  
@@ -12568,6 +12599,7 @@ int  sem_flush
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
 - EMNOTINITED ：信号量模块未初始化。  
   
@@ -12636,6 +12668,7 @@ int  sem_getvalue
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
 - EMNOTINITED ：信号量模块未初始化。  
   
@@ -12777,6 +12810,7 @@ int  sem_show
 ### 备注：
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
 - EMNOTINITED ：信号量模块未初始化。  
 - ETIMEDOUT ：等待超时。  
@@ -12837,13 +12871,11 @@ int sem_reltimedwait_np
 ### 参数：
   
 - psem ：信号量句柄。  
-  
 - rel_timeout ：限时时间。这里是相对时间。  
   
 ### 返回值：
   
 0 函数执行成功。  
-  
 -1 函数执行失败，设置errno指出错误。  
   
 ### 错误码： 
@@ -13104,6 +13136,7 @@ int	pthread_mutexattr_setprioceiling
 ### 备注：
   
 与GJB 7714-2012错误码的差别：  
+
 - EINVAL pmutexattr ：是一个无效指针或者pmutexattr指向的的是未初始化的属性对象，或者prioceiling指定的的优先级无效。  
   
 ### 样例：
@@ -13193,6 +13226,7 @@ int	pthread_mutexattr_getprioceiling
 ### 备注：
   
 与GJB 7714-2012错误码的差别：  
+
 - EINVAL pmutexattr ：是无效的指针，或者pmutexattr指向的是未初始化的属性对象。  
   
 ### 样例：
@@ -13297,6 +13331,7 @@ int	pthread_mutexattr_setprotocol
 ### 备注：
   
 与GJB 7714-2012错误码的差别：  
+
 - ENOTSUP protocol ：protocol的取值不合法或互斥量的阻塞等待策略冲突。  
 - EINVAL pmutexattr ：是一个无效指针，或者pmutexattr指向的的是未初始化的属性对象。  
   
@@ -13363,6 +13398,7 @@ int	pthread_mutexattr_getprotocol
 ### 备注：
   
 与GJB 7714-2012错误码的差别：  
+
 - EINVAL pmutexattr ：是无效的指针，或者pmutexattr指向的是未初始化的属性对象。  
   
 ### 样例：
@@ -13600,6 +13636,7 @@ int	pthread_mutexattr_settype
 ### 备注：
   
 与GJB 7714-2012错误码的差别：  
+
 - EINVAL pmutexattr ：是一个无效指针，或者pmutexattr指向的的是未初始化的属性对象，或者type的取值不合法。  
   
 ### 样例：
@@ -13665,6 +13702,7 @@ int	pthread_mutexattr_gettype
 ### 备注：
   
 与GJB 7714-2012错误码的差别：  
+
 - EINVAL pmutexattr ：是一个无效指针，或者pmutexattr指向的的是未初始化的属性对象。  
   
 ### 样例：
@@ -13743,6 +13781,7 @@ int	pthread_mutexattr_setwaitqtype
 ### 备注：
   
 与GJB 7714-2012错误码的差别：  
+
 - ENOTUSP ：系统不支持的设置；  
 - EMNOTINITED ：模块尚未初始化；  
 - ENOTSUP waitq_type :设置与互斥量的协议属性相冲突；  
@@ -13811,6 +13850,7 @@ int	pthread_mutexattr_getwaitqtype
 ### 备注：
   
 与GJB 7714-2012错误码的差别：  
+
 - EMNOTINITED ：模块尚未初始化；  
 - EINVAL pmutexattr ：是一个无效指针，或者pmutexattr指向的的是未初始化的属性对象。  
   
@@ -13864,8 +13904,9 @@ int	pthread_mutexattr_setcancelsafe
 ### 描述：
   
 该接口用于设置互斥量的任务删除安全属性，即互斥量在取消时是否安全。其取值包括：  
-PTHREAD_CANCEL_SAFE—如果任务锁定具有该属性的互斥量，则对该任务的取消操作将不成功，直到任务解锁互斥量才能取消任务。  
-PTHREAD_CANCEL_UNSAFE—如果任务锁定具有该属性的互斥量，则任务的取消状态和取消类型都保持不变。  
+
+- PTHREAD_CANCEL_SAFE—如果任务锁定具有该属性的互斥量，则对该任务的取消操作将不成功，直到任务解锁互斥量才能取消任务。  
+- PTHREAD_CANCEL_UNSAFE—如果任务锁定具有该属性的互斥量，则任务的取消状态和取消类型都保持不变。  
   
 ### 参数：
   
@@ -13889,6 +13930,7 @@ PTHREAD_CANCEL_UNSAFE—如果任务锁定具有该属性的互斥量，则任�
 ### 备注：
   
 与GJB 7714-2012错误码的差别：  
+
 - EMNOTINITED ：模块尚未初始化。  
   
 ### 样例：
@@ -13976,6 +14018,7 @@ int	pthread_mutexattr_getcancelsafe
 ### 备注：
   
 与GJB 7714-2012错误码的差别：  
+
 - EMNOTINITED ：模块尚未初始化。  
   
 ### 样例：
@@ -14135,6 +14178,7 @@ int	pthread_mutex_destroy
 ### 备注：
   
 与GJB 7714-2012错误码的差别：  
+
 - EBUSY ：对象忙。  
 - EINVAL pmutex ：是一个无效的指针，或者mutex指定的互斥量不存在。  
   
@@ -14207,6 +14251,7 @@ int	pthread_mutex_lock
 ### 备注：
   
 与GJB 7714-2012错误码的差别：  
+
 - EAGAIN ：系统资源不足。  
   
 ### 样例：
@@ -14274,6 +14319,7 @@ int	pthread_mutex_trylock
 ### 备注：
   
 与GJB 7714-2012错误码的差别：  
+
 - EBUSY : 对象忙。  
   
 ### 样例：
@@ -14787,6 +14833,7 @@ int	pthread_mutex_getinfo
 ### 备注：
   
 与GJB 7714-2012错误码的差别：  
+
 - EMNOTINITED ：模块尚未初始化。  
   
 ### 样例：
@@ -14853,6 +14900,7 @@ int	pthread_mutex_show
 ### 备注：
   
 与GJB 7714-2012错误码的差别：  
+
 - EMNOTINITED ：模块尚未初始化。  
   
 ### 样例：
@@ -15175,6 +15223,7 @@ int  pthread_cond_init
 ### 备注：  
   
 GJB 7714-2012错误码：
+
 - EINVAL ：参数无效；  
 - EAGAIN ：系统资源不足。  
   
@@ -15270,6 +15319,7 @@ int  pthread_ cond_destroy
 ### 备注：  
   
 GJB 7714-2012错误码：
+
 - EINVAL ：参数无效；  
 - EBUSY ：对象忙。  
   
@@ -15340,6 +15390,7 @@ int  pthread_cond_signal
 ### 备注：  
   
 GJB 7714-2012错误码：
+
 - EINVAL ：参数无效。  
   
 ### 样例：  
@@ -15473,6 +15524,8 @@ int  pthread_cond_broadcast
 ### 备注：  
   
 GJB 7714-2012错误码：
+
+
 - EINVAL ：参数无效。  
   
 ### 样例：  
@@ -15539,6 +15592,7 @@ int  pthread_cond_wait
 ### 备注：  
   
 GJB 7714-2012错误码：
+
 - EINVAL ：参数无效。  
 - EPRERM ：权限不足。  
   
@@ -15613,6 +15667,7 @@ int  pthread_cond_timedwait
 ### 备注：  
   
 GJB 7714-2012错误码：
+
 - EINVAL ：参数无效；  
 - EPRERM ：权限不足；  
 - ETIMEDOUT ：超时。  
@@ -15686,6 +15741,7 @@ int  pthread_cond_show
 ### 备注：  
   
 GJB 7714-2012错误码：
+
 - EINVAL ：参数无效；  
 - EMNOTINITED ：模块尚未初始化；  
 - ECALLEDINISR ：接口不能在中断上下文中调用。  
@@ -15749,6 +15805,7 @@ int  pthread_cond_getinfo
 ### 备注：  
   
 GJB 7714-2012错误码：
+
 - EINVAL ：参数无效；  
 - EMNOTINITED ：模块尚未初始化；  
 - ECALLEDINISR ：接口不能在中断上下文中调用。  
@@ -16439,6 +16496,7 @@ int  pthread_rwlock_init
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
 - EBUSY ：设备资源忙。  
   
@@ -16501,6 +16559,8 @@ int  pthread_rwlock_destroy
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
+
 - EINVAL ：参数无效。  
 - EBUSY ：设备资源忙。  
   
@@ -16561,6 +16621,7 @@ int  pthread_rwlock_rdlock
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
 - EBUSY ：设备资源忙。  
   
@@ -16622,6 +16683,7 @@ int  pthread_rwlock_tryrdlock
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
 - EBUSY ：设备资源忙。  
   
@@ -16811,6 +16873,7 @@ int  pthread_rwlock_trywrlock
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
 - EINVAL rwlock ：是一个无效的指针；  
 - EINVAL rwlock ：指定的读写锁不存在；  
 - EBUSY ：因为读写锁已经被锁定用于读操作或写操作，所以无法获取锁用于写。  
@@ -16877,6 +16940,7 @@ int  pthread_rwlock_unlock
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
   
 ### 样例：  
@@ -16942,6 +17006,8 @@ int  pthread_rwlock_timedrdlock
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
+
 - EINVAL ：参数无效。  
 - ETIMEDOUT ：操作超时。  
 - EAGAIN ：系统资源不足。  
@@ -17015,6 +17081,7 @@ int  pthread_rwlock_timedwrlock
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
 - ETIMEDOUT ：等待超时。  
   
@@ -17150,6 +17217,7 @@ int   pthread_rwlock_getinfo
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
 - ECALLEDINISR ：系统处于中断中。  
 - EMNOTINITED ：模块未初始化。  
@@ -17238,6 +17306,7 @@ mqd_t	mq_create
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
 - ECALLEDINISR ：该接口不能在中段上下文中调用。  
 - EMFILE ：系统中打开了过多的消息队列描述符。  
@@ -17310,6 +17379,7 @@ int	mq_delete
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
 - ENOENT ：指定的消息队列不存在。  
 - EINVAL ：所删除的消息队列不是mq_create()创建的未命名消息队列。  
 - ECALLEDINISR ：该接口不能在中段上下文中调用。  
@@ -17390,6 +17460,7 @@ mqd_t            mq_open
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
 - EEXIST：同时设置了O_EXCL和O_CREAT。  
 - EINVAL：参数无效。  
 - ENFILE：系统中打开了过多的消息队列  
@@ -17466,6 +17537,7 @@ int              mq_close
 ### 备注：   
   
 GJB 7714-2012错误码为：  
+
 - EBADF：mqdes指定的消息队列描述符不合法。  
   
 ### 样例：  
@@ -17531,6 +17603,7 @@ int              mq_unlink
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：name是无效指针。  
 - ENAMETOOLONG ：变量name的长度大于NAME-MAX。  
 - ENOENT ：指定的命名消息队列不存在。  
@@ -17602,6 +17675,7 @@ int              mq_getattr
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
 - EBADF：mqdes指定的消息队列描述符不合法。  
   
 ### 样例：  
@@ -17678,6 +17752,7 @@ int              mq_setattr
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
 - EBADF：mqdes指定的消息队列描述符不合法，或者mqdes指定的消息队列是只读的。  
   
 ### 样例：  
@@ -17761,6 +17836,7 @@ int              mq_send
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：msg_ptr是无效的指针，或者msg_prio的取值不合法。  
 - EBADF ：mqdes指定的消息队列描述符不合法，或者mqdes指定的消息队列是只读的。  
 - EMSGSIZE ：msg_len指定的消息长度超过了消息队列的最大消息长度属性。  
@@ -17841,6 +17917,7 @@ ssize_t          mq_receive
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数msg_ptr是无效的指针。  
 - EBADF ：mqdes指定的消息队列描述符不合法，或者mqdes指定的消息队列是只写的。  
 - EMSGSIZE ：msg_len的值小于消息队列的消息大小属性。  
@@ -17927,6 +18004,7 @@ int              mq_timedsend
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：msg_ptr是无效的指针，或者msg_prio的取值不合法，或者在任务被阻塞的情况下abs_timeout指定的纳秒值小于0或者大于等于1000000000  
 - EBADF ：mqdes指定的消息队列描述符不合法，或者mqdes指定的消息队列是只读的。  
 - ETIMEDOUT ：消息队列打开时没有设置O_NONNBLOCK标志，并且在消息添加进消息队列之前到达了超时时间。  
@@ -18018,6 +18096,7 @@ ssize_t	mq_timedreceive
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ： msg_ptr是无效的指针，或者任务被阻塞的情况下，参数abs_timeout指定的纳秒值小于0或者大于等于1000000000  
 - EBADF ：mqdes指定的消息队列描述符不合法，或者mqdes指定的消息队列是只写的。  
 - EMSGSIZE ：msg_len的值小于消息队列的消息大小属性。  
@@ -18274,6 +18353,7 @@ int              mq_getinfo
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
 - EINVAL：参数mq_info是无效的指针。  
 - EBADF：mqdes指定的消息队列描述符不合法。  
 - EMNOTINITED：消息队列模块尚未初始化。  
@@ -18349,6 +18429,7 @@ int              mq_show
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
 - EINVAL：level取值不合法。  
 - EBADF：mqdes指定的消息队列描述符不合法。  
 - EMNOTINITED：消息队列模块尚未初始化。  
@@ -19314,6 +19395,7 @@ sigqueue()将输入参数iSigNo指定的信号以排队方式发送到参数ulId
 ### 备注：  
   
 GJB 7714-2012的错误码为：  
+
 - EAGAIN ：系统资源不足。  
 - EINVAL ：参数无效。  
 - ESRCH ：任务id对应的任务不存在。  
@@ -19378,6 +19460,7 @@ sigsuspend()使用sigsetMask指定的一组信号取代调用任务当前的信�
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
 - EINTR ：接口调用期间有信号运行过。  
   
 ### 样例：  
@@ -19425,6 +19508,7 @@ sigwait()会从sigset中选取一个未决的信号，自动的把它从系统�
 ### 备注：  
   
 GJB 7714-2012的错误码为：  
+
 - EINVAL ：参数无效。  
   
 ### 样例：  
@@ -19495,10 +19579,10 @@ sigtimedwait()用来在指定时间限制内等待sigset中的处于未决状态
 ### 备注：  
   
 GJB 7714-2012的错误码为：  
+
 - EINVAL ：参数无效。  
 - EAGAIN ：在指定的时间段内，信号集没有产生。  
 - EINTR ：被中断系统调用。  
-  
 - 在调用此函数时，需要先行设置超时时间。  
   
 ### 样例：  
@@ -19566,6 +19650,7 @@ sigwaitinfo()该接口会从psigset指定的信号集中选取未决的信号。
 ### 备注：  
   
 GJB 7714-2012的错误码为：  
+
 - EINTR ：任务收到一个非阻塞或忽略的信号。  
   
 ### 样例：  
@@ -19761,8 +19846,8 @@ sigpause()将信号iSigMask从调用任务的信号掩码中删除，并将调�
   
 ### 备注：  
   
-SylixOS中iSigMask为信号掩码。  
-GJB 7714-2012中iSigMask参数为某个信号编号。  
+- SylixOS中iSigMask为信号掩码。  
+- GJB 7714-2012中iSigMask参数为某个信号编号。  
 - GJB 7714-2012错误码为：  
 - EINVAL ：参数无效。  
   
@@ -20369,6 +20454,7 @@ INT kill
 ### 备注：  
   
 GJB 7714-2012 错误码为：  
+
 - EINVAL ：参数无效。  
 - ESRCH ：线程不存在。  
 - EAGAIN ：系统资源不足。  
@@ -20432,6 +20518,7 @@ raise()该接口把信号发送到当前任务。如果一个信号处理函数�
 ### 备注：  
   
 GJB 7714-2012 错误码为：  
+
 - EINVAL ：参数无效。  
   
 ### 样例：  
@@ -21796,8 +21883,9 @@ int  sys_clk_rate_set
 ### 备注：  
   
 GJB 7714-2012返回值：
+
 - 0 设置成功；  
--1 设置失败。  
+- 1 设置失败。  
   
 ### 样例：  
   
@@ -21961,6 +22049,7 @@ INT  clock_settime
 ### 备注：  
   
 GJB 7714-2012错误码：
+
 - EINVAL ：参数无效，或者赋给变量tp的纳秒值小于0或大于等于1’000’000’000。  
   
 ### 样例：  
@@ -22020,6 +22109,7 @@ INT  clock_getres
 ### 备注：  
   
 GJB 7714-2012错误码：
+
 - EINVAL ：参数无效，或者res是无效指针。  
   
 ### 样例：  
@@ -22076,6 +22166,7 @@ int  wdg_create
 ### 备注：  
   
 GJB 7714-2012错误码为 ：  
+
 - ECALLEDINISR ：系统处于中断中。  
 - EMNOTINITED ：模块未初始化。  
 - EAGAIN ：系统资源不足。  
@@ -22141,6 +22232,7 @@ INT  nanosleep
 ### 备注：  
   
 GJB 7714-2012错误码：
+
 - EINVAL ：参数无效；  
 - EINTR ：被信号激活。  
   
@@ -22208,6 +22300,7 @@ int  wdg_start
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
 - EMNOTINITED ：模块未初始化。  
   
@@ -22293,6 +22386,7 @@ Int  wdg_cancel
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
 - EMNOTINITED ：模块未初始化。  
   
@@ -22357,6 +22451,7 @@ int  wdg_delete
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
 - ECALLEDINISR ：系统处于中断中。  
 - EMNOTINITED ：模块未初始化。  
@@ -22430,6 +22525,7 @@ Int  wdg_getinfo
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
 - EMNOTINITED ：模块未初始化。  
   
@@ -22485,6 +22581,7 @@ int  wdg_show
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
 - EMNOTINITED ：模块未初始化。  
   
@@ -22547,6 +22644,7 @@ INT  timer_create
 ### 备注：  
   
 GJB 7714-2012错误码为：  
+
 - EINVAL ：参数无效。  
 - ENOTSUP ：系统不支持的设置。  
 - EAGAIN ：系统资源不足。  
@@ -22624,6 +22722,7 @@ INT  timer_delete
 ### 备注：  
   
 GJB 7714-2012 错误码：
+
 - EINVAL ：参数无效。  
   
 ### 样例：  
@@ -22695,6 +22794,7 @@ int  timer_settime
 ### 备注：  
   
 GJB 7714-2012 错误码：
+
 - EINVAL ：参数无效。  
   
 ### 样例：  
@@ -22760,6 +22860,7 @@ INT  timer_gettime
 ### 备注：  
   
 GJB 7714-2012 错误码：
+
 - EINVAL ：参数无效。  
   
 ### 样例：  
@@ -22825,6 +22926,7 @@ Int  timer_getinfo
 ### 备注：  
   
 GJB 7714-2012 错误码：
+
 - EINVAL ：参数无效。  
   
 ### 样例：  

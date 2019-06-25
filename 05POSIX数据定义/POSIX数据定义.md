@@ -630,16 +630,16 @@ HYSylixOS还对处理结构进行了定义，在sigaction等接口使用，定�
 typedef VOID (\*PSIGNAL_HANDLE)(INT); /* 信号处理句柄函数类型 */ 
 typedef VOID (\*PSIGNAL_HANDLE_ACT)(INT, struct siginfo \*, PVOID); 
 struct sigaction { 
-    union { 
-        PSIGNAL_HANDLE \_sa_handler; 
-        PSIGNAL_HANDLE_ACT \_sa_sigaction; 
-        } _u; /* 信号服务函数句柄 */ 
-        sigset_t sa_mask; /* 执行时的信号屏蔽码 */ 
-        INT sa_flags; /* 该句柄处理标志 */ 
-        PSIGNAL_HANDLE sa_restorer; /* 恢复处理函数指针 */ 
-        };
-        #define sa_handler _u._sa_handler 
-        #define sa_sigaction _u._sa_sigaction
+                    union{ 
+                            PSIGNAL_HANDLE \_sa_handler; 
+                            PSIGNAL_HANDLE_ACT \_sa_sigaction; 
+                         } _u; /* 信号服务函数句柄 */ 
+                    sigset_t sa_mask; /* 执行时的信号屏蔽码 */ 
+                    INT sa_flags; /* 该句柄处理标志 */ 
+                    PSIGNAL_HANDLE sa_restorer; /* 恢复处理函数指针 */ 
+                };
+#define sa_handler _u._sa_handler 
+#define sa_sigaction _u._sa_sigaction
 ```
 
 
@@ -685,47 +685,56 @@ void handler (int signo, siginfo_t \*siginfo, void \*arg);
 - siginfo_t 结构包含了信号产生原因的有关信息，在HYSylixOS 中该结构如下定义：
 
 ```c
-typedef struct siginfo { 
+typedef struct siginfo 
+{ 
     INT si_signo; 
     INT si_errno; 
     INT si_code; 
     union { 
-        struct { 
-            INT _si_pid; 
-            INT _si_uid; 
-            } _kill; 
             struct { 
-                INT _si_tid; 
-                INT _si_overrun; 
-                } _timer; 
-                struct { 
+                    INT _si_pid; 
+                    INT _si_uid; 
+                    } _kill; 
+            struct { 
+                    INT _si_tid; 
+                    INT _si_overrun; 
+                    } _timer; 
+            struct { 
                     INT _si_pid; 
                     INT _si_uid; 
                     } _rt; 
-                    struct { 
-                        INT _si_pid; 
-                        INT _si_uid; 
-                        INT _si_status; 
-                        clock_t _si_utime; 
-                        clock_t _si_stime; 
-                        } _sigchld; 
-                        struct { 
-                            INT _si_band; 
-                            INT _si_fd; 
-                             _sigpoll; 
-                             } _sifields; 
-                             #define si_pid _sifields._kill._si_pid 
-                             #define si_uid _sifields._kill._si_uid 
-                             define si_timerid _sifields._timer._si_tid 
-                             #define si_overrun _sifields._timer._si_overrun 
-                             #define si_status _sifields._sigchld._si_status 
-                             #define si_utime _sifields._sigchld._si_utime 
-                             #define si_stime _sifields._sigchld._si_stime 
-                             #define si_band _sifields._sigpoll._si_band 
-                             #define si_fd _sifields._sigpoll._si_fd union sigval si_value; 
-                             #define si_addr si_value.sival_ptr /* Faulting insn/memory ref */ 
-                             #define si_int si_value.sival_int 
-                             #define si_ptr si_value.sival_ptr ULONG si_pad[4]; } siginfo_t;
+            struct { 
+                    INT _si_pid; 
+                    INT _si_uid; 
+                    INT _si_status; 
+                    clock_t _si_utime; 
+                    clock_t _si_stime; 
+                    } _sigchld; 
+            struct { 
+                    INT _si_band; 
+                    INT _si_fd; 
+                    } _sigpoll; 
+        } _sifields; 
+#define si_pid _sifields._kill._si_pid 
+#define si_uid _sifields._kill._si_uid 
+#define si_timerid _sifields._timer._si_tid 
+#define si_overrun _sifields._timer._si_overrun 
+#define si_status _sifields._sigchld._si_status 
+#define si_utime _sifields._sigchld._si_utime 
+#define si_stime _sifields._sigchld._si_stime 
+#define si_band _sifields._sigpoll._si_band 
+#define si_fd _sifields._sigpoll._si_fd 
+    
+    union sigval si_value; 
+
+#define si_addr si_value.sival_ptr /* Faulting insn/memory ref */ 
+#define si_int si_value.sival_int 
+#define si_ptr si_value.sival_ptr 
+
+    ULONG si_pad[4]; 
+    
+} siginfo_t;
+
 ```
 
 - 成员 si_code 指示了信号的产生原因，如表 8-5 所示 HYSylixOS 中各种信号的si_code 值定义。
